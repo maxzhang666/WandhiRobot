@@ -132,7 +132,7 @@
     <Compile Include="Repair\ModuleInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Com.Wandhi.WandhiRobot" />
+    <None Include="Com.Wandhi.WandhiRobot.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
