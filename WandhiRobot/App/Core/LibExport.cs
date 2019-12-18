@@ -6,7 +6,8 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using Native.Csharp.App.Event;
+using WandhiRobot.App.Event;
+using Native.Csharp;
 using Native.Csharp.Sdk.Cqp;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
@@ -57,14 +58,14 @@ namespace WandhiRobot.App.Core
 		{
 			// 请勿随意修改
 			// 
-			Common.AppName = "解析失败";
-			Common.AppVersion = Version.Parse ("0.0.0");		
+			Common.AppName = "Wandhi机器人";
+			Common.AppVersion = Version.Parse ("1.0.0");		
 
 			//
-			// 当前项目名称: Com.Wandhi.WandhiRobot
+			// 当前项目名称: com.wandhi.wandhirobot
 			// Api版本: 9
 
-			return string.Format ("{0},{1}", 9, "Com.Wandhi.WandhiRobot");
+			return string.Format ("{0},{1}", 9, "com.wandhi.wandhirobot");
 		}
 
 		/// <summary>
@@ -79,7 +80,7 @@ namespace WandhiRobot.App.Core
 			Common.CqApi = new CqApi (authCode);
 
 			// AuthCode 传递完毕后将对象加入容器托管, 以便在其它项目中调用
-			Common.UnityContainer.RegisterInstance<CqApi> ("Com.Wandhi.WandhiRobot", Common.CqApi);
+			Common.UnityContainer.RegisterInstance<CqApi> ("com.wandhi.wandhirobot", Common.CqApi);
 
 			// 注册插件全局异常捕获回调, 用于捕获未处理的异常, 回弹给 酷Q 做处理
 			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
@@ -113,10 +114,78 @@ namespace WandhiRobot.App.Core
 		/// </summary>
 		private static void ResolveAppbackcall ()
 		{
+			/*
+			 * Id: 1
+			 * Name: 私聊消息处理
+			 */
+			if (Common.UnityContainer.IsRegistered<IReceiveFriendMessage> ("私聊消息处理") == true)
+			{
+				ReceiveFriendMessage_1 = Common.UnityContainer.Resolve<IReceiveFriendMessage> ("私聊消息处理").ReceiveFriendMessage;
+			}
+			if (Common.UnityContainer.IsRegistered<IReceiveOnlineStatusMessage> ("私聊消息处理") == true)
+			{
+				ReceiveOnlineStatusMessage_1 = Common.UnityContainer.Resolve<IReceiveOnlineStatusMessage> ("私聊消息处理").ReceiveOnlineStatusMessage;
+			}
+			if (Common.UnityContainer.IsRegistered<IReceiveGroupPrivateMessage> ("私聊消息处理") == true)
+			{
+				ReceiveGroupPrivateMessage_1 = Common.UnityContainer.Resolve<IReceiveGroupPrivateMessage> ("私聊消息处理").ReceiveGroupPrivateMessage;
+			}
+			if (Common.UnityContainer.IsRegistered<IReceiveDiscussPrivateMessage> ("私聊消息处理") == true)
+			{
+				ReceiveDiscussPrivateMessage_1 = Common.UnityContainer.Resolve<IReceiveDiscussPrivateMessage> ("私聊消息处理").ReceiveDiscussPrivateMessage;
+			}
+			
+
 		}
 		#endregion
 		
 		#region --导出方法--
+		/*
+		 * Id: 1
+		 * Type: 21
+		 * Name: 私聊消息处理
+		 * Function: _eventPrivateMsg
+		 */
+		public static event EventHandler<CqPrivateMessageEventArgs> ReceiveFriendMessage_1;
+		public static event EventHandler<CqPrivateMessageEventArgs> ReceiveOnlineStatusMessage_1;
+		public static event EventHandler<CqPrivateMessageEventArgs> ReceiveGroupPrivateMessage_1;
+		public static event EventHandler<CqPrivateMessageEventArgs> ReceiveDiscussPrivateMessage_1;
+		[DllExport (ExportName = "_eventPrivateMsg", CallingConvention = CallingConvention.StdCall)]
+		private static int Evnet__eventPrivateMsg (int subType, int msgId, long fromQQ, IntPtr msg, int font)
+		{
+			CqPrivateMessageEventArgs args = new CqPrivateMessageEventArgs (1, "私聊消息处理", msgId, fromQQ, msg.ToString (_defaultEncoding));
+			if (subType == 11)
+			{
+				if (ReceiveFriendMessage_1 != null)
+				{
+					ReceiveFriendMessage_1 (null, args);
+				}
+			}
+			else if (subType == 1)
+			{
+				if (ReceiveOnlineStatusMessage_1 != null)
+				{
+					ReceiveOnlineStatusMessage_1 (null, args);
+				}
+			}
+			else if (subType == 2)
+			{
+				if (ReceiveGroupPrivateMessage_1 != null)
+				{
+					ReceiveGroupPrivateMessage_1 (null, args);
+				}
+			}
+			else if (subType == 3)
+			{
+				if (ReceiveDiscussPrivateMessage_1 != null)
+				{
+					ReceiveDiscussPrivateMessage_1 (null, args);
+				}
+			}
+			return Convert.ToInt32 (args.Handler);
+		}
+
+
 		#endregion
     }
 }

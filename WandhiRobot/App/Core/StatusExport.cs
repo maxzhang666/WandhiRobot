@@ -6,6 +6,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Native.Csharp;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
 using Unity;
@@ -31,10 +32,40 @@ namespace WandhiRobot.App.Core
 		/// </summary>
 		private static void ResolveAppbackcall ()
 		{
+			/*
+			 * Name: 运行时间
+			 * Function: _statusUptime
+			 */
+			if (Common.UnityContainer.IsRegistered<ICqStatus> ("运行时间") == true)
+			{
+				Status_UPTIME = Common.UnityContainer.Resolve<ICqStatus> ("运行时间").CqStatus;
+			}
+
+
 		}
         #endregion
 
 		#region --导出方法--
+		/*
+		 * Id: 1
+		 * Name: 运行时间
+		 * Title: UPTIME
+		 * Function: _statusUptime
+		 * Period: 1000
+		 */
+		public static event EventHandler<CqStatusEventArgs> Status_UPTIME;
+		[DllExport (ExportName = "_statusUptime", CallingConvention = CallingConvention.StdCall)]
+		private static string Evnet__statusUptime ()
+		{
+			CqStatusEventArgs args = new CqStatusEventArgs (1, "运行时间", "UPTIME", 1000);
+			if (Status_UPTIME != null)
+			{
+				Status_UPTIME (null, args);
+			}
+			return args.FloatWindowData;
+		}
+
+
         #endregion
 	}
 }

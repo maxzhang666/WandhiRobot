@@ -6,6 +6,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Native.Csharp;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
 using Unity;
@@ -31,10 +32,60 @@ namespace WandhiRobot.App.Core
 		/// </summary>
 		private static void ResolveAppbackcall ()
 		{
+			/*
+			 * Name: 设置A
+			 * Function: _menuA
+			 */
+			if (Common.UnityContainer.IsRegistered<ICallMenu> ("设置A") == true)
+			{
+				Menu__menuA = Common.UnityContainer.Resolve<ICallMenu> ("设置A").CallMenu;
+			}
+
+			/*
+			 * Name: 设置B
+			 * Function: _menuB
+			 */
+			if (Common.UnityContainer.IsRegistered<ICallMenu> ("设置B") == true)
+			{
+				Menu__menuB = Common.UnityContainer.Resolve<ICallMenu> ("设置B").CallMenu;
+			}
+
+
 		}
         #endregion
 
 		#region --导出方法--
+		/*
+		 * Name: 设置A
+		 * Function: _menuA
+		 */
+		public static event EventHandler<CqCallMenuEventArgs> Menu__menuA;
+		[DllExport (ExportName = "_menuA", CallingConvention = CallingConvention.StdCall)]
+		private static int Evnet__menuA ()
+		{
+			if (Menu__menuA != null)
+			{
+				Menu__menuA (null, new CqCallMenuEventArgs ("设置A"));
+			}
+			return 0;
+		}
+
+		/*
+		 * Name: 设置B
+		 * Function: _menuB
+		 */
+		public static event EventHandler<CqCallMenuEventArgs> Menu__menuB;
+		[DllExport (ExportName = "_menuB", CallingConvention = CallingConvention.StdCall)]
+		private static int Evnet__menuB ()
+		{
+			if (Menu__menuB != null)
+			{
+				Menu__menuB (null, new CqCallMenuEventArgs ("设置B"));
+			}
+			return 0;
+		}
+
+
 		#endregion
     }
 }
