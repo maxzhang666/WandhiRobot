@@ -104,6 +104,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\Common.cs" />
+    <Compile Include="App\Core\LibExport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibExport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App\Core\MenuExport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuExport.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App\Core\StatusExport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatusExport.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +126,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\Core\LibExport.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LibExport.cs</LastGenOutput>
+    </Content>
+    <Content Include="App\Core\MenuExport.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MenuExport.cs</LastGenOutput>
+    </Content>
+    <Content Include="App\Core\StatusExport.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StatusExport.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
