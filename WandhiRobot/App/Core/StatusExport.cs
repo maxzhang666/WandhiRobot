@@ -10,7 +10,7 @@ using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
 using Unity;
 
-namespace Native.Csharp.App.Core
+namespace WandhiRoboot.App.Core
 {
     public class StatusExport
     {

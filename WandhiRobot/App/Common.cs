@@ -5,7 +5,7 @@ using System.Text;
 using Native.Csharp.Sdk.Cqp;
 using Unity;
 
-namespace Native.Csharp.App
+namespace WandhiRoboot.App
 {
     /// <summary>
     /// 用于存放 App 数据的公共类
