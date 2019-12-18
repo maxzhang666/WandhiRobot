@@ -8,7 +8,7 @@ using Native.Csharp.Sdk.Cqp.Interface;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp;
 
-namespace WandhiRoboot.App.Event
+namespace WandhiRobot.App.Event
 {
 	public static class Event_AppMain
 	{

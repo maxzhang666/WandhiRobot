@@ -6,16 +6,15 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using WandhiRoboot.App.Event;
+using Native.Csharp.App.Event;
 using Native.Csharp.Sdk.Cqp;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
 using Native.Csharp.Sdk.Cqp.Model;
 using Native.Csharp.Sdk.Cqp.Expand;
 using Unity;
-using Native.Csharp;
 
-namespace WandhiRoboot.App.Core
+namespace WandhiRobot.App.Core
 {
     public class LibExport
     {
@@ -62,10 +61,10 @@ namespace WandhiRoboot.App.Core
 			Common.AppVersion = Version.Parse ("0.0.0");		
 
 			//
-			// 当前项目名称: WandhiRobot
+			// 当前项目名称: Com.Wandhi.WandhiRobot
 			// Api版本: 9
 
-			return string.Format ("{0},{1}", 9, "WandhiRobot");
+			return string.Format ("{0},{1}", 9, "Com.Wandhi.WandhiRobot");
 		}
 
 		/// <summary>
@@ -80,7 +79,7 @@ namespace WandhiRoboot.App.Core
 			Common.CqApi = new CqApi (authCode);
 
 			// AuthCode 传递完毕后将对象加入容器托管, 以便在其它项目中调用
-			Common.UnityContainer.RegisterInstance<CqApi> ("WandhiRobot", Common.CqApi);
+			Common.UnityContainer.RegisterInstance<CqApi> ("Com.Wandhi.WandhiRobot", Common.CqApi);
 
 			// 注册插件全局异常捕获回调, 用于捕获未处理的异常, 回弹给 酷Q 做处理
 			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;

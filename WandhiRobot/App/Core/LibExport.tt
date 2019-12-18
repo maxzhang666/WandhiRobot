@@ -35,7 +35,7 @@ using Native.Csharp.Sdk.Cqp.Model;
 using Native.Csharp.Sdk.Cqp.Expand;
 using Unity;
 
-namespace Native.Csharp.App.Core
+namespace WandhiRobot.App.Core
 {
     public class LibExport
     {

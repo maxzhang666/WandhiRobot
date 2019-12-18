@@ -10,7 +10,7 @@ using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
 using Unity;
 
-namespace WandhiRoboot.App.Core
+namespace WandhiRobot.App.Core
 {
     public class MenuExport
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
 
-namespace WandhiRoboot.App.Event
+namespace WandhiRobot.App.Event
 {
     /// <summary>
 	/// Type=1004 应用被禁用, 事件实现

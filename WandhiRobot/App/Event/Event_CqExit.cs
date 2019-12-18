@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
 
-namespace WandhiRoboot.App.Event
+namespace WandhiRobot.App.Event
 {
     /// <summary>
 	/// Type=1002 酷Q退出, 事件实现
