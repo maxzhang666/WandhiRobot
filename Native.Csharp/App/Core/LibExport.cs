@@ -57,7 +57,7 @@ namespace Native.Csharp.App.Core
 		{
 			// 请勿随意修改
 			// 
-			Common.AppName = "WandhiRobot";
+			Common.AppName = "[Wandhi]机器人";
 			Common.AppVersion = Version.Parse ("1.0.0");		
 
 			//
