@@ -7,6 +7,7 @@ using Unity;
 using Native.Csharp.Sdk.Cqp.Interface;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp;
+using Native.Csharp.Customer.Event;
 
 namespace Native.Csharp.App.Event
 {
@@ -18,6 +19,7 @@ namespace Native.Csharp.App.Event
         /// <param name="builder"></param>
         public static void Registbackcall(IUnityContainer container)
         {
+            #region 默认注入事件
             // 此方法的参数 container 是于插件加载时初始化好的反向注入容器 (IOC 容器)
             // 在注入之前请先运行在 Core 文件夹下的所有 .tt 文件, 保证这里的注入能成功
             // 
@@ -36,7 +38,10 @@ namespace Native.Csharp.App.Event
             container.RegisterType<ICqAppEnable, Event_CqAppEnable>("应用已被启用");
             // 注入 Type=1004 的回调
             container.RegisterType<ICqAppDisable, Event_CqAppDisable>("应用将被停用");
+            #endregion
 
+
+            container.RegisterType<ICqAppEnable, Event_AppStart>("应用已被启用");
             container.RegisterType<IReceiveGroupMessage, Event_GroupMessage>("群消息处理");
         }
 

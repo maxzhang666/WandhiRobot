@@ -61,13 +61,20 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="GHttpHelper, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GHttpHelper.1.0.3\lib\net45\GHttpHelper.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress, Version=0.24.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCompress.0.24.0\lib\net45\SharpCompress.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Web" />
@@ -97,6 +104,9 @@
     <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.8.6\lib\net45\Unity.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="WandhiHelper, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WandhiHelper.1.0.2\lib\net45\WandhiHelper.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\Common.cs" />
@@ -121,6 +131,10 @@
     <Compile Include="App\Event\Event_CqExit.cs" />
     <Compile Include="App\Event\Event_CqStartup.cs" />
     <Compile Include="App\Event\Event_GroupMessage.cs" />
+    <Compile Include="Customer\Common.cs" />
+    <Compile Include="Customer\Event\Event_AppStart.cs" />
+    <Compile Include="Customer\Event\Event_GroupMessage.cs" />
+    <Compile Include="Customer\Service\ChpService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repair\Core\Kernel32.cs" />
     <Compile Include="Repair\Enum\LoadLibraryFlags.cs" />

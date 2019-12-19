@@ -7,11 +7,11 @@ using Unity;
 
 namespace Native.Csharp.App
 {
-	/// <summary>
-	/// 用于存放 App 数据的公共类
-	/// </summary>
-	public static class Common
-	{
+    /// <summary>
+    /// 用于存放 App 数据的公共类
+    /// </summary>
+    public static partial class Common
+    {
         /// <summary>
         /// 获取 App 在酷Q中显示的名称 (此属性 set 并不能做出实质性的修改)
         /// </summary>
@@ -36,10 +36,10 @@ namespace Native.Csharp.App
         /// 获取或设置当前 App 使用的依赖注入容器实例
         /// </summary>
         public static IUnityContainer UnityContainer { get; set; }
-		
-		/// <summary>
-		/// 获取或设置当前 App 使用的 酷Q Api 接口实例
-		/// </summary>
-		public static CqApi CqApi { get; set; }
-	}
+
+        /// <summary>
+        /// 获取或设置当前 App 使用的 酷Q Api 接口实例
+        /// </summary>
+        public static CqApi CqApi { get; set; }
+    }
 }
