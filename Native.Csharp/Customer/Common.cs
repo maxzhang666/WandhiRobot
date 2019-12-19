@@ -1,4 +1,5 @@
 ﻿using Native.Csharp.Customer.Model;
+using Native.Csharp.Customer.Window;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,21 @@ namespace Native.Csharp.App
 
         public static Timer Chp;
 
+        /// <summary>
+        /// 控制中心实例
+        /// </summary>
+        public static Main MainSetting
+        {
+            get
+            {
+                if (_MainSetting == null)
+                {
+                    _MainSetting = new Main();
+                }
+                return _MainSetting;
+            }
+        }
+        private static Main _MainSetting { set; get; }
         /// <summary>
         /// 通用计时器
         /// 具有默认执行频率

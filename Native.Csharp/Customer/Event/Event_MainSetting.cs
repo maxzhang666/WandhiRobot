@@ -14,9 +14,8 @@ namespace Native.Csharp.Customer.Event
     {
         public void CallMenu(object sender, CqCallMenuEventArgs e)
         {
-            Common.CqApi.AddLoger(Sdk.Cqp.Enum.LogerLevel.Debug, "Wandhi-设置", "调用设置中心");
-            var dg = new Main();
-            dg.Show();
+            Common.CqApi.AddLoger(Sdk.Cqp.Enum.LogerLevel.Debug, "Wandhi-设置", "调用设置中心单例模式");            
+            Common.MainSetting.Show();            
         }
     }
 }
