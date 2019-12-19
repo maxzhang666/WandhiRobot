@@ -27,8 +27,11 @@ namespace Native.Csharp.Customer.Window
 
         private void InitGroupList()
         {
-            var list = Common.CqApi.GetGroupList();
+            var list = Common.CqApi.GetGroupList().Select(a => new { Name = $"{a.Name}({a.Id})", Value = a.Id }).ToList();
+
             ListBox_GroupList.DataSource = list;
+            ListBox_GroupList.DataBindings.Add("Name", list, "Value");
+            ListBox_GroupList.DisplayMember = "Name";
         }
     }
 }
