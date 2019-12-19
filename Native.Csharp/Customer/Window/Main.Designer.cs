@@ -30,6 +30,8 @@
         {
             this.ListBox_GroupList = new System.Windows.Forms.ListBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ListBox_GroupList
@@ -39,21 +41,32 @@
             this.ListBox_GroupList.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ListBox_GroupList.FormattingEnabled = true;
             this.ListBox_GroupList.ItemHeight = 21;
-            this.ListBox_GroupList.Location = new System.Drawing.Point(12, 12);
+            this.ListBox_GroupList.Location = new System.Drawing.Point(16, 20);
             this.ListBox_GroupList.Name = "ListBox_GroupList";
-            this.ListBox_GroupList.Size = new System.Drawing.Size(197, 401);
+            this.ListBox_GroupList.Size = new System.Drawing.Size(199, 380);
             this.ListBox_GroupList.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ListBox_GroupList);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(232, 408);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "群列表";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 432);
-            this.Controls.Add(this.ListBox_GroupList);
+            this.Controls.Add(this.groupBox1);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "控制中心";
             this.Load += new System.EventHandler(this.Main_Load);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -62,5 +75,6 @@
 
         private System.Windows.Forms.ListBox ListBox_GroupList;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
