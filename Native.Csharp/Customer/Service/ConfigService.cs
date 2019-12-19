@@ -79,6 +79,10 @@ namespace Native.Csharp.Customer.Service
         }
         private string readConfig()
         {
+            if (!File.Exists(abPath))
+            {
+                File.Create(abPath);
+            }
             try
             {
                 return File.ReadAllText(abPath);

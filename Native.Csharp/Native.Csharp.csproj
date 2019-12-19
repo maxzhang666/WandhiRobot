@@ -204,7 +204,10 @@ rename "$(TargetDir)$(TargetName)\$(TargetName).dll" "app.dll"
 if exist "$(TargetDir)$(TargetName).json" (
 move "$(TargetDir)$(TargetName).json" "$(TargetDir)$(TargetName)" 
 rename "$(TargetDir)$(TargetName)\$(TargetName).json" "app.json" 
-)</PostBuildEvent>
+)
+
+xcopy /r /y $(TargetDir)$(TargetName)\app.dll D:\Soft\cpq\dev\$(TargetName)
+xcopy /r /y $(TargetDir)$(TargetName)\app.json D:\Soft\cpq\dev\$(TargetName)</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
