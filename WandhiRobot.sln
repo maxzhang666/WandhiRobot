@@ -7,7 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Native.Csharp", "Native.Csh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Native.Csharp.Sdk", "Native.Csharp.Sdk\Native.Csharp.Sdk.csproj", "{797EAEBC-4D5B-4EEF-87F4-A508FDA2CB6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Native.Csharp.Tool", "Native.Csharp.Tool\Native.Csharp.Tool.csproj", "{05803F01-EAAA-4FD7-9BE6-96BDD700C428}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Native.Csharp.Tool", "Native.Csharp.Tool\Native.Csharp.Tool.csproj", "{05803F01-EAAA-4FD7-9BE6-96BDD700C428}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ACE805E9-5AE3-49AD-98FB-6C01CA6E211D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		UPDATE.md = UPDATE.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
