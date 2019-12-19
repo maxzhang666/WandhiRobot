@@ -17,7 +17,7 @@ namespace Native.Csharp.Customer.Event
         {
             //初始化配置
             var configService = new ConfigService();            
-            Common.Chp = new Timer((a) => { new ChpService(783627728).run(); }, null, 5000, 5000);
+            //Common.Chp = new Timer((a) => { new ChpService(783627728).run(); }, null, 5000, 5000);
         }
     }
 }

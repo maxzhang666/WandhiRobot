@@ -8,6 +8,7 @@ using Native.Csharp.Sdk.Cqp.Interface;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp;
 using Native.Csharp.Customer.Event;
+using Native.Csharp.Customer.Window;
 
 namespace Native.Csharp.App.Event
 {
@@ -43,6 +44,7 @@ namespace Native.Csharp.App.Event
 
             container.RegisterType<ICqAppEnable, Event_AppStart>("应用已被启用");
             container.RegisterType<IReceiveGroupMessage, Event_GroupMessage>("群消息处理");
+            container.RegisterType<ICallMenu, Event_MainSetting>("控制中心");
         }
 
         /// <summary>
