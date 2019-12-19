@@ -12,10 +12,15 @@ namespace Native.Csharp.Customer.Event
 {
     public class Event_MainSetting : ICallMenu
     {
+        /// <summary>
+        /// 打开设置窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void CallMenu(object sender, CqCallMenuEventArgs e)
         {
-            Common.CqApi.AddLoger(Sdk.Cqp.Enum.LogerLevel.Debug, "Wandhi-设置", "调用设置中心单例模式");            
-            Common.MainSetting.Show();            
+            Common.Debug("调用设置中心单例模式", "设置");
+            Common.MainSetting.Show();
         }
     }
 }

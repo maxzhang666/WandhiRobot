@@ -1,5 +1,6 @@
 ﻿using Native.Csharp.Customer.Model;
 using Native.Csharp.Customer.Window;
+using Native.Csharp.Sdk.Cqp.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Native.Csharp.App
     public static partial class Common
     {
 
+
         public static Timer Chp;
 
         /// <summary>
@@ -21,7 +23,7 @@ namespace Native.Csharp.App
         {
             get
             {
-                if (_MainSetting == null||_MainSetting.IsDisposed)
+                if (_MainSetting == null || _MainSetting.IsDisposed)
                 {
                     _MainSetting = new Main();
                 }
@@ -45,5 +47,48 @@ namespace Native.Csharp.App
         /// 应用配置信息
         /// </summary>
         public static BaseConfig AppConfig { set; get; }
+
+        #region 日志
+        private static string flag = "Wandhi-";
+
+        /// <summary>
+        /// 日志
+        /// </summary>
+        /// <param name="msg">内容</param>
+        /// <param name="module">模块</param>
+        public static void Info(string msg, string module = "调试信息")
+        {
+            Log(LogerLevel.Info, msg, module);
+        }
+        /// <summary>
+        /// 错误信息
+        /// </summary>
+        /// <param name="msg">内容</param>
+        /// <param name="module">模块</param>
+        public static void Error(string msg,string module = "调试信息")
+        {
+            Log(LogerLevel.Error, msg, module);
+        }
+        /// <summary>
+        /// 调试信息
+        /// </summary>
+        /// <param name="msg">内容</param>
+        /// <param name="module">模块</param>
+        public static void Debug(string msg, string module = "调试信息")
+        {
+            Log(LogerLevel.Debug, msg, module);
+        }
+
+        /// <summary>
+        /// 添加日志
+        /// </summary>
+        /// <param name="level">日志等级</param>
+        /// <param name="msg">内容</param>
+        /// <param name="module">模块</param>
+        private static void Log(LogerLevel level, string msg, string module)
+        {
+            CqApi.AddLoger(Sdk.Cqp.Enum.LogerLevel.Info, $"{flag}{module}", msg);
+        }
+        #endregion
     }
 }
