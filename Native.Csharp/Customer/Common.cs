@@ -21,7 +21,7 @@ namespace Native.Csharp.App
         {
             get
             {
-                if (_MainSetting == null)
+                if (_MainSetting == null||_MainSetting.IsDisposed)
                 {
                     _MainSetting = new Main();
                 }
