@@ -12,11 +12,11 @@ namespace Native.Csharp.Customer.Event
     {
         public void ReceiveGroupMessage(object sender, CqGroupMessageEventArgs e)
         {
-            if (e.FromQQ.ToString() == "373884384")
-            {
-                var msg = GHttpHelper.Http.Get("https://chp.shadiao.app/api.php");
-                Common.CqApi.SendGroupMessage(e.FromGroup, $"当前群号:[{e.FromGroup}],骚话:{msg}");
-            }
+            //if (e.FromQQ.ToString() == "373884384")
+            //{
+            //    var msg = GHttpHelper.Http.Get("https://chp.shadiao.app/api.php");
+            //    Common.CqApi.SendGroupMessage(e.FromGroup, $"当前群号:[{e.FromGroup}],骚话:{msg}");
+            //}
         }
     }
 }
