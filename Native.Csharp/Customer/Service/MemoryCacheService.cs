@@ -41,12 +41,28 @@ namespace Native.Csharp.Customer.Service
             _MemoryCache.Remove(key);
         }
 
-
+        /// <summary>
+        /// 设置缓存(默认失效时间5分钟)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="time"></param>
         public override void Set<T>(string key, T value, TimeSpan? time)
         {
             TimeSpan t = time.HasValue ? time.Value : TimeSpan.FromMinutes(5);
 
             _MemoryCache.Set(key, value, DateTime.Now.Add(t));
+        }
+        /// <summary>
+        /// 设置缓存(默认失效时间5分钟)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        public override void Set<T>(string key, T value)
+        {
+            Set<T>(key, value, null);
         }
     }
 }

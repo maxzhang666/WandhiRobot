@@ -51,9 +51,10 @@ namespace Native.Csharp.Customer.Service
             return value;
         }
 
-        public abstract void Remove(string key);        
+        public abstract void Remove(string key);
 
         public abstract void Set<T>(string key, T value, TimeSpan? time);
 
+        public abstract void Set<T>(string key, T value);
     }
 }

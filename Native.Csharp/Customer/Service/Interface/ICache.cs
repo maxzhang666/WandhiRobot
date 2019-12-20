@@ -35,6 +35,13 @@ namespace Native.Csharp.Customer.Service.Interface
 
 
         /// <summary>
+        /// 设置缓存项
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        void Set<T>(string key, T value);
+        /// <summary>
         /// 设置缓存项并设置过期时间
         /// </summary>
         /// <param name="key">key</param>
