@@ -30,8 +30,8 @@ namespace Native.Csharp.Customer.Event
                       {
                           dang.Append("咣、");
                       }
-                      Common.CqApi.SendGroupMessage(783627728, $"整点报时：{dang.ToString().TrimEnd('、')}");
-                      Common.Cache.Set(key, true);
+                      Common.CqApi.SendGroupMessage(783627728, $"整点报时：{dang.ToString().TrimEnd('、')}\r\n" + new ChpService().GetChp());
+                      Common.Cache.Set(key, true, TimeSpan.FromMinutes(60));
                   }
               }, null, 20000, 20000);
             //Common.Chp = new Timer((a) => { new ChpService(783627728).run(); }, null, 5000, 5000);

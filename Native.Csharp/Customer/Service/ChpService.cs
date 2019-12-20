@@ -14,10 +14,18 @@ namespace Native.Csharp.Customer.Service
         {
             this.send = send;
         }
+        public ChpService()
+        {
+
+        }
         public void run()
         {
-            var msg = GHttpHelper.Http.Get("https://chp.shadiao.app/api.php");
-            Common.CqApi.SendGroupMessage(send, msg);
+            Common.CqApi.SendGroupMessage(send, GetChp());
+        }
+
+        public string GetChp()
+        {
+            return GHttpHelper.Http.Get("https://chp.shadiao.app/api.php");
         }
     }
 }
