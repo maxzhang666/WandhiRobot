@@ -51,8 +51,9 @@ namespace Native.Csharp.Customer.Service
             return value;
         }
 
-        public abstract void Remove(string key);
+        public abstract void Remove(string key);        
 
-        public abstract void Set<T>(string key, T value, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null);
+        public abstract void Set<T>(string key, T value, TimeSpan? time);
+
     }
 }

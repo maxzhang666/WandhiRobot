@@ -39,9 +39,8 @@ namespace Native.Csharp.Customer.Service.Interface
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="value">值</param>
-        /// <param name="slidingExpireTime">多久未访问则失效</param>
-        /// <param name="absoluteExpireTime">超时失效</param>
-        void Set<T>(string key, T value, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null);
+        /// <param name="time">缓存失效时间</param>
+        void Set<T>(string key, T value, TimeSpan? time);
 
         /// <summary>
         /// 移除缓存项

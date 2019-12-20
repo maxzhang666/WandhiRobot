@@ -1,4 +1,5 @@
 ﻿using Native.Csharp.App;
+using Native.Csharp.Customer.Model;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
 using System;
@@ -15,6 +16,7 @@ namespace Native.Csharp.Customer.Window
 {
     public partial class Main : Form
     {
+        private BaseConfig Config;
         public Main()
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace Native.Csharp.Customer.Window
 
         private void Main_Load(object sender, EventArgs e)
         {
+            Config = Common.AppConfig;
             InitGroupList();
         }
 
