@@ -25,8 +25,8 @@ namespace Native.Csharp.Customer.Service
 
         public virtual T Get<T>(string key, Func<T> factory)
         {
-            var value = Get<T>(key);
-            if (value == null)
+            var value = Get<T>(key, out var flag);
+            if (!flag)
             {
                 value = factory.Invoke();
                 lock (Lock)
@@ -39,8 +39,8 @@ namespace Native.Csharp.Customer.Service
 
         public T Get<T>(string key, T Default)
         {
-            var value = Get<T>(key);
-            if (value == null)
+            var value = Get<T>(key, out var flag);
+            if (!flag)
             {
                 value = Default;
                 lock (Lock)
@@ -50,6 +50,8 @@ namespace Native.Csharp.Customer.Service
             }
             return value;
         }
+
+        public abstract T Get<T>(string key, out bool flag);
 
         public abstract void Remove(string key);
 

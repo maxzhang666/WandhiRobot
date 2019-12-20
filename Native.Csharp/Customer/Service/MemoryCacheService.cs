@@ -36,6 +36,22 @@ namespace Native.Csharp.Customer.Service
             return value;
         }
 
+        public override T Get<T>(string key, out bool flag)
+        {
+            flag = true;
+            T value = default;
+            try
+            {
+                value = (T)_MemoryCache.Get(key);
+            }
+            catch (Exception e)
+            {
+                Common.Debug($"内存读取失败[{key}]:{e.Message}");
+                flag = false;
+            }
+            return value;
+        }
+
         public override void Remove(string key)
         {
             _MemoryCache.Remove(key);

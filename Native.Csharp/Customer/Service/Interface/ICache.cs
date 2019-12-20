@@ -15,6 +15,15 @@ namespace Native.Csharp.Customer.Service.Interface
         /// <param name="key"></param>
         /// <returns></returns>
         T Get<T>(string key);
+
+        /// <summary>
+        /// 获取缓存项
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="flag">缓存是否存在</param>
+        /// <returns></returns>
+        T Get<T>(string key, out bool flag);
         /// <summary>
         /// 获取缓存项
         /// </summary>
