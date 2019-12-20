@@ -36,5 +36,16 @@ namespace Native.Csharp.Customer.Window
             ListBox_GroupList.DataBindings.Add("Name", list, "Value");
             ListBox_GroupList.DisplayMember = "Name";
         }
+
+        private void btn_XmlSend_Click(object sender, EventArgs e)
+        {
+            dynamic groupNum = ListBox_GroupList.SelectedItem;
+            Common.CqApi.SendGroupMessage(groupNum.Value, textBox_XmlTest.Text);
+        }
+
+        private void btn_XmlClear_Click(object sender, EventArgs e)
+        {
+            textBox_XmlTest.Text = "";
+        }
     }
 }

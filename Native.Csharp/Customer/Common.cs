@@ -14,10 +14,7 @@ namespace Native.Csharp.App
 {
     public static partial class Common
     {
-
-
         public static Timer Chp;
-
         /// <summary>
         /// 控制中心实例
         /// </summary>
@@ -53,6 +50,11 @@ namespace Native.Csharp.App
         /// 默认1秒一次  请在传入的方法中自行判断是否执行
         /// </summary>
         public static Timer CommonTimer { set; get; }
+        
+        /// <summary>
+        /// 事件列表
+        /// </summary>
+        public static List<Action> Funcs { set; get; }
 
         /// <summary>
         /// 计时器列表
