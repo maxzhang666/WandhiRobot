@@ -18,14 +18,22 @@ namespace Native.Csharp.Customer.Event
             //初始化配置
             var configService = new ConfigService();
             Common.AppConfig = configService.Config;
-            Common.
             Common.CommonTimer = new Timer((a) =>
               {
-                  if (DateTime.Now.Minute == 0)
+                  var key = $"Hour:{DateTime.Now.Hour}";
+                  Common.Debug("报时");
+                  var flag = Common.Cache.Get(key, false);
+                  if (DateTime.Now.Minute == 0 && !flag)
                   {
-
+                      var dang = new StringBuilder();
+                      for (int i = 0; i < DateTime.Now.Hour; i++)
+                      {
+                          dang.Append("咣、");
+                      }
+                      Common.CqApi.SendGroupMessage(783627728, $"整点了，老子给大家送个钟，{dang.ToString().TrimEnd('、')}");
+                      Common.Cache.Set(key, true);
                   }
-              });
+              }, null, 20000, 20000);
             //Common.Chp = new Timer((a) => { new ChpService(783627728).run(); }, null, 5000, 5000);
         }
     }

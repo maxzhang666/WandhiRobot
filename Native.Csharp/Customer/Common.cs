@@ -1,4 +1,6 @@
 ﻿using Native.Csharp.Customer.Model;
+using Native.Csharp.Customer.Service;
+using Native.Csharp.Customer.Service.Interface;
 using Native.Csharp.Customer.Window;
 using Native.Csharp.Sdk.Cqp.Enum;
 using System;
@@ -31,6 +33,20 @@ namespace Native.Csharp.App
             }
         }
         private static Main _MainSetting { set; get; }
+
+        public static ICache Cache
+        {
+            get
+            {
+                if (_MemoryCacheService == null)
+                {
+                    _MemoryCacheService = new MemoryCacheService();
+                }
+                return _MemoryCacheService;
+            }
+        }
+        public static MemoryCacheService _MemoryCacheService { set; get; }
+
         /// <summary>
         /// 通用计时器
         /// 具有默认执行频率
@@ -65,7 +81,7 @@ namespace Native.Csharp.App
         /// </summary>
         /// <param name="msg">内容</param>
         /// <param name="module">模块</param>
-        public static void Error(string msg,string module = "调试信息")
+        public static void Error(string msg, string module = "调试信息")
         {
             Log(LogerLevel.Error, msg, module);
         }
