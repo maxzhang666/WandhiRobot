@@ -30,7 +30,7 @@ namespace Native.Csharp.Customer.Event
                       {
                           dang.Append("咣、");
                       }
-                      Common.CqApi.SendGroupMessage(783627728, $"整点了，老子给大家送个钟，{dang.ToString().TrimEnd('、')}");
+                      Common.CqApi.SendGroupMessage(783627728, $"整点报时：，{dang.ToString().TrimEnd('、')}");
                       Common.Cache.Set(key, true);
                   }
               }, null, 20000, 20000);
