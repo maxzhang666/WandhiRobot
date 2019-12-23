@@ -85,26 +85,29 @@ namespace Native.Csharp.App
         /// </summary>
         public static void RefreshTimers()
         {
-            foreach (var item in AppConfig.groupConfigs)
+            Task.Run(() =>
             {
-                foreach (var _item in item.Value.GroupTimers)
+                foreach (var item in AppConfig.groupConfigs)
                 {
-                    var groupTimer = _item.Value;
-                    var key = $"{item.Key}:{groupTimer.name}";
-                    if (Timers.ContainsKey(key))
+                    foreach (var _item in item.Value.GroupTimers)
                     {
-                        Timers[key].Dispose();
-                        Timers.Remove(key);
-                    }
-                    //生成计时器
-                    Timers.Add(key, new Timer(
-                        (a) =>
+                        var groupTimer = _item.Value;
+                        var key = $"{item.Key}:{groupTimer.name}";
+                        if (Timers.ContainsKey(key))
                         {
-                            Common.CqApi.SendGroupMessage(item.Key, groupTimer.Content);
-                        }, null, groupTimer.inteval, groupTimer.inteval
-                        ));
+                            Timers[key].Dispose();
+                            Timers.Remove(key);
+                        }
+                        //生成计时器
+                        Timers.Add(key, new Timer(
+                            _ =>
+                            {
+                                CqApi.SendGroupMessage(item.Key, groupTimer.Content);
+                            }, null, groupTimer.inteval, groupTimer.inteval
+                            ));
+                    }
                 }
-            }
+            });
         }
         #endregion
 
@@ -119,6 +122,7 @@ namespace Native.Csharp.App
                 if (_AppConfig == null)
                 {
                     _AppConfig = ConfigService.InitConfig();
+                    RefreshTimers();
                 }
                 return _AppConfig;
             }
@@ -132,6 +136,7 @@ namespace Native.Csharp.App
         public static BaseConfig SaveConfig(BaseConfig baseConfig)
         {
             _AppConfig = ConfigService.SaveConfig(baseConfig);
+            RefreshTimers();
             return _AppConfig;
         }
         #endregion
