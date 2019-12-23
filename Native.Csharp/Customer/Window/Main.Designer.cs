@@ -50,6 +50,7 @@
             this.TimerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Intervals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimerContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsm_Del = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.gb_Config.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -222,21 +223,22 @@
             // 
             this.cms_TimerList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsm_Add,
-            this.tsm_Edit});
+            this.tsm_Edit,
+            this.tsm_Del});
             this.cms_TimerList.Name = "cms_TimerList";
-            this.cms_TimerList.Size = new System.Drawing.Size(101, 48);
+            this.cms_TimerList.Size = new System.Drawing.Size(181, 92);
             // 
             // tsm_Add
             // 
             this.tsm_Add.Name = "tsm_Add";
-            this.tsm_Add.Size = new System.Drawing.Size(100, 22);
+            this.tsm_Add.Size = new System.Drawing.Size(180, 22);
             this.tsm_Add.Text = "添加";
             this.tsm_Add.Click += new System.EventHandler(this.tsm_Add_Click);
             // 
             // tsm_Edit
             // 
             this.tsm_Edit.Name = "tsm_Edit";
-            this.tsm_Edit.Size = new System.Drawing.Size(100, 22);
+            this.tsm_Edit.Size = new System.Drawing.Size(180, 22);
             this.tsm_Edit.Text = "编辑";
             this.tsm_Edit.Click += new System.EventHandler(this.tsm_Edit_Click);
             // 
@@ -269,6 +271,13 @@
             this.TimerContent.MinimumWidth = 230;
             this.TimerContent.Name = "TimerContent";
             this.TimerContent.ReadOnly = true;
+            // 
+            // tsm_Del
+            // 
+            this.tsm_Del.Name = "tsm_Del";
+            this.tsm_Del.Size = new System.Drawing.Size(180, 22);
+            this.tsm_Del.Text = "删除";
+            this.tsm_Del.Click += new System.EventHandler(this.tsm_Del_Click);
             // 
             // Main
             // 
@@ -315,5 +324,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TimerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Intervals;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimerContent;
+        private System.Windows.Forms.ToolStripMenuItem tsm_Del;
     }
 }

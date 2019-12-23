@@ -140,6 +140,13 @@ namespace Native.Csharp.Customer.Window
                 SaveTimer(st.model);
             }
         }
+
+        private void tsm_Del_Click(object sender, EventArgs e)
+        {
+            var mod = (GroupTimer)dgv_TimerList.SelectedRows[0].DataBoundItem;
+            GroupTimers.RemoveAll(a => a.name == mod.name);
+        }
+
         /// <summary>
         /// 保存计时器信息
         /// </summary>
