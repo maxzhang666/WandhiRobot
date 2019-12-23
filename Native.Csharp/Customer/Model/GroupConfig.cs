@@ -14,7 +14,7 @@ namespace Native.Csharp.Customer.Model
         }
         public GroupConfig(long GroupId)
         {
-
+            this.GroupId = GroupId;
         }
         /// <summary>
         /// 群号

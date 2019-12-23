@@ -52,7 +52,7 @@ namespace Native.Csharp.Customer.Window
             {
                 var selected = (GroupInfo)lv_GroupList.SelectedItems[0].Tag;
                 CurrentGroup = selected.Id;
-                gb_Config.Text = $"功能-{CurrentGroup}";
+                gb_Config.Text = $"功能-当前群：{CurrentGroup}";
 
 
                 #region 初始化相关配置信息
@@ -120,7 +120,7 @@ namespace Native.Csharp.Customer.Window
             var st = new SaveTimer();
             if (st.ShowDialog() == DialogResult.OK)
             {
-
+                SaveTimer(st.model);
             }
         }
 
@@ -130,7 +130,7 @@ namespace Native.Csharp.Customer.Window
             var st = new SaveTimer(mod);
             if (st.ShowDialog() == DialogResult.OK)
             {
-
+                SaveTimer(st.model);
             }
         }
         /// <summary>
@@ -163,6 +163,7 @@ namespace Native.Csharp.Customer.Window
                 else
                 {
                     groupConfig = new GroupConfig(CurrentGroup);
+                    Config.groupConfigs.Add(CurrentGroup, groupConfig);
                 }
                 switch (tabControl1.SelectedTab.Name)
                 {

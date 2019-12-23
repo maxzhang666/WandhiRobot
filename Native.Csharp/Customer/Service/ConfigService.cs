@@ -76,7 +76,7 @@ namespace Native.Csharp.Customer.Service
         public BaseConfig InitConfig()
         {
             var configStr = readConfig();
-            BaseConfig config = new BaseConfig();
+            BaseConfig config;
             if (string.IsNullOrEmpty(configStr))
             {
                 config = new BaseConfig();
@@ -93,6 +93,7 @@ namespace Native.Csharp.Customer.Service
                     Common.CqApi.AddLoger(Sdk.Cqp.Enum.LogerLevel.Error, "配置读取", $"配置信息反序列化异常:{e.Message}");
                     File.WriteAllText(abPath + ".bak", configStr);
                     config = new BaseConfig();
+                    writeConfig(config);
                 }
             }
             return config;

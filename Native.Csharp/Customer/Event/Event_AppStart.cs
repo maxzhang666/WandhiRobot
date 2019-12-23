@@ -30,16 +30,16 @@ namespace Native.Csharp.Customer.Event
                       Task.Run(() =>
                       {
                           long[] groups = { 783627728, 340569308, 655341576, 722457505 };
+                          var msg = $"{dang.ToString().TrimEnd('、')}\r\n" + new ChpService().GetChp();
                           foreach (var item in groups)
                           {
-                              Common.CqApi.SendGroupMessage(item, $"{dang.ToString().TrimEnd('、')}\r\n" + new ChpService().GetChp());
+                              Common.CqApi.SendGroupMessage(item, msg);
                           }
                           Thread.Sleep(new Random().Next(1, 1000));
                       });
                       Common.Cache.Set(key, true, TimeSpan.FromMinutes(60));
                   }
               }, null, 17 * 000, 17 * 000);
-            //Common.Chp = new Timer((a) => { new ChpService(783627728).run(); }, null, 5000, 5000);
         }
     }
 }

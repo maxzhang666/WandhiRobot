@@ -41,14 +41,14 @@
             this.textBox_XmlTest = new System.Windows.Forms.TextBox();
             this.tab_GroupTimers = new System.Windows.Forms.TabPage();
             this.dgv_TimerList = new System.Windows.Forms.DataGridView();
-            this.TimerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Intervals = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimerContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cms_TimerList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsm_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.lv_GroupList = new System.Windows.Forms.ListView();
             this.btn_SaveConfig = new System.Windows.Forms.Button();
+            this.TimerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Intervals = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimerContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.gb_Config.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -164,6 +164,7 @@
             // 
             // dgv_TimerList
             // 
+            this.dgv_TimerList.AutoGenerateColumns = false;
             this.dgv_TimerList.AllowUserToAddRows = false;
             this.dgv_TimerList.AllowUserToDeleteRows = false;
             this.dgv_TimerList.AllowUserToOrderColumns = true;
@@ -182,29 +183,6 @@
             this.dgv_TimerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_TimerList.Size = new System.Drawing.Size(451, 218);
             this.dgv_TimerList.TabIndex = 0;
-            // 
-            // TimerName
-            // 
-            this.TimerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TimerName.FillWeight = 120F;
-            this.TimerName.HeaderText = "名称(不可重复)";
-            this.TimerName.MinimumWidth = 120;
-            this.TimerName.Name = "TimerName";
-            this.TimerName.ReadOnly = true;
-            // 
-            // Intervals
-            // 
-            this.Intervals.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Intervals.HeaderText = "间隔时间";
-            this.Intervals.Name = "Intervals";
-            this.Intervals.ReadOnly = true;
-            // 
-            // TimerContent
-            // 
-            this.TimerContent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TimerContent.HeaderText = "内容";
-            this.TimerContent.Name = "TimerContent";
-            this.TimerContent.ReadOnly = true;
             // 
             // cms_TimerList
             // 
@@ -253,6 +231,36 @@
             this.btn_SaveConfig.UseVisualStyleBackColor = true;
             this.btn_SaveConfig.Click += new System.EventHandler(this.btn_SaveConfig_Click);
             // 
+            // TimerName
+            // 
+            this.TimerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TimerName.DataPropertyName = "name";
+            this.TimerName.FillWeight = 110.7522F;
+            this.TimerName.HeaderText = "名称(不可重复)";
+            this.TimerName.MinimumWidth = 120;
+            this.TimerName.Name = "TimerName";
+            this.TimerName.ReadOnly = true;
+            // 
+            // Intervals
+            // 
+            this.Intervals.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Intervals.DataPropertyName = "intevalStr";
+            this.Intervals.FillWeight = 116.9543F;
+            this.Intervals.HeaderText = "间隔时间";
+            this.Intervals.MinimumWidth = 100;
+            this.Intervals.Name = "Intervals";
+            this.Intervals.ReadOnly = true;
+            // 
+            // TimerContent
+            // 
+            this.TimerContent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TimerContent.DataPropertyName = "content";
+            this.TimerContent.FillWeight = 92.2935F;
+            this.TimerContent.HeaderText = "内容";
+            this.TimerContent.MinimumWidth = 100;
+            this.TimerContent.Name = "TimerContent";
+            this.TimerContent.ReadOnly = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -290,13 +298,13 @@
         private System.Windows.Forms.TextBox textBox_XmlTest;
         private System.Windows.Forms.TabPage tab_GroupTimers;
         private System.Windows.Forms.DataGridView dgv_TimerList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Intervals;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TimerContent;
         private System.Windows.Forms.ContextMenuStrip cms_TimerList;
         private System.Windows.Forms.ToolStripMenuItem tsm_Add;
         private System.Windows.Forms.ToolStripMenuItem tsm_Edit;
         private System.Windows.Forms.ListView lv_GroupList;
         private System.Windows.Forms.Button btn_SaveConfig;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Intervals;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimerContent;
     }
 }
