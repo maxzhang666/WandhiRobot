@@ -79,6 +79,34 @@ namespace Native.Csharp.App
         /// </summary>
         public static Dictionary<string, Timer> Timers { set; get; }
 
+        #region 计时器初始化
+        /// <summary>
+        /// 刷新计时器
+        /// </summary>
+        public static void RefreshTimers()
+        {
+            foreach (var item in AppConfig.groupConfigs)
+            {
+                foreach (var _item in item.Value.GroupTimers)
+                {
+                    var groupTimer = _item.Value;
+                    var key = $"{item.Key}:{groupTimer.name}";
+                    if (Timers.ContainsKey(key))
+                    {
+                        Timers[key].Dispose();
+                        Timers.Remove(key);
+                    }
+                    //生成计时器
+                    Timers.Add(key, new Timer(
+                        (a) =>
+                        {
+                            Common.CqApi.SendGroupMessage(item.Key, groupTimer.Content);
+                        }, null, groupTimer.inteval, groupTimer.inteval
+                        ));
+                }
+            }
+        }
+        #endregion
 
         #region 配置操作
         /// <summary>

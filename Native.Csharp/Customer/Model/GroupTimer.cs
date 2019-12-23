@@ -26,6 +26,16 @@ namespace Native.Csharp.Customer.Model
             }
         }
         /// <summary>
+        /// 间隔时间(毫秒)
+        /// </summary>
+        public int inteval
+        {
+            get
+            {
+                return Sec * 1000 + Min * 60 * 1000 + Hour * 60 * 60 * 1000;
+            }
+        }
+        /// <summary>
         /// 间隔 小时
         /// </summary>
         public int Hour { set; get; }
