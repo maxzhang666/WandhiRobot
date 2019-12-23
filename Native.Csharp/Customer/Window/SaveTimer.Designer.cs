@@ -92,7 +92,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(58, 56);
+            this.label4.Location = new System.Drawing.Point(101, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 12);
             this.label4.TabIndex = 0;
@@ -101,7 +101,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(119, 56);
+            this.label5.Location = new System.Drawing.Point(164, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 12);
             this.label5.TabIndex = 0;
@@ -110,7 +110,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(182, 56);
+            this.label6.Location = new System.Drawing.Point(227, 56);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(17, 12);
             this.label6.TabIndex = 0;
@@ -118,7 +118,7 @@
             // 
             // num_Hour
             // 
-            this.num_Hour.Location = new System.Drawing.Point(79, 52);
+            this.num_Hour.Location = new System.Drawing.Point(61, 52);
             this.num_Hour.Name = "num_Hour";
             this.num_Hour.ReadOnly = true;
             this.num_Hour.Size = new System.Drawing.Size(34, 21);
@@ -126,7 +126,7 @@
             // 
             // num_Min
             // 
-            this.num_Min.Location = new System.Drawing.Point(142, 52);
+            this.num_Min.Location = new System.Drawing.Point(124, 52);
             this.num_Min.Name = "num_Min";
             this.num_Min.ReadOnly = true;
             this.num_Min.Size = new System.Drawing.Size(34, 21);
@@ -134,7 +134,7 @@
             // 
             // num_Sec
             // 
-            this.num_Sec.Location = new System.Drawing.Point(205, 52);
+            this.num_Sec.Location = new System.Drawing.Point(187, 52);
             this.num_Sec.Name = "num_Sec";
             this.num_Sec.ReadOnly = true;
             this.num_Sec.Size = new System.Drawing.Size(34, 21);
@@ -158,11 +158,14 @@
             this.btn_Cancel.TabIndex = 3;
             this.btn_Cancel.Text = "取消";
             this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // SaveTimer
             // 
+            this.AcceptButton = this.btn_Ok;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btn_Cancel;
             this.ClientSize = new System.Drawing.Size(340, 242);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Ok);

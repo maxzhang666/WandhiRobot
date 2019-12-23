@@ -1,5 +1,6 @@
 ﻿using Native.Csharp.App;
 using Native.Csharp.Customer.Model;
+using Native.Csharp.Customer.Service;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
 using Native.Csharp.Sdk.Cqp.Model;
@@ -26,18 +27,11 @@ namespace Native.Csharp.Customer.Window
         public Main()
         {
             InitializeComponent();
-
-
 #if DEBUG
-            tabPage1.Parent = null;
-            tab_CardTest.Parent = null;
 #else
-      
+            tabPage1.Parent = null;
+            tab_CardTest.Parent = null;      
 #endif
-
-
-
-
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -45,14 +39,51 @@ namespace Native.Csharp.Customer.Window
             Config = Common.AppConfig;
             InitGroupList();
         }
+
+        #region 群列表
         /// <summary>
-        /// 群列表
+        /// 选择群
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lv_GroupList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lv_GroupList.SelectedItems.Count > 0)
+            {
+                var selected = (GroupInfo)lv_GroupList.SelectedItems[0].Tag;
+                CurrentGroup = selected.Id;
+                gb_Config.Text = $"功能-{CurrentGroup}";
+
+
+                #region 初始化相关配置信息
+                //定时任务
+                InitGroupTimers(CurrentGroup);
+                #endregion
+            }
+        }
+
+        /// <summary>
+        /// 群列表初始化
         /// </summary>
         private void InitGroupList()
         {
             var list = Common.CqApi.GetGroupList().Select(a => new ListViewItem { Text = $"{a.Name}({a.Id})", Tag = a });
             lv_GroupList.Items.AddRange(list.ToArray());
         }
+
+        /// <summary>
+        /// 群列表单击
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lv_GroupList_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region 定时任务
+
         /// <summary>
         /// 初始化群定时任务列表
         /// </summary>
@@ -65,6 +96,7 @@ namespace Native.Csharp.Customer.Window
             }
             dgv_TimerList.DataSource = GroupTimers;
         }
+        #endregion
 
         #region 卡片测试
 
@@ -79,7 +111,6 @@ namespace Native.Csharp.Customer.Window
             textBox_XmlTest.Text = "";
         }
         #endregion
-
 
         #region 定时任务
 
@@ -114,6 +145,37 @@ namespace Native.Csharp.Customer.Window
                 GroupTimers.Remove(timer);
             }
             GroupTimers.Add(mod);
+        }
+
+        #endregion
+
+        #region 配置保存、更新
+
+        private void btn_SaveConfig_Click(object sender, EventArgs e)
+        {
+            if (CurrentGroup != 0)
+            {
+                GroupConfig groupConfig;
+                if (Config.groupConfigs.ContainsKey(CurrentGroup))
+                {
+                    groupConfig = Config.groupConfigs[CurrentGroup];
+                }
+                else
+                {
+                    groupConfig = new GroupConfig(CurrentGroup);
+                }
+                switch (tabControl1.SelectedTab.Name)
+                {
+                    case "tab_GroupTimers":
+                        groupConfig.GroupTimers = GroupTimers.ToDictionary(a => a.name, b => b);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            Common.AppConfig = this.Config;
+            new  ConfigService()
         }
         #endregion
     }

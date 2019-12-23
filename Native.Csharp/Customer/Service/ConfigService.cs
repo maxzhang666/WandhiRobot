@@ -12,6 +12,7 @@ namespace Native.Csharp.Customer.Service
 {
     public class ConfigService
     {
+        #region 成员属性
         /// <summary>
         /// 配置目录
         /// </summary>
@@ -20,13 +21,18 @@ namespace Native.Csharp.Customer.Service
         /// 配置文件名
         /// </summary>
         public string file = "wandhi.json";
-
+        /// <summary>
+        /// 绝对路径
+        /// </summary>
         private string abPath => $"{Path}\\{file}";
-
         /// <summary>
         /// 配置信息
         /// </summary>
         public BaseConfig Config { private set; get; }
+        #endregion
+
+
+        #region 构造函数
 
         /// <summary>
         /// 初始化配置信息
@@ -35,7 +41,32 @@ namespace Native.Csharp.Customer.Service
         {
             this.Config = InitConfig();
         }
+        #endregion
 
+        #region 保存配置
+        /// <summary>
+        /// 保存内部配置
+        /// </summary>
+        /// <returns></returns>
+        public BaseConfig SaveConfig()
+        {
+            if (this.Config != null)
+            {
+                writeConfig();
+            }
+            return InitConfig();
+        }
+        /// <summary>
+        /// 保存外部配置
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        public BaseConfig SaveConfig(BaseConfig config)
+        {
+            writeConfig(config);
+            return InitConfig();
+        }
+        #endregion
 
 
         /// <summary>

@@ -36,7 +36,8 @@ namespace Native.Csharp.Customer.Window
             model.Hour = (int)num_Hour.Value;
             model.Min = (int)num_Min.Value;
             model.Sec = (int)num_Sec.Value;
-            
+
+            this.DialogResult = DialogResult.OK;
         }
 
         private bool DataInvalid(out string msg)
@@ -78,6 +79,12 @@ namespace Native.Csharp.Customer.Window
             {
                 model = new GroupTimer();
             }
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

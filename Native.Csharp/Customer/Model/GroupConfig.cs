@@ -8,6 +8,14 @@ namespace Native.Csharp.Customer.Model
 {
     public class GroupConfig
     {
+        public GroupConfig()
+        {
+
+        }
+        public GroupConfig(long GroupId)
+        {
+
+        }
         /// <summary>
         /// 群号
         /// </summary>
