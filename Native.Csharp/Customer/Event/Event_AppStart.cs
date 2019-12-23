@@ -15,10 +15,6 @@ namespace Native.Csharp.Customer.Event
     {
         public void CqAppEnable(object sender, CqAppEnableEventArgs e)
         {
-            //初始化配置
-            var configService = new ConfigService();
-            Common.AppConfig = configService.Config;
-
             Common.CommonTimer = new Timer((a) =>
               {
                   var key = $"Hour:{DateTime.Now.Hour}";
@@ -31,10 +27,18 @@ namespace Native.Csharp.Customer.Event
                       {
                           dang.Append("咣、");
                       }
-                      Common.CqApi.SendGroupMessage(783627728, $"{dang.ToString().TrimEnd('、')}\r\n" + new ChpService().GetChp());
+                      Task.Run(() =>
+                      {
+                          long[] groups = { 783627728, 340569308, 655341576, 722457505 };
+                          foreach (var item in groups)
+                          {
+                              Common.CqApi.SendGroupMessage(item, $"{dang.ToString().TrimEnd('、')}\r\n" + new ChpService().GetChp());
+                          }
+                          Thread.Sleep(new Random().Next(1, 1000));
+                      });
                       Common.Cache.Set(key, true, TimeSpan.FromMinutes(60));
                   }
-              }, null, 20000, 20000);
+              }, null, 17 * 000, 17 * 000);
             //Common.Chp = new Timer((a) => { new ChpService(783627728).run(); }, null, 5000, 5000);
         }
     }
