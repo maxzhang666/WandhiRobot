@@ -47,5 +47,10 @@ namespace Native.Csharp.Customer.Window
         {
             textBox_XmlTest.Text = "";
         }
+
+        private void 添加ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -11,10 +11,10 @@ namespace Native.Csharp.App.Event
     {
         public void ReceiveGroupMessage(object sender, CqGroupMessageEventArgs e)
         {
-            if (e.FromQQ.ToString() == "373884384")
-            {
-                Common.CqApi.SendGroupMessage(e.FromGroup, e.Message);
-            }
+            //if (e.FromQQ.ToString() == "373884384")
+            //{
+            //    Common.CqApi.SendGroupMessage(e.FromGroup, e.Message);
+            //}
         }
     }
 }

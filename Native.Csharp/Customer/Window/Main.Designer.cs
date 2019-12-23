@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ListBox_GroupList = new System.Windows.Forms.ListBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -36,14 +37,25 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox_XmlTest = new System.Windows.Forms.TextBox();
-            this.btn_XmlSend = new System.Windows.Forms.Button();
             this.btn_XmlClear = new System.Windows.Forms.Button();
+            this.btn_XmlSend = new System.Windows.Forms.Button();
+            this.textBox_XmlTest = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgv_TimerList = new System.Windows.Forms.DataGridView();
+            this.TimerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Intervals = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimerContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cms_TimerList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsm_Add = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_TimerList)).BeginInit();
+            this.cms_TimerList.SuspendLayout();
             this.SuspendLayout();
             // 
             // ListBox_GroupList
@@ -58,7 +70,7 @@
             this.ListBox_GroupList.Location = new System.Drawing.Point(16, 20);
             this.ListBox_GroupList.MultiColumn = true;
             this.ListBox_GroupList.Name = "ListBox_GroupList";
-            this.ListBox_GroupList.Size = new System.Drawing.Size(199, 376);
+            this.ListBox_GroupList.Size = new System.Drawing.Size(167, 376);
             this.ListBox_GroupList.TabIndex = 0;
             // 
             // groupBox1
@@ -66,7 +78,7 @@
             this.groupBox1.Controls.Add(this.ListBox_GroupList);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(232, 408);
+            this.groupBox1.Size = new System.Drawing.Size(188, 408);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "群列表";
@@ -74,9 +86,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.panel1);
-            this.groupBox2.Location = new System.Drawing.Point(250, 12);
+            this.groupBox2.Location = new System.Drawing.Point(206, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(442, 408);
+            this.groupBox2.Size = new System.Drawing.Size(486, 408);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "功能";
@@ -86,17 +98,18 @@
             this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Location = new System.Drawing.Point(6, 20);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(430, 382);
+            this.panel1.Size = new System.Drawing.Size(474, 382);
             this.panel1.TabIndex = 0;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(424, 376);
+            this.tabControl1.Size = new System.Drawing.Size(471, 376);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -104,7 +117,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(416, 350);
+            this.tabPage1.Size = new System.Drawing.Size(463, 350);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "基础配置";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -117,29 +130,10 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(416, 350);
+            this.tabPage2.Size = new System.Drawing.Size(463, 350);
             this.tabPage2.TabIndex = 3;
             this.tabPage2.Text = "卡片测试器";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // textBox_XmlTest
-            // 
-            this.textBox_XmlTest.Location = new System.Drawing.Point(6, 3);
-            this.textBox_XmlTest.Multiline = true;
-            this.textBox_XmlTest.Name = "textBox_XmlTest";
-            this.textBox_XmlTest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox_XmlTest.Size = new System.Drawing.Size(407, 128);
-            this.textBox_XmlTest.TabIndex = 0;
-            // 
-            // btn_XmlSend
-            // 
-            this.btn_XmlSend.Location = new System.Drawing.Point(3, 296);
-            this.btn_XmlSend.Name = "btn_XmlSend";
-            this.btn_XmlSend.Size = new System.Drawing.Size(105, 48);
-            this.btn_XmlSend.TabIndex = 1;
-            this.btn_XmlSend.Text = "发送";
-            this.btn_XmlSend.UseVisualStyleBackColor = true;
-            this.btn_XmlSend.Click += new System.EventHandler(this.btn_XmlSend_Click);
             // 
             // btn_XmlClear
             // 
@@ -151,6 +145,101 @@
             this.btn_XmlClear.UseVisualStyleBackColor = true;
             this.btn_XmlClear.Click += new System.EventHandler(this.btn_XmlClear_Click);
             // 
+            // btn_XmlSend
+            // 
+            this.btn_XmlSend.Location = new System.Drawing.Point(3, 296);
+            this.btn_XmlSend.Name = "btn_XmlSend";
+            this.btn_XmlSend.Size = new System.Drawing.Size(105, 48);
+            this.btn_XmlSend.TabIndex = 1;
+            this.btn_XmlSend.Text = "发送";
+            this.btn_XmlSend.UseVisualStyleBackColor = true;
+            this.btn_XmlSend.Click += new System.EventHandler(this.btn_XmlSend_Click);
+            // 
+            // textBox_XmlTest
+            // 
+            this.textBox_XmlTest.Location = new System.Drawing.Point(6, 3);
+            this.textBox_XmlTest.Multiline = true;
+            this.textBox_XmlTest.Name = "textBox_XmlTest";
+            this.textBox_XmlTest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox_XmlTest.Size = new System.Drawing.Size(407, 128);
+            this.textBox_XmlTest.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dgv_TimerList);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(463, 350);
+            this.tabPage3.TabIndex = 4;
+            this.tabPage3.Text = "定时发送";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dgv_TimerList
+            // 
+            this.dgv_TimerList.AllowUserToAddRows = false;
+            this.dgv_TimerList.AllowUserToDeleteRows = false;
+            this.dgv_TimerList.AllowUserToOrderColumns = true;
+            this.dgv_TimerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_TimerList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TimerName,
+            this.Intervals,
+            this.TimerContent});
+            this.dgv_TimerList.ContextMenuStrip = this.cms_TimerList;
+            this.dgv_TimerList.Location = new System.Drawing.Point(6, 6);
+            this.dgv_TimerList.MultiSelect = false;
+            this.dgv_TimerList.Name = "dgv_TimerList";
+            this.dgv_TimerList.ReadOnly = true;
+            this.dgv_TimerList.RowHeadersVisible = false;
+            this.dgv_TimerList.RowTemplate.Height = 23;
+            this.dgv_TimerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_TimerList.Size = new System.Drawing.Size(451, 218);
+            this.dgv_TimerList.TabIndex = 0;
+            // 
+            // TimerName
+            // 
+            this.TimerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TimerName.FillWeight = 120F;
+            this.TimerName.HeaderText = "名称(不可重复)";
+            this.TimerName.MinimumWidth = 120;
+            this.TimerName.Name = "TimerName";
+            this.TimerName.ReadOnly = true;
+            // 
+            // Intervals
+            // 
+            this.Intervals.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Intervals.HeaderText = "间隔时间";
+            this.Intervals.Name = "Intervals";
+            this.Intervals.ReadOnly = true;
+            // 
+            // TimerContent
+            // 
+            this.TimerContent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TimerContent.HeaderText = "内容";
+            this.TimerContent.Name = "TimerContent";
+            this.TimerContent.ReadOnly = true;
+            // 
+            // cms_TimerList
+            // 
+            this.cms_TimerList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsm_Add,
+            this.tsm_Edit});
+            this.cms_TimerList.Name = "cms_TimerList";
+            this.cms_TimerList.Size = new System.Drawing.Size(181, 70);
+            // 
+            // tsm_Add
+            // 
+            this.tsm_Add.Name = "tsm_Add";
+            this.tsm_Add.Size = new System.Drawing.Size(180, 22);
+            this.tsm_Add.Text = "添加";
+            this.tsm_Add.Click += new System.EventHandler(this.添加ToolStripMenuItem_Click);
+            // 
+            // tsm_Edit
+            // 
+            this.tsm_Edit.Name = "tsm_Edit";
+            this.tsm_Edit.Size = new System.Drawing.Size(180, 22);
+            this.tsm_Edit.Text = "编辑";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -159,7 +248,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Main";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "控制中心";
             this.Load += new System.EventHandler(this.Main_Load);
             this.groupBox1.ResumeLayout(false);
@@ -168,6 +257,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_TimerList)).EndInit();
+            this.cms_TimerList.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -185,5 +277,13 @@
         private System.Windows.Forms.Button btn_XmlClear;
         private System.Windows.Forms.Button btn_XmlSend;
         private System.Windows.Forms.TextBox textBox_XmlTest;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dgv_TimerList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Intervals;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TimerContent;
+        private System.Windows.Forms.ContextMenuStrip cms_TimerList;
+        private System.Windows.Forms.ToolStripMenuItem tsm_Add;
+        private System.Windows.Forms.ToolStripMenuItem tsm_Edit;
     }
 }
