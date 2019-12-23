@@ -32,18 +32,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_TimerName = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_Content = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.num_Hour = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.num_Min = new System.Windows.Forms.NumericUpDown();
+            this.num_Sec = new System.Windows.Forms.NumericUpDown();
             this.btn_Ok = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.num_Hour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Min)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Sec)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -80,13 +80,14 @@
             this.txt_TimerName.Size = new System.Drawing.Size(100, 21);
             this.txt_TimerName.TabIndex = 1;
             // 
-            // textBox3
+            // txt_Content
             // 
-            this.textBox3.Location = new System.Drawing.Point(60, 84);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(268, 117);
-            this.textBox3.TabIndex = 1;
+            this.txt_Content.Location = new System.Drawing.Point(60, 84);
+            this.txt_Content.Multiline = true;
+            this.txt_Content.Name = "txt_Content";
+            this.txt_Content.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txt_Content.Size = new System.Drawing.Size(268, 117);
+            this.txt_Content.TabIndex = 1;
             // 
             // label4
             // 
@@ -123,34 +124,35 @@
             this.num_Hour.Size = new System.Drawing.Size(34, 21);
             this.num_Hour.TabIndex = 2;
             // 
-            // numericUpDown1
+            // num_Min
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(142, 52);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.ReadOnly = true;
-            this.numericUpDown1.Size = new System.Drawing.Size(34, 21);
-            this.numericUpDown1.TabIndex = 2;
+            this.num_Min.Location = new System.Drawing.Point(142, 52);
+            this.num_Min.Name = "num_Min";
+            this.num_Min.ReadOnly = true;
+            this.num_Min.Size = new System.Drawing.Size(34, 21);
+            this.num_Min.TabIndex = 2;
             // 
-            // numericUpDown2
+            // num_Sec
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(205, 52);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.ReadOnly = true;
-            this.numericUpDown2.Size = new System.Drawing.Size(34, 21);
-            this.numericUpDown2.TabIndex = 2;
+            this.num_Sec.Location = new System.Drawing.Point(205, 52);
+            this.num_Sec.Name = "num_Sec";
+            this.num_Sec.ReadOnly = true;
+            this.num_Sec.Size = new System.Drawing.Size(34, 21);
+            this.num_Sec.TabIndex = 2;
             // 
             // btn_Ok
             // 
-            this.btn_Ok.Location = new System.Drawing.Point(52, 207);
+            this.btn_Ok.Location = new System.Drawing.Point(61, 207);
             this.btn_Ok.Name = "btn_Ok";
             this.btn_Ok.Size = new System.Drawing.Size(75, 23);
             this.btn_Ok.TabIndex = 3;
             this.btn_Ok.Text = "确定";
             this.btn_Ok.UseVisualStyleBackColor = true;
+            this.btn_Ok.Click += new System.EventHandler(this.btn_Ok_Click);
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(188, 207);
+            this.btn_Cancel.Location = new System.Drawing.Point(205, 207);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancel.TabIndex = 3;
@@ -164,10 +166,10 @@
             this.ClientSize = new System.Drawing.Size(340, 242);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Ok);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.num_Sec);
+            this.Controls.Add(this.num_Min);
             this.Controls.Add(this.num_Hour);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txt_Content);
             this.Controls.Add(this.txt_TimerName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
@@ -181,9 +183,10 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SaveTimer";
+            this.Load += new System.EventHandler(this.SaveTimer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.num_Hour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Min)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_Sec)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,13 +198,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_TimerName;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txt_Content;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown num_Hour;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown num_Min;
+        private System.Windows.Forms.NumericUpDown num_Sec;
         private System.Windows.Forms.Button btn_Ok;
         private System.Windows.Forms.Button btn_Cancel;
     }

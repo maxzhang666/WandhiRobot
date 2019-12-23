@@ -12,5 +12,9 @@ namespace Native.Csharp.Customer.Model
         /// 群号
         /// </summary>
         public long GroupId { set; get; }
+        /// <summary>
+        /// 群定时任务配置
+        /// </summary>
+        public Dictionary<string, GroupTimer> GroupTimers { set; get; } = new Dictionary<string, GroupTimer>();
     }
 }

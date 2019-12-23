@@ -35,11 +35,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tab_CardTest = new System.Windows.Forms.TabPage();
             this.btn_XmlClear = new System.Windows.Forms.Button();
             this.btn_XmlSend = new System.Windows.Forms.Button();
             this.textBox_XmlTest = new System.Windows.Forms.TextBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tab_GroupTimers = new System.Windows.Forms.TabPage();
             this.dgv_TimerList = new System.Windows.Forms.DataGridView();
             this.TimerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Intervals = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,8 +52,8 @@
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tab_CardTest.SuspendLayout();
+            this.tab_GroupTimers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TimerList)).BeginInit();
             this.cms_TimerList.SuspendLayout();
             this.SuspendLayout();
@@ -89,8 +89,8 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tab_CardTest);
+            this.tabControl1.Controls.Add(this.tab_GroupTimers);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -107,18 +107,18 @@
             this.tabPage1.Text = "基础配置";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tab_CardTest
             // 
-            this.tabPage2.Controls.Add(this.btn_XmlClear);
-            this.tabPage2.Controls.Add(this.btn_XmlSend);
-            this.tabPage2.Controls.Add(this.textBox_XmlTest);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(463, 350);
-            this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "卡片测试器";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tab_CardTest.Controls.Add(this.btn_XmlClear);
+            this.tab_CardTest.Controls.Add(this.btn_XmlSend);
+            this.tab_CardTest.Controls.Add(this.textBox_XmlTest);
+            this.tab_CardTest.Location = new System.Drawing.Point(4, 22);
+            this.tab_CardTest.Name = "tab_CardTest";
+            this.tab_CardTest.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_CardTest.Size = new System.Drawing.Size(463, 350);
+            this.tab_CardTest.TabIndex = 3;
+            this.tab_CardTest.Text = "卡片测试器";
+            this.tab_CardTest.UseVisualStyleBackColor = true;
             // 
             // btn_XmlClear
             // 
@@ -149,16 +149,16 @@
             this.textBox_XmlTest.Size = new System.Drawing.Size(407, 128);
             this.textBox_XmlTest.TabIndex = 0;
             // 
-            // tabPage3
+            // tab_GroupTimers
             // 
-            this.tabPage3.Controls.Add(this.dgv_TimerList);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(463, 350);
-            this.tabPage3.TabIndex = 4;
-            this.tabPage3.Text = "定时发送";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tab_GroupTimers.Controls.Add(this.dgv_TimerList);
+            this.tab_GroupTimers.Location = new System.Drawing.Point(4, 22);
+            this.tab_GroupTimers.Name = "tab_GroupTimers";
+            this.tab_GroupTimers.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_GroupTimers.Size = new System.Drawing.Size(463, 350);
+            this.tab_GroupTimers.TabIndex = 4;
+            this.tab_GroupTimers.Text = "定时发送";
+            this.tab_GroupTimers.UseVisualStyleBackColor = true;
             // 
             // dgv_TimerList
             // 
@@ -217,13 +217,14 @@
             this.tsm_Add.Name = "tsm_Add";
             this.tsm_Add.Size = new System.Drawing.Size(100, 22);
             this.tsm_Add.Text = "添加";
-            this.tsm_Add.Click += new System.EventHandler(this.添加ToolStripMenuItem_Click);
+            this.tsm_Add.Click += new System.EventHandler(this.tsm_Add_Click);
             // 
             // tsm_Edit
             // 
             this.tsm_Edit.Name = "tsm_Edit";
             this.tsm_Edit.Size = new System.Drawing.Size(100, 22);
             this.tsm_Edit.Text = "编辑";
+            this.tsm_Edit.Click += new System.EventHandler(this.tsm_Edit_Click);
             // 
             // lv_GroupList
             // 
@@ -241,7 +242,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 652);
+            this.ClientSize = new System.Drawing.Size(701, 429);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Main";
@@ -252,9 +253,9 @@
             this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
+            this.tab_CardTest.ResumeLayout(false);
+            this.tab_CardTest.PerformLayout();
+            this.tab_GroupTimers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TimerList)).EndInit();
             this.cms_TimerList.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -268,11 +269,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tab_CardTest;
         private System.Windows.Forms.Button btn_XmlClear;
         private System.Windows.Forms.Button btn_XmlSend;
         private System.Windows.Forms.TextBox textBox_XmlTest;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tab_GroupTimers;
         private System.Windows.Forms.DataGridView dgv_TimerList;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Intervals;

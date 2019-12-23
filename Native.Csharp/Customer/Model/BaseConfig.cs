@@ -15,6 +15,6 @@ namespace Native.Csharp.Customer.Model
         /// <summary>
         /// 群配置
         /// </summary>
-        public List<GroupConfig> groupConfigs = new List<GroupConfig>();
+        public Dictionary<long, GroupConfig> groupConfigs = new Dictionary<long, GroupConfig>();
     }
 }
