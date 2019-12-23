@@ -2,6 +2,7 @@
 using Native.Csharp.Customer.Model;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
+using Native.Csharp.Sdk.Cqp.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,17 +31,14 @@ namespace Native.Csharp.Customer.Window
 
         private void InitGroupList()
         {
-            var list = Common.CqApi.GetGroupList().Select(a => new { Name = $"{a.Name}({a.Id})", Value = a.Id }).ToList();
-
-            ListBox_GroupList.DataSource = list;
-            ListBox_GroupList.DataBindings.Add("Name", list, "Value");
-            ListBox_GroupList.DisplayMember = "Name";
+            var list = Common.CqApi.GetGroupList().Select(a => new ListViewItem { Text = $"{a.Name}({a.Id})", Tag = a });
+            lv_GroupList.Items.AddRange(list.ToArray());
         }
 
         private void btn_XmlSend_Click(object sender, EventArgs e)
         {
-            dynamic groupNum = ListBox_GroupList.SelectedItem;
-            Common.CqApi.SendGroupMessage(groupNum.Value, textBox_XmlTest.Text);
+            var groupNum = ((GroupInfo)lv_GroupList.SelectedItems[0].Tag);
+            Common.CqApi.SendGroupMessage(groupNum.Id, textBox_XmlTest.Text);
         }
 
         private void btn_XmlClear_Click(object sender, EventArgs e)

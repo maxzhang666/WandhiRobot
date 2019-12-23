@@ -140,6 +140,7 @@
     <Compile Include="Customer\Event\Event_MainSetting.cs" />
     <Compile Include="Customer\Model\BaseConfig.cs" />
     <Compile Include="Customer\Model\GroupConfig.cs" />
+    <Compile Include="Customer\Model\GroupTimer.cs" />
     <Compile Include="Customer\Service\BaseCache.cs" />
     <Compile Include="Customer\Service\ChpService.cs" />
     <Compile Include="Customer\Service\ConfigService.cs" />
@@ -150,6 +151,12 @@
     </Compile>
     <Compile Include="Customer\Window\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\Window\SaveTimer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\Window\SaveTimer.Designer.cs">
+      <DependentUpon>SaveTimer.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repair\Core\Kernel32.cs" />
@@ -191,6 +198,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Customer\Window\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\Window\SaveTimer.resx">
+      <DependentUpon>SaveTimer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
