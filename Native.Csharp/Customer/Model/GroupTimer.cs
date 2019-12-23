@@ -22,7 +22,7 @@ namespace Native.Csharp.Customer.Model
         {
             get
             {
-                return $"{(Hour != 0 ? $"{Hour}小时" : "")}{(Min != 0 ? $"{Min}小时" : "")}{(Sec != 0 ? $"{Sec}小时" : "")}秒";
+                return $"{(Hour != 0 ? $"{Hour}小时" : "")}{(Min != 0 ? $"{Min}小时" : "")}{(Sec != 0 ? $"{Sec}秒" : "")}";
             }
         }
         /// <summary>

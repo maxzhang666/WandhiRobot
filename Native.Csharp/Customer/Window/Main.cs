@@ -37,6 +37,7 @@ namespace Native.Csharp.Customer.Window
         private void Main_Load(object sender, EventArgs e)
         {
             Config = Common.AppConfig;
+            dgv_TimerList.AutoGenerateColumns = false;
             InitGroupList();
         }
 
@@ -94,7 +95,13 @@ namespace Native.Csharp.Customer.Window
             {
                 this.GroupTimers = Config.groupConfigs[GroupId].GroupTimers.Values.ToList();
             }
-            dgv_TimerList.DataSource = GroupTimers;
+            else
+            {
+                this.GroupTimers = new List<GroupTimer>();
+            }
+            var bs = new BindingSource();
+            bs.DataSource = GroupTimers;
+            dgv_TimerList.DataSource = bs;
         }
         #endregion
 
@@ -145,6 +152,7 @@ namespace Native.Csharp.Customer.Window
                 GroupTimers.Remove(timer);
             }
             GroupTimers.Add(mod);
+            dgv_TimerList.Refresh();
         }
 
         #endregion

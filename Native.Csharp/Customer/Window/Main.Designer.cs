@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lv_GroupList = new System.Windows.Forms.ListView();
             this.gb_Config = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_SaveConfig = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_BaseConfig = new System.Windows.Forms.TabPage();
             this.tab_CardTest = new System.Windows.Forms.TabPage();
@@ -44,8 +47,6 @@
             this.cms_TimerList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsm_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_Edit = new System.Windows.Forms.ToolStripMenuItem();
-            this.lv_GroupList = new System.Windows.Forms.ListView();
-            this.btn_SaveConfig = new System.Windows.Forms.Button();
             this.TimerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Intervals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimerContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +70,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "群列表";
             // 
+            // lv_GroupList
+            // 
+            this.lv_GroupList.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lv_GroupList.FullRowSelect = true;
+            this.lv_GroupList.HideSelection = false;
+            this.lv_GroupList.Location = new System.Drawing.Point(6, 20);
+            this.lv_GroupList.MultiSelect = false;
+            this.lv_GroupList.Name = "lv_GroupList";
+            this.lv_GroupList.Size = new System.Drawing.Size(165, 375);
+            this.lv_GroupList.TabIndex = 4;
+            this.lv_GroupList.UseCompatibleStateImageBehavior = false;
+            this.lv_GroupList.View = System.Windows.Forms.View.List;
+            this.lv_GroupList.SelectedIndexChanged += new System.EventHandler(this.lv_GroupList_SelectedIndexChanged);
+            this.lv_GroupList.Click += new System.EventHandler(this.lv_GroupList_Click);
+            // 
             // gb_Config
             // 
             this.gb_Config.Controls.Add(this.panel1);
@@ -87,6 +103,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(474, 382);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_SaveConfig
+            // 
+            this.btn_SaveConfig.Location = new System.Drawing.Point(13, 352);
+            this.btn_SaveConfig.Name = "btn_SaveConfig";
+            this.btn_SaveConfig.Size = new System.Drawing.Size(98, 23);
+            this.btn_SaveConfig.TabIndex = 1;
+            this.btn_SaveConfig.Text = "保存当前配置页";
+            this.btn_SaveConfig.UseVisualStyleBackColor = true;
+            this.btn_SaveConfig.Click += new System.EventHandler(this.btn_SaveConfig_Click);
             // 
             // tabControl1
             // 
@@ -164,16 +190,24 @@
             // 
             // dgv_TimerList
             // 
-            this.dgv_TimerList.AutoGenerateColumns = false;
             this.dgv_TimerList.AllowUserToAddRows = false;
             this.dgv_TimerList.AllowUserToDeleteRows = false;
             this.dgv_TimerList.AllowUserToOrderColumns = true;
+            this.dgv_TimerList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgv_TimerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_TimerList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TimerName,
             this.Intervals,
             this.TimerContent});
             this.dgv_TimerList.ContextMenuStrip = this.cms_TimerList;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_TimerList.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_TimerList.Location = new System.Drawing.Point(6, 6);
             this.dgv_TimerList.MultiSelect = false;
             this.dgv_TimerList.Name = "dgv_TimerList";
@@ -206,38 +240,13 @@
             this.tsm_Edit.Text = "编辑";
             this.tsm_Edit.Click += new System.EventHandler(this.tsm_Edit_Click);
             // 
-            // lv_GroupList
-            // 
-            this.lv_GroupList.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lv_GroupList.FullRowSelect = true;
-            this.lv_GroupList.HideSelection = false;
-            this.lv_GroupList.Location = new System.Drawing.Point(6, 20);
-            this.lv_GroupList.MultiSelect = false;
-            this.lv_GroupList.Name = "lv_GroupList";
-            this.lv_GroupList.Size = new System.Drawing.Size(165, 375);
-            this.lv_GroupList.TabIndex = 4;
-            this.lv_GroupList.UseCompatibleStateImageBehavior = false;
-            this.lv_GroupList.View = System.Windows.Forms.View.List;
-            this.lv_GroupList.SelectedIndexChanged += new System.EventHandler(this.lv_GroupList_SelectedIndexChanged);
-            this.lv_GroupList.Click += new System.EventHandler(this.lv_GroupList_Click);
-            // 
-            // btn_SaveConfig
-            // 
-            this.btn_SaveConfig.Location = new System.Drawing.Point(13, 352);
-            this.btn_SaveConfig.Name = "btn_SaveConfig";
-            this.btn_SaveConfig.Size = new System.Drawing.Size(98, 23);
-            this.btn_SaveConfig.TabIndex = 1;
-            this.btn_SaveConfig.Text = "保存当前配置页";
-            this.btn_SaveConfig.UseVisualStyleBackColor = true;
-            this.btn_SaveConfig.Click += new System.EventHandler(this.btn_SaveConfig_Click);
-            // 
             // TimerName
             // 
             this.TimerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.TimerName.DataPropertyName = "name";
             this.TimerName.FillWeight = 110.7522F;
             this.TimerName.HeaderText = "名称(不可重复)";
-            this.TimerName.MinimumWidth = 120;
+            this.TimerName.MinimumWidth = 100;
             this.TimerName.Name = "TimerName";
             this.TimerName.ReadOnly = true;
             // 
@@ -245,9 +254,9 @@
             // 
             this.Intervals.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Intervals.DataPropertyName = "intevalStr";
-            this.Intervals.FillWeight = 116.9543F;
+            this.Intervals.FillWeight = 80F;
             this.Intervals.HeaderText = "间隔时间";
-            this.Intervals.MinimumWidth = 100;
+            this.Intervals.MinimumWidth = 70;
             this.Intervals.Name = "Intervals";
             this.Intervals.ReadOnly = true;
             // 
@@ -257,7 +266,7 @@
             this.TimerContent.DataPropertyName = "content";
             this.TimerContent.FillWeight = 92.2935F;
             this.TimerContent.HeaderText = "内容";
-            this.TimerContent.MinimumWidth = 100;
+            this.TimerContent.MinimumWidth = 230;
             this.TimerContent.Name = "TimerContent";
             this.TimerContent.ReadOnly = true;
             // 
