@@ -133,21 +133,28 @@ namespace Native.Csharp.Customer.Window
 
         private void tsm_Edit_Click(object sender, EventArgs e)
         {
-            var mod = (GroupTimer)dgv_TimerList.SelectedRows[0].DataBoundItem;
-            var st = new SaveTimer(mod);
-            if (st.ShowDialog() == DialogResult.OK)
+            if (dgv_TimerList.SelectedRows.Count > 0)
             {
-                SaveTimer(st.model);
+                var mod = (GroupTimer)dgv_TimerList.SelectedRows[0].DataBoundItem;
+                var st = new SaveTimer(mod);
+                if (st.ShowDialog() == DialogResult.OK)
+                {
+                    SaveTimer(st.model);
+                }
             }
         }
 
         private void tsm_Del_Click(object sender, EventArgs e)
         {
-            var mod = (GroupTimer)dgv_TimerList.SelectedRows[0].DataBoundItem;
-            var timer = GroupTimers.Where(a => a.name == mod.name).FirstOrDefault();
-            if (timer != null)
+            if (dgv_TimerList.SelectedRows.Count > 0)
             {
-                GroupTimers.Remove(timer);
+                var mod = (GroupTimer)dgv_TimerList.SelectedRows[0].DataBoundItem;
+                var timer = GroupTimers.Where(a => a.name == mod.name).FirstOrDefault();
+                if (timer != null)
+                {
+                    GroupTimers.Remove(timer);
+                }
+                dgv_TimerList.Refresh();
             }
         }
 
