@@ -77,7 +77,7 @@ namespace Native.Csharp.App
         /// <summary>
         /// 计时器列表
         /// </summary>
-        public static Dictionary<string, Timer> Timers { set; get; }
+        public static Dictionary<string, Timer> Timers { set; get; } = new Dictionary<string, Timer>();
 
         #region 计时器初始化
         /// <summary>
@@ -87,25 +87,32 @@ namespace Native.Csharp.App
         {
             Task.Run(() =>
             {
-                foreach (var item in AppConfig.groupConfigs)
+                try
                 {
-                    foreach (var _item in item.Value.GroupTimers)
+                    foreach (var item in AppConfig.groupConfigs)
                     {
-                        var groupTimer = _item.Value;
-                        var key = $"{item.Key}:{groupTimer.name}";
-                        if (Timers.ContainsKey(key))
+                        foreach (var _item in item.Value.GroupTimers)
                         {
-                            Timers[key].Dispose();
-                            Timers.Remove(key);
-                        }
-                        //生成计时器
-                        Timers.Add(key, new Timer(
-                            _ =>
+                            var groupTimer = _item.Value;
+                            var key = $"{item.Key}:{groupTimer.name}";
+                            if (Timers.ContainsKey(key))
                             {
-                                CqApi.SendGroupMessage(item.Key, groupTimer.Content);
-                            }, null, groupTimer.inteval, groupTimer.inteval
-                            ));
+                                Timers[key].Dispose();
+                                Timers.Remove(key);
+                            }
+                            //生成计时器
+                            Timers.Add(key, new Timer(
+                                _ =>
+                                {
+                                    CqApi.SendGroupMessage(item.Key, groupTimer.Content);
+                                }, null, groupTimer.inteval, groupTimer.inteval
+                                ));
+                        }
                     }
+                }
+                catch (Exception e)
+                {
+                    Common.Debug("计时器刷新", e.Message);
                 }
             });
         }

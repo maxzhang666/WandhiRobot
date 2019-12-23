@@ -18,9 +18,9 @@ namespace Native.Csharp.Customer.Event
             Common.CommonTimer = new Timer((a) =>
               {
                   var key = $"Hour:{DateTime.Now.Hour}";
-#if DEBUG
-                  Common.Debug("报时");
-#endif
+
+                  Common.Debug("报时检测");
+
                   var flag = Common.Cache.Get(key, false);
                   if (DateTime.Now.Minute == 0 && !flag)
                   {
