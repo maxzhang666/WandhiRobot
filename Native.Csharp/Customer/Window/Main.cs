@@ -144,7 +144,11 @@ namespace Native.Csharp.Customer.Window
         private void tsm_Del_Click(object sender, EventArgs e)
         {
             var mod = (GroupTimer)dgv_TimerList.SelectedRows[0].DataBoundItem;
-            GroupTimers.RemoveAll(a => a.name == mod.name);
+            var timer = GroupTimers.Where(a => a.name == mod.name).FirstOrDefault();
+            if (timer != null)
+            {
+                GroupTimers.Remove(timer);
+            }
         }
 
         /// <summary>

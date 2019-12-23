@@ -85,6 +85,7 @@ namespace Native.Csharp.App
         /// </summary>
         public static void RefreshTimers()
         {
+            Debug("刷新计时器", "刷新计时器");
             Task.Run(() =>
             {
                 try
@@ -112,7 +113,7 @@ namespace Native.Csharp.App
                 }
                 catch (Exception e)
                 {
-                    Common.Debug("计时器刷新", e.Message);
+                    Debug("计时器刷新", e.Message);
                 }
             });
         }
