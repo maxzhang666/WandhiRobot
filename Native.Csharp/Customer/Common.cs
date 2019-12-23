@@ -30,7 +30,9 @@ namespace Native.Csharp.App
             }
         }
         private static Main _MainSetting { set; get; }
-
+        /// <summary>
+        /// 缓存操作
+        /// </summary>
         public static ICache Cache
         {
             get
@@ -42,7 +44,23 @@ namespace Native.Csharp.App
                 return _MemoryCacheService;
             }
         }
-        public static MemoryCacheService _MemoryCacheService { set; get; }
+        private static MemoryCacheService _MemoryCacheService { set; get; }
+
+        /// <summary>
+        /// 配置操作类
+        /// </summary>
+        public static ConfigService ConfigService
+        {
+            get
+            {
+                if (_ConfigService == null)
+                {
+                    _ConfigService = new ConfigService();
+                }
+                return _ConfigService;
+            }
+        }
+        private static ConfigService _ConfigService;
 
         /// <summary>
         /// 通用计时器
@@ -50,7 +68,7 @@ namespace Native.Csharp.App
         /// 默认1秒一次  请在传入的方法中自行判断是否执行
         /// </summary>
         public static Timer CommonTimer { set; get; }
-        
+
         /// <summary>
         /// 事件列表
         /// </summary>
@@ -61,10 +79,34 @@ namespace Native.Csharp.App
         /// </summary>
         public static Dictionary<string, Timer> Timers { set; get; }
 
+
+        #region 配置操作
         /// <summary>
         /// 应用配置信息
         /// </summary>
-        public static BaseConfig AppConfig { set; get; }
+        public static BaseConfig AppConfig
+        {
+            get
+            {
+                if (_AppConfig == null)
+                {
+                    _AppConfig = ConfigService.InitConfig();
+                }
+                return _AppConfig;
+            }
+        }
+        private static BaseConfig _AppConfig { set; get; }
+        /// <summary>
+        /// 保存配置信息
+        /// </summary>
+        /// <param name="baseConfig"></param>
+        /// <returns></returns>
+        public static BaseConfig SaveConfig(BaseConfig baseConfig)
+        {
+            _AppConfig = ConfigService.SaveConfig(baseConfig);
+            return _AppConfig;
+        }
+        #endregion
 
         #region 日志
         private static string flag = "Wandhi-";

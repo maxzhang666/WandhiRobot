@@ -174,8 +174,7 @@ namespace Native.Csharp.Customer.Window
                 }
             }
 
-            Common.AppConfig = this.Config;
-            new  ConfigService()
+            Common.AppConfig = this.Config;            
         }
         #endregion
     }

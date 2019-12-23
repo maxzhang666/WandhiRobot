@@ -18,6 +18,7 @@ namespace Native.Csharp.Customer.Event
             //初始化配置
             var configService = new ConfigService();
             Common.AppConfig = configService.Config;
+
             Common.CommonTimer = new Timer((a) =>
               {
                   var key = $"Hour:{DateTime.Now.Hour}";
