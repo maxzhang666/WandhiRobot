@@ -60,6 +60,8 @@ namespace Native.Csharp.Customer.Service
                 catch (Exception e)
                 {
                     Common.CqApi.AddLoger(Sdk.Cqp.Enum.LogerLevel.Error, "配置读取", $"配置信息反序列化异常:{e.Message}");
+                    File.WriteAllText(abPath + ".bak", configStr);
+                    config = new BaseConfig();
                 }
             }
             return config;
