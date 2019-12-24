@@ -53,9 +53,9 @@
             this.dgc_Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gb_Config.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tab_BaseConfig.SuspendLayout();
             this.cms_TimerList.SuspendLayout();
             this.tab_CardTest.SuspendLayout();
+            this.tab_GroupTimers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TimerList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,7 +94,6 @@
             // 
             // tab_BaseConfig
             // 
-            this.tab_BaseConfig.Controls.Add(this.dgv_TimerList);
             this.tab_BaseConfig.Location = new System.Drawing.Point(4, 34);
             this.tab_BaseConfig.Name = "tab_BaseConfig";
             this.tab_BaseConfig.Padding = new System.Windows.Forms.Padding(3);
@@ -228,6 +227,7 @@
             // 
             // tab_GroupTimers
             // 
+            this.tab_GroupTimers.Controls.Add(this.dgv_TimerList);
             this.tab_GroupTimers.Location = new System.Drawing.Point(4, 34);
             this.tab_GroupTimers.Name = "tab_GroupTimers";
             this.tab_GroupTimers.Padding = new System.Windows.Forms.Padding(3);
@@ -309,7 +309,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_TimerList.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_TimerList.GridColor = System.Drawing.Color.Gray;
-            this.dgv_TimerList.Location = new System.Drawing.Point(6, 6);
+            this.dgv_TimerList.Location = new System.Drawing.Point(6, 9);
             this.dgv_TimerList.MultiSelect = false;
             this.dgv_TimerList.Name = "dgv_TimerList";
             this.dgv_TimerList.ReadOnly = true;
@@ -357,13 +357,14 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "控制中心";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.gb_Config.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tab_BaseConfig.ResumeLayout(false);
             this.cms_TimerList.ResumeLayout(false);
             this.tab_CardTest.ResumeLayout(false);
             this.tab_CardTest.PerformLayout();
+            this.tab_GroupTimers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TimerList)).EndInit();
             this.ResumeLayout(false);
 

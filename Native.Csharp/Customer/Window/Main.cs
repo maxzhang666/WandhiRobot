@@ -112,36 +112,12 @@ namespace Native.Csharp.Customer.Window
             {
                 GroupTimers = new List<GroupTimer>();
             }
-            #endregion
-
-            #region 新UI
-            var columns = new List<DataGridViewColumnEntity>()
-            {
-                new DataGridViewColumnEntity
-                {
-                    DataField="name"
-                    ,HeadText="名称(不可重复)"
-                    ,Width=140
-                    ,WidthType=SizeType.AutoSize
-                },
-                new DataGridViewColumnEntity
-                {
-                    DataField="intevalStr"
-                    ,HeadText="间隔"
-                    ,Width=80
-                }
-                ,new DataGridViewColumnEntity
-                {
-                    DataField="Content"
-                    ,HeadText="内容"
-                    ,WidthType=SizeType.AutoSize
-                }
-
-            };
             var bs = new BindingSource();
             bs.DataSource = GroupTimers;
             dgv_TimerList.DataSource = bs;
+
             #endregion
+
         }
         private void tsm_Add_Click(object sender, EventArgs e)
         {
@@ -170,6 +146,7 @@ namespace Native.Csharp.Customer.Window
             if (dgv_TimerList.HasSelected())
             {
                 var mod = dgv_TimerList.GetFirstSelected<GroupTimer>();
+                dgv_TimerList.Rows.Remove(dgv_TimerList.SelectedRows[0]);
                 var timer = GroupTimers.Where(a => a.name == mod.name).FirstOrDefault();
                 if (timer != null)
                 {
@@ -193,7 +170,6 @@ namespace Native.Csharp.Customer.Window
             }
             else
             {
-
                 GroupTimers.Add(mod);
             }
             dgv_TimerList.Refresh();
@@ -229,8 +205,12 @@ namespace Native.Csharp.Customer.Window
 
             Config = Common.SaveConfig(Config);
         }
+
         #endregion
 
-
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Common.CloseMainSetting();
+        }
     }
 }

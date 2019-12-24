@@ -30,6 +30,11 @@ namespace Native.Csharp.App
             }
         }
         private static Main _MainSetting { set; get; }
+        public static void CloseMainSetting()
+        {
+            _MainSetting.Dispose();
+            _MainSetting = null;
+        }
         /// <summary>
         /// 缓存操作
         /// </summary>
