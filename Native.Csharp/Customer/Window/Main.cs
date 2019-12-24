@@ -1,5 +1,6 @@
 ﻿using HZH_Controls.Controls;
 using Native.Csharp.App;
+using Native.Csharp.Customer.Extension;
 using Native.Csharp.Customer.Model;
 using Native.Csharp.Customer.Service;
 using Native.Csharp.Sdk.Cqp.EventArgs;
@@ -38,6 +39,7 @@ namespace Native.Csharp.Customer.Window
         private void Main_Load(object sender, EventArgs e)
         {
             Config = Common.AppConfig;
+            dgv_TimerList.AutoGenerateColumns = false;
             InitGroupList();
         }
 
@@ -136,8 +138,9 @@ namespace Native.Csharp.Customer.Window
                 }
 
             };
-            dgv_TimerList.Columns = columns;
-            dgv_TimerList.DataSource = GroupTimers;
+            var bs = new BindingSource();
+            bs.DataSource = GroupTimers;
+            dgv_TimerList.DataSource = bs;
             #endregion
         }
         private void tsm_Add_Click(object sender, EventArgs e)
@@ -151,9 +154,9 @@ namespace Native.Csharp.Customer.Window
 
         private void tsm_Edit_Click(object sender, EventArgs e)
         {
-            if (dgv_TimerList.SelectRow != null)
+            if (dgv_TimerList.HasSelected())
             {
-                var mod = (GroupTimer)dgv_TimerList.SelectRow.DataSource;
+                var mod = dgv_TimerList.GetFirstSelected<GroupTimer>();
                 var st = new SaveTimer(mod);
                 if (st.ShowDialog() == DialogResult.OK)
                 {
@@ -164,9 +167,9 @@ namespace Native.Csharp.Customer.Window
 
         private void tsm_Del_Click(object sender, EventArgs e)
         {
-            if (dgv_TimerList.SelectRow.DataSource != null)
+            if (dgv_TimerList.HasSelected())
             {
-                var mod = (GroupTimer)dgv_TimerList.SelectRow.DataSource;
+                var mod = dgv_TimerList.GetFirstSelected<GroupTimer>();
                 var timer = GroupTimers.Where(a => a.name == mod.name).FirstOrDefault();
                 if (timer != null)
                 {
@@ -185,10 +188,15 @@ namespace Native.Csharp.Customer.Window
             var timer = GroupTimers.Where(a => a.name == mod.name).FirstOrDefault();
             if (timer != null)
             {
-                GroupTimers.Remove(timer);
+                //GroupTimers.Remove(timer);
+                timer = mod;
             }
-            GroupTimers.Add(mod);
-            dgv_TimerList.ReloadSource();
+            else
+            {
+
+                GroupTimers.Add(mod);
+            }
+            dgv_TimerList.Refresh();
         }
 
         #endregion

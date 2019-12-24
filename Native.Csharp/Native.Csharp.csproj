@@ -141,6 +141,7 @@
     <Compile Include="Customer\Event\Event_AppStart.cs" />
     <Compile Include="Customer\Event\Event_GroupMessage.cs" />
     <Compile Include="Customer\Event\Event_MainSetting.cs" />
+    <Compile Include="Customer\Extension\ControlExtension.cs" />
     <Compile Include="Customer\Model\BaseConfig.cs" />
     <Compile Include="Customer\Model\GroupConfig.cs" />
     <Compile Include="Customer\Model\GroupTimer.cs" />
