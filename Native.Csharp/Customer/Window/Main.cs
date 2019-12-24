@@ -1,4 +1,5 @@
-﻿using Native.Csharp.App;
+﻿using HZH_Controls.Controls;
+using Native.Csharp.App;
 using Native.Csharp.Customer.Model;
 using Native.Csharp.Customer.Service;
 using Native.Csharp.Sdk.Cqp.EventArgs;
@@ -42,44 +43,54 @@ namespace Native.Csharp.Customer.Window
         }
 
         #region 群列表
-        /// <summary>
-        /// 选择群
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lv_GroupList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lv_GroupList.SelectedItems.Count > 0)
-            {
-                var selected = (GroupInfo)lv_GroupList.SelectedItems[0].Tag;
-                CurrentGroup = selected.Id;
-                gb_Config.Text = $"功能-当前群：{CurrentGroup}";
-
-
-                #region 初始化相关配置信息
-                //定时任务
-                InitGroupTimers(CurrentGroup);
-                #endregion
-            }
-        }
 
         /// <summary>
         /// 群列表初始化
         /// </summary>
         private void InitGroupList()
         {
-            var list = Common.CqApi.GetGroupList().Select(a => new ListViewItem { Text = $"{a.Name}({a.Id})", Tag = a });
-            lv_GroupList.Items.AddRange(list.ToArray());
+            var list = Common.CqApi.GetGroupList().Select(a => new ListEntity
+            {
+                ID = a.Id.ToString(),
+                Title = $"{a.Name}({a.Id})",
+                Source = a
+            }).ToList();
+
+            list_GroupList.SetList(list);
+        }
+        /// <summary>
+        /// 切换群
+        /// </summary>
+        /// <param name="item"></param>
+        private void list_GroupList_ItemClick(UCListItemExt item)
+        {
+            var selected = (GroupInfo)item.DataSource.Source;
+            CurrentGroup = selected.Id;
+            gb_Config.Text = $"功能-当前群：{CurrentGroup}";
+
+
+            #region 初始化相关配置信息
+            //定时任务
+            InitGroupTimers(CurrentGroup);
+            #endregion
+        }
+        #endregion
+
+        #region 定时任务
+
+
+        #endregion
+
+        #region 卡片测试
+
+        private void btn_XmlSend_Click(object sender, EventArgs e)
+        {
+            Common.CqApi.SendGroupMessage(CurrentGroup, textBox_XmlTest.Text);
         }
 
-        /// <summary>
-        /// 群列表单击
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lv_GroupList_Click(object sender, EventArgs e)
+        private void btn_XmlClear_Click(object sender, EventArgs e)
         {
-
+            textBox_XmlTest.Text = "";
         }
         #endregion
 
@@ -102,26 +113,34 @@ namespace Native.Csharp.Customer.Window
             var bs = new BindingSource();
             bs.DataSource = GroupTimers;
             dgv_TimerList.DataSource = bs;
+
+            #region 新UI
+            var columns = new List<DataGridViewColumnEntity>()
+            {
+                new DataGridViewColumnEntity
+                {
+                    DataField="name"
+                    ,HeadText="名称(不可重复)"
+                    ,Width=120
+                },
+                new DataGridViewColumnEntity
+                {
+                    DataField="intevalStr"
+                    ,HeadText="间隔"
+                    ,Width=80
+                }
+                ,new DataGridViewColumnEntity
+                {
+                    DataField="Content"
+                    ,HeadText="内容"
+                    ,WidthType=SizeType.AutoSize
+                }
+
+            };
+            ucDataGridView1.Columns = columns;
+            ucDataGridView1.DataSource = GroupTimers;
+            #endregion
         }
-        #endregion
-
-        #region 卡片测试
-
-        private void btn_XmlSend_Click(object sender, EventArgs e)
-        {
-            var groupNum = ((GroupInfo)lv_GroupList.SelectedItems[0].Tag);
-            Common.CqApi.SendGroupMessage(groupNum.Id, textBox_XmlTest.Text);
-        }
-
-        private void btn_XmlClear_Click(object sender, EventArgs e)
-        {
-            textBox_XmlTest.Text = "";
-        }
-        #endregion
-
-        #region 定时任务
-
-
         private void tsm_Add_Click(object sender, EventArgs e)
         {
             var st = new SaveTimer();
@@ -171,6 +190,7 @@ namespace Native.Csharp.Customer.Window
             }
             GroupTimers.Add(mod);
             dgv_TimerList.Refresh();
+            ucDataGridView1.DataSource = GroupTimers;
         }
 
         #endregion
@@ -204,5 +224,7 @@ namespace Native.Csharp.Customer.Window
             Config = Common.SaveConfig(Config);
         }
         #endregion
+
+
     }
 }

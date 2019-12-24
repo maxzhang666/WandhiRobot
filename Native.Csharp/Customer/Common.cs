@@ -90,17 +90,19 @@ namespace Native.Csharp.App
             {
                 try
                 {
+                    //释放所有计时器
+                    foreach (var item in Timers)
+                    {
+                        item.Value.Dispose();
+                    }
+                    Timers.Clear();
+
                     foreach (var item in AppConfig.groupConfigs)
                     {
                         foreach (var _item in item.Value.GroupTimers)
                         {
                             var groupTimer = _item.Value;
                             var key = $"{item.Key}:{groupTimer.name}";
-                            if (Timers.ContainsKey(key))
-                            {
-                                Timers[key].Dispose();
-                                Timers.Remove(key);
-                            }
                             //生成计时器
                             Timers.Add(key, new Timer(
                                 _ =>
