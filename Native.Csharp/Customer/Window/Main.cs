@@ -38,7 +38,6 @@ namespace Native.Csharp.Customer.Window
         private void Main_Load(object sender, EventArgs e)
         {
             Config = Common.AppConfig;
-            dgv_TimerList.AutoGenerateColumns = false;
             InitGroupList();
         }
 
@@ -102,17 +101,16 @@ namespace Native.Csharp.Customer.Window
         /// <param name="GroupId"></param>
         private void InitGroupTimers(long GroupId)
         {
+            #region 初始化定时任务列表
             if (Config.groupConfigs.ContainsKey(GroupId))
             {
-                this.GroupTimers = Config.groupConfigs[GroupId].GroupTimers.Values.ToList();
+                GroupTimers = Config.groupConfigs[GroupId].GroupTimers.Values.ToList();
             }
             else
             {
-                this.GroupTimers = new List<GroupTimer>();
+                GroupTimers = new List<GroupTimer>();
             }
-            var bs = new BindingSource();
-            bs.DataSource = GroupTimers;
-            dgv_TimerList.DataSource = bs;
+            #endregion
 
             #region 新UI
             var columns = new List<DataGridViewColumnEntity>()
@@ -121,7 +119,8 @@ namespace Native.Csharp.Customer.Window
                 {
                     DataField="name"
                     ,HeadText="名称(不可重复)"
-                    ,Width=120
+                    ,Width=140
+                    ,WidthType=SizeType.AutoSize
                 },
                 new DataGridViewColumnEntity
                 {
@@ -137,8 +136,8 @@ namespace Native.Csharp.Customer.Window
                 }
 
             };
-            ucDataGridView1.Columns = columns;
-            ucDataGridView1.DataSource = GroupTimers;
+            dgv_TimerList.Columns = columns;
+            dgv_TimerList.DataSource = GroupTimers;
             #endregion
         }
         private void tsm_Add_Click(object sender, EventArgs e)
@@ -152,9 +151,9 @@ namespace Native.Csharp.Customer.Window
 
         private void tsm_Edit_Click(object sender, EventArgs e)
         {
-            if (dgv_TimerList.SelectedRows.Count > 0)
+            if (dgv_TimerList.SelectRow != null)
             {
-                var mod = (GroupTimer)dgv_TimerList.SelectedRows[0].DataBoundItem;
+                var mod = (GroupTimer)dgv_TimerList.SelectRow.DataSource;
                 var st = new SaveTimer(mod);
                 if (st.ShowDialog() == DialogResult.OK)
                 {
@@ -165,9 +164,9 @@ namespace Native.Csharp.Customer.Window
 
         private void tsm_Del_Click(object sender, EventArgs e)
         {
-            if (dgv_TimerList.SelectedRows.Count > 0)
+            if (dgv_TimerList.SelectRow.DataSource != null)
             {
-                var mod = (GroupTimer)dgv_TimerList.SelectedRows[0].DataBoundItem;
+                var mod = (GroupTimer)dgv_TimerList.SelectRow.DataSource;
                 var timer = GroupTimers.Where(a => a.name == mod.name).FirstOrDefault();
                 if (timer != null)
                 {
@@ -189,8 +188,7 @@ namespace Native.Csharp.Customer.Window
                 GroupTimers.Remove(timer);
             }
             GroupTimers.Add(mod);
-            dgv_TimerList.Refresh();
-            ucDataGridView1.DataSource = GroupTimers;
+            dgv_TimerList.ReloadSource();
         }
 
         #endregion

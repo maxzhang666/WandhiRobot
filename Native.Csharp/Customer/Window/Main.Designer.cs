@@ -29,28 +29,34 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gb_Config = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new HZH_Controls.Controls.TabControlExt();
             this.tab_BaseConfig = new System.Windows.Forms.TabPage();
+            this.cms_TimerList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsm_Add = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_Edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_Del = new System.Windows.Forms.ToolStripMenuItem();
             this.tab_CardTest = new System.Windows.Forms.TabPage();
             this.btn_XmlClear = new HZH_Controls.Controls.UCBtnExt();
             this.btn_XmlSend = new HZH_Controls.Controls.UCBtnExt();
             this.textBox_XmlTest = new HZH_Controls.Controls.TextBoxEx();
             this.tab_GroupTimers = new System.Windows.Forms.TabPage();
             this.btn_SaveConfig = new HZH_Controls.Controls.UCBtnExt();
-            this.cms_TimerList = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsm_Add = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_Edit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_Del = new System.Windows.Forms.ToolStripMenuItem();
-            this.ucDataGridView1 = new HZH_Controls.Controls.UCDataGridView();
             this.list_GroupList = new HZH_Controls.Controls.UCListExt();
+            this.dgv_TimerList = new System.Windows.Forms.DataGridView();
+            this.dgc_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgc_Inteval = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgc_Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gb_Config.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tab_BaseConfig.SuspendLayout();
-            this.tab_CardTest.SuspendLayout();
             this.cms_TimerList.SuspendLayout();
+            this.tab_CardTest.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_TimerList)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -88,7 +94,7 @@
             // 
             // tab_BaseConfig
             // 
-            this.tab_BaseConfig.Controls.Add(this.ucDataGridView1);
+            this.tab_BaseConfig.Controls.Add(this.dgv_TimerList);
             this.tab_BaseConfig.Location = new System.Drawing.Point(4, 34);
             this.tab_BaseConfig.Name = "tab_BaseConfig";
             this.tab_BaseConfig.Padding = new System.Windows.Forms.Padding(3);
@@ -96,6 +102,36 @@
             this.tab_BaseConfig.TabIndex = 0;
             this.tab_BaseConfig.Text = "基础配置";
             this.tab_BaseConfig.UseVisualStyleBackColor = true;
+            // 
+            // cms_TimerList
+            // 
+            this.cms_TimerList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsm_Add,
+            this.tsm_Edit,
+            this.tsm_Del});
+            this.cms_TimerList.Name = "cms_TimerList";
+            this.cms_TimerList.Size = new System.Drawing.Size(101, 70);
+            // 
+            // tsm_Add
+            // 
+            this.tsm_Add.Name = "tsm_Add";
+            this.tsm_Add.Size = new System.Drawing.Size(100, 22);
+            this.tsm_Add.Text = "添加";
+            this.tsm_Add.Click += new System.EventHandler(this.tsm_Add_Click);
+            // 
+            // tsm_Edit
+            // 
+            this.tsm_Edit.Name = "tsm_Edit";
+            this.tsm_Edit.Size = new System.Drawing.Size(100, 22);
+            this.tsm_Edit.Text = "编辑";
+            this.tsm_Edit.Click += new System.EventHandler(this.tsm_Edit_Click);
+            // 
+            // tsm_Del
+            // 
+            this.tsm_Del.Name = "tsm_Del";
+            this.tsm_Del.Size = new System.Drawing.Size(100, 22);
+            this.tsm_Del.Text = "删除";
+            this.tsm_Del.Click += new System.EventHandler(this.tsm_Del_Click);
             // 
             // tab_CardTest
             // 
@@ -227,57 +263,6 @@
             this.btn_SaveConfig.TipsText = "保存";
             this.btn_SaveConfig.BtnClick += new System.EventHandler(this.btn_SaveConfig_Click);
             // 
-            // cms_TimerList
-            // 
-            this.cms_TimerList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsm_Add,
-            this.tsm_Edit,
-            this.tsm_Del});
-            this.cms_TimerList.Name = "cms_TimerList";
-            this.cms_TimerList.Size = new System.Drawing.Size(101, 70);
-            // 
-            // tsm_Add
-            // 
-            this.tsm_Add.Name = "tsm_Add";
-            this.tsm_Add.Size = new System.Drawing.Size(100, 22);
-            this.tsm_Add.Text = "添加";
-            this.tsm_Add.Click += new System.EventHandler(this.tsm_Add_Click);
-            // 
-            // tsm_Edit
-            // 
-            this.tsm_Edit.Name = "tsm_Edit";
-            this.tsm_Edit.Size = new System.Drawing.Size(100, 22);
-            this.tsm_Edit.Text = "编辑";
-            this.tsm_Edit.Click += new System.EventHandler(this.tsm_Edit_Click);
-            // 
-            // tsm_Del
-            // 
-            this.tsm_Del.Name = "tsm_Del";
-            this.tsm_Del.Size = new System.Drawing.Size(100, 22);
-            this.tsm_Del.Text = "删除";
-            this.tsm_Del.Click += new System.EventHandler(this.tsm_Del_Click);
-            // 
-            // ucDataGridView1
-            // 
-            this.ucDataGridView1.AutoScroll = true;
-            this.ucDataGridView1.BackColor = System.Drawing.Color.White;
-            this.ucDataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ucDataGridView1.Columns = null;
-            this.ucDataGridView1.ContextMenuStrip = this.cms_TimerList;
-            this.ucDataGridView1.DataSource = null;
-            this.ucDataGridView1.HeadFont = new System.Drawing.Font("微软雅黑", 12F);
-            this.ucDataGridView1.HeadHeight = 30;
-            this.ucDataGridView1.HeadPadingLeft = 0;
-            this.ucDataGridView1.HeadTextColor = System.Drawing.Color.Black;
-            this.ucDataGridView1.IsShowCheckBox = false;
-            this.ucDataGridView1.IsShowHead = true;
-            this.ucDataGridView1.Location = new System.Drawing.Point(8, 8);
-            this.ucDataGridView1.Name = "ucDataGridView1";
-            this.ucDataGridView1.RowHeight = 30;
-            this.ucDataGridView1.RowType = typeof(HZH_Controls.Controls.UCDataGridViewRow);
-            this.ucDataGridView1.Size = new System.Drawing.Size(452, 298);
-            this.ucDataGridView1.TabIndex = 3;
-            // 
             // list_GroupList
             // 
             this.list_GroupList.AutoScroll = true;
@@ -299,12 +284,73 @@
             this.list_GroupList.TitleFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_GroupList.ItemClick += new HZH_Controls.Controls.UCListExt.ItemClickEvent(this.list_GroupList_ItemClick);
             // 
+            // dgv_TimerList
+            // 
+            this.dgv_TimerList.AllowUserToAddRows = false;
+            this.dgv_TimerList.AllowUserToDeleteRows = false;
+            this.dgv_TimerList.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            this.dgv_TimerList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_TimerList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgv_TimerList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dgv_TimerList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgv_TimerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_TimerList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgc_Name,
+            this.dgc_Inteval,
+            this.dgc_Content});
+            this.dgv_TimerList.ContextMenuStrip = this.cms_TimerList;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_TimerList.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_TimerList.GridColor = System.Drawing.Color.Gray;
+            this.dgv_TimerList.Location = new System.Drawing.Point(6, 6);
+            this.dgv_TimerList.MultiSelect = false;
+            this.dgv_TimerList.Name = "dgv_TimerList";
+            this.dgv_TimerList.ReadOnly = true;
+            this.dgv_TimerList.RowHeadersVisible = false;
+            this.dgv_TimerList.RowTemplate.Height = 23;
+            this.dgv_TimerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_TimerList.Size = new System.Drawing.Size(454, 300);
+            this.dgv_TimerList.TabIndex = 6;
+            // 
+            // dgc_Name
+            // 
+            this.dgc_Name.DataPropertyName = "name";
+            this.dgc_Name.HeaderText = "名称(不可重复)";
+            this.dgc_Name.MinimumWidth = 140;
+            this.dgc_Name.Name = "dgc_Name";
+            this.dgc_Name.ReadOnly = true;
+            this.dgc_Name.Width = 140;
+            // 
+            // dgc_Inteval
+            // 
+            this.dgc_Inteval.DataPropertyName = "intevalStr";
+            this.dgc_Inteval.HeaderText = "间隔";
+            this.dgc_Inteval.MinimumWidth = 80;
+            this.dgc_Inteval.Name = "dgc_Inteval";
+            this.dgc_Inteval.ReadOnly = true;
+            // 
+            // dgc_Content
+            // 
+            this.dgc_Content.DataPropertyName = "content";
+            this.dgc_Content.HeaderText = "内容";
+            this.dgc_Content.MinimumWidth = 212;
+            this.dgc_Content.Name = "dgc_Content";
+            this.dgc_Content.ReadOnly = true;
+            this.dgc_Content.Width = 212;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(700, 436);
+            this.ClientSize = new System.Drawing.Size(915, 693);
             this.Controls.Add(this.list_GroupList);
             this.Controls.Add(this.gb_Config);
             this.Controls.Add(this.groupBox1);
@@ -315,9 +361,10 @@
             this.gb_Config.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tab_BaseConfig.ResumeLayout(false);
+            this.cms_TimerList.ResumeLayout(false);
             this.tab_CardTest.ResumeLayout(false);
             this.tab_CardTest.PerformLayout();
-            this.cms_TimerList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_TimerList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -335,10 +382,13 @@
         private System.Windows.Forms.TabPage tab_BaseConfig;
         private System.Windows.Forms.TabPage tab_CardTest;
         private System.Windows.Forms.TabPage tab_GroupTimers;
-        private HZH_Controls.Controls.UCDataGridView ucDataGridView1;
         private HZH_Controls.Controls.TextBoxEx textBox_XmlTest;
         private HZH_Controls.Controls.UCBtnExt btn_XmlClear;
         private HZH_Controls.Controls.UCBtnExt btn_XmlSend;
         private HZH_Controls.Controls.UCListExt list_GroupList;
+        private System.Windows.Forms.DataGridView dgv_TimerList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Inteval;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Content;
     }
 }
