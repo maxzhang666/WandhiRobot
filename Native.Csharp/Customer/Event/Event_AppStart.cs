@@ -16,7 +16,7 @@ namespace Native.Csharp.Customer.Event
         public void CqAppEnable(object sender, CqAppEnableEventArgs e)
         {
             var config = Common.AppConfig;
-
+#if DEBUG
             Common.CommonTimer = new Timer((a) =>
               {
                   var key = $"Hour:{DateTime.Now.Hour}";
@@ -49,7 +49,7 @@ namespace Native.Csharp.Customer.Event
                       Common.Cache.Set(key, true, TimeSpan.FromMinutes(60));
                   }
               }, null, 17 * 1000, 17 * 1000);
-
+#endif
             Common.RefreshTimers();
         }
     }

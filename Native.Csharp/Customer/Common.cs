@@ -183,7 +183,9 @@ namespace Native.Csharp.App
         /// <param name="module">模块</param>
         public static void Debug(string msg, string module = "调试信息")
         {
+#if DEBUG
             Log(LogerLevel.Debug, msg, module);
+#endif
         }
 
         /// <summary>

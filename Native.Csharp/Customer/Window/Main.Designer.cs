@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gb_Config = new System.Windows.Forms.GroupBox();
@@ -43,16 +44,16 @@
             this.textBox_XmlTest = new HZH_Controls.Controls.TextBoxEx();
             this.tab_GroupTimers = new System.Windows.Forms.TabPage();
             this.dgv_TimerList = new System.Windows.Forms.DataGridView();
+            this.dgc_IsOn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgc_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgc_Inteval = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgc_Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cms_TimerList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsm_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_Del = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_SaveConfig = new HZH_Controls.Controls.UCBtnExt();
             this.list_GroupList = new HZH_Controls.Controls.UCListExt();
-            this.dgc_IsOn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dgc_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgc_Inteval = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgc_Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gb_Config.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tab_CardTest.SuspendLayout();
@@ -272,6 +273,43 @@
             this.dgv_TimerList.TabIndex = 6;
             this.dgv_TimerList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_TimerList_CellContentClick);
             // 
+            // dgc_IsOn
+            // 
+            this.dgc_IsOn.DataPropertyName = "isOn";
+            this.dgc_IsOn.FalseValue = "False";
+            this.dgc_IsOn.HeaderText = "启用";
+            this.dgc_IsOn.IndeterminateValue = "False";
+            this.dgc_IsOn.Name = "dgc_IsOn";
+            this.dgc_IsOn.ToolTipText = "是否启用任务";
+            this.dgc_IsOn.TrueValue = "True";
+            this.dgc_IsOn.Width = 40;
+            // 
+            // dgc_Name
+            // 
+            this.dgc_Name.DataPropertyName = "name";
+            this.dgc_Name.HeaderText = "名称(不可重复)";
+            this.dgc_Name.MinimumWidth = 140;
+            this.dgc_Name.Name = "dgc_Name";
+            this.dgc_Name.ReadOnly = true;
+            this.dgc_Name.Width = 140;
+            // 
+            // dgc_Inteval
+            // 
+            this.dgc_Inteval.DataPropertyName = "intevalStr";
+            this.dgc_Inteval.HeaderText = "间隔";
+            this.dgc_Inteval.MinimumWidth = 80;
+            this.dgc_Inteval.Name = "dgc_Inteval";
+            this.dgc_Inteval.ReadOnly = true;
+            // 
+            // dgc_Content
+            // 
+            this.dgc_Content.DataPropertyName = "content";
+            this.dgc_Content.HeaderText = "内容";
+            this.dgc_Content.MinimumWidth = 212;
+            this.dgc_Content.Name = "dgc_Content";
+            this.dgc_Content.ReadOnly = true;
+            this.dgc_Content.Width = 212;
+            // 
             // cms_TimerList
             // 
             this.cms_TimerList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -350,43 +388,6 @@
             this.list_GroupList.TitleFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_GroupList.ItemClick += new HZH_Controls.Controls.UCListExt.ItemClickEvent(this.list_GroupList_ItemClick);
             // 
-            // dgc_IsOn
-            // 
-            this.dgc_IsOn.DataPropertyName = "isOn";
-            this.dgc_IsOn.FalseValue = "False";
-            this.dgc_IsOn.HeaderText = "启用";
-            this.dgc_IsOn.IndeterminateValue = "False";
-            this.dgc_IsOn.Name = "dgc_IsOn";
-            this.dgc_IsOn.ToolTipText = "是否启用任务";
-            this.dgc_IsOn.TrueValue = "True";
-            this.dgc_IsOn.Width = 40;
-            // 
-            // dgc_Name
-            // 
-            this.dgc_Name.DataPropertyName = "name";
-            this.dgc_Name.HeaderText = "名称(不可重复)";
-            this.dgc_Name.MinimumWidth = 140;
-            this.dgc_Name.Name = "dgc_Name";
-            this.dgc_Name.ReadOnly = true;
-            this.dgc_Name.Width = 140;
-            // 
-            // dgc_Inteval
-            // 
-            this.dgc_Inteval.DataPropertyName = "intevalStr";
-            this.dgc_Inteval.HeaderText = "间隔";
-            this.dgc_Inteval.MinimumWidth = 80;
-            this.dgc_Inteval.Name = "dgc_Inteval";
-            this.dgc_Inteval.ReadOnly = true;
-            // 
-            // dgc_Content
-            // 
-            this.dgc_Content.DataPropertyName = "content";
-            this.dgc_Content.HeaderText = "内容";
-            this.dgc_Content.MinimumWidth = 212;
-            this.dgc_Content.Name = "dgc_Content";
-            this.dgc_Content.ReadOnly = true;
-            this.dgc_Content.Width = 212;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -396,6 +397,7 @@
             this.Controls.Add(this.list_GroupList);
             this.Controls.Add(this.gb_Config);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "控制中心";
