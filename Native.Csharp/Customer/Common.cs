@@ -101,12 +101,11 @@ namespace Native.Csharp.App
                         item.Value.Dispose();
                     }
                     Timers.Clear();
-
                     foreach (var item in AppConfig.groupConfigs)
                     {
-                        foreach (var _item in item.Value.GroupTimers)
+                        foreach (var _item in item.Value.GroupTimers.Values.Where(a => a.isOn))
                         {
-                            var groupTimer = _item.Value;
+                            var groupTimer = _item;
                             var key = $"{item.Key}:{groupTimer.name}";
                             //生成计时器
                             Timers.Add(key, new Timer(

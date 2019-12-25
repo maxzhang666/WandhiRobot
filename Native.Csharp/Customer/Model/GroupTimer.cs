@@ -47,6 +47,10 @@ namespace Native.Csharp.Customer.Model
         /// 间隔 秒
         /// </summary>
         public int Sec { get; set; }
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        public bool isOn { set; get; } = false;
 
         /// <summary>
         /// 内容
