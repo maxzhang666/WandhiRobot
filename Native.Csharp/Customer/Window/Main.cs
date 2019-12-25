@@ -78,11 +78,6 @@ namespace Native.Csharp.Customer.Window
         }
         #endregion
 
-        #region 定时任务
-
-
-        #endregion
-
         #region 测试
 
         private void btn_XmlSend_Click(object sender, EventArgs e)

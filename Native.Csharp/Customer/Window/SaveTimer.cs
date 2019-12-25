@@ -1,4 +1,5 @@
-﻿using Native.Csharp.Customer.Model;
+﻿using HZH_Controls.Forms;
+using Native.Csharp.Customer.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Native.Csharp.Customer.Window
 {
-    public partial class SaveTimer : Form
+    public partial class SaveTimer : FrmWithOKCancel1
     {
         public GroupTimer model;
         public SaveTimer()
@@ -24,27 +25,35 @@ namespace Native.Csharp.Customer.Window
             model = groupTimer;
         }
 
-        private void btn_Ok_Click(object sender, EventArgs e)
+        protected override void DoEnter()
         {
             if (!DataInvalid(out var msg))
             {
-                MessageBox.Show(msg, "信息不完整");
+                FrmDialog.ShowDialog(this, msg, "信息不完整");
                 return;
             }
             model.name = txt_TimerName.Text;
             model.Content = txt_Content.Text;
-            model.Hour = (int)num_Hour.Value;
-            model.Min = (int)num_Min.Value;
-            model.Sec = (int)num_Sec.Value;
-
+            model.Hour = (int)num_Hour.Num;
+            model.Min = (int)num_Min.Num;
+            model.Sec = (int)num_Sec.Num;
+            base.DoEnter();
             this.DialogResult = DialogResult.OK;
+        }
+
+
+
+
+        private void btn_Ok_Click(object sender, EventArgs e)
+        {
+
         }
 
         private bool DataInvalid(out string msg)
         {
             var res = true;
             msg = "";
-            if (num_Hour.Value == 0 && num_Min.Value == 0 && num_Sec.Value == 0)
+            if (num_Hour.Num == 0 && num_Min.Num == 0 && num_Sec.Num == 0)
             {
                 msg = "间隔不能都为0";
                 return false;
@@ -66,12 +75,12 @@ namespace Native.Csharp.Customer.Window
         {
             if (model != null)
             {
-                this.Text = $"编辑-{model.name}";
+                this.Title = $"编辑-{model.name}";
                 txt_TimerName.Text = model.name;
 
-                num_Hour.Value = model.Hour;
-                num_Min.Value = model.Min;
-                num_Sec.Value = model.Sec;
+                num_Hour.Num = model.Hour;
+                num_Min.Num = model.Min;
+                num_Sec.Num = model.Sec;
 
                 txt_Content.Text = model.Content;
             }
@@ -81,10 +90,17 @@ namespace Native.Csharp.Customer.Window
             }
         }
 
+
+
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void num_Min_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
