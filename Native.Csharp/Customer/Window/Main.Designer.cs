@@ -36,28 +36,29 @@
             this.gb_Config = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new HZH_Controls.Controls.TabControlExt();
             this.tab_BaseConfig = new System.Windows.Forms.TabPage();
+            this.tab_CardTest = new System.Windows.Forms.TabPage();
+            this.btn_XmlClear = new HZH_Controls.Controls.UCBtnExt();
+            this.btn_NewsTest = new HZH_Controls.Controls.UCBtnExt();
+            this.btn_XmlSend = new HZH_Controls.Controls.UCBtnExt();
+            this.textBox_XmlTest = new HZH_Controls.Controls.TextBoxEx();
+            this.tab_GroupTimers = new System.Windows.Forms.TabPage();
+            this.dgv_TimerList = new System.Windows.Forms.DataGridView();
             this.cms_TimerList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsm_Add = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_Edit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_Del = new System.Windows.Forms.ToolStripMenuItem();
-            this.tab_CardTest = new System.Windows.Forms.TabPage();
-            this.btn_XmlClear = new HZH_Controls.Controls.UCBtnExt();
-            this.btn_XmlSend = new HZH_Controls.Controls.UCBtnExt();
-            this.textBox_XmlTest = new HZH_Controls.Controls.TextBoxEx();
-            this.tab_GroupTimers = new System.Windows.Forms.TabPage();
             this.btn_SaveConfig = new HZH_Controls.Controls.UCBtnExt();
             this.list_GroupList = new HZH_Controls.Controls.UCListExt();
-            this.dgv_TimerList = new System.Windows.Forms.DataGridView();
+            this.dgc_IsOn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgc_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgc_Inteval = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgc_Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_NewsTest = new HZH_Controls.Controls.UCBtnExt();
             this.gb_Config.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.cms_TimerList.SuspendLayout();
             this.tab_CardTest.SuspendLayout();
             this.tab_GroupTimers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TimerList)).BeginInit();
+            this.cms_TimerList.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -103,36 +104,6 @@
             this.tab_BaseConfig.Text = "基础配置";
             this.tab_BaseConfig.UseVisualStyleBackColor = true;
             // 
-            // cms_TimerList
-            // 
-            this.cms_TimerList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsm_Add,
-            this.tsm_Edit,
-            this.tsm_Del});
-            this.cms_TimerList.Name = "cms_TimerList";
-            this.cms_TimerList.Size = new System.Drawing.Size(101, 70);
-            // 
-            // tsm_Add
-            // 
-            this.tsm_Add.Name = "tsm_Add";
-            this.tsm_Add.Size = new System.Drawing.Size(100, 22);
-            this.tsm_Add.Text = "添加";
-            this.tsm_Add.Click += new System.EventHandler(this.tsm_Add_Click);
-            // 
-            // tsm_Edit
-            // 
-            this.tsm_Edit.Name = "tsm_Edit";
-            this.tsm_Edit.Size = new System.Drawing.Size(100, 22);
-            this.tsm_Edit.Text = "编辑";
-            this.tsm_Edit.Click += new System.EventHandler(this.tsm_Edit_Click);
-            // 
-            // tsm_Del
-            // 
-            this.tsm_Del.Name = "tsm_Del";
-            this.tsm_Del.Size = new System.Drawing.Size(100, 22);
-            this.tsm_Del.Text = "删除";
-            this.tsm_Del.Click += new System.EventHandler(this.tsm_Del_Click);
-            // 
             // tab_CardTest
             // 
             this.tab_CardTest.Controls.Add(this.btn_XmlClear);
@@ -173,6 +144,33 @@
             this.btn_XmlClear.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
             this.btn_XmlClear.TipsText = "";
             this.btn_XmlClear.BtnClick += new System.EventHandler(this.btn_XmlClear_Click);
+            // 
+            // btn_NewsTest
+            // 
+            this.btn_NewsTest.BackColor = System.Drawing.Color.White;
+            this.btn_NewsTest.BtnBackColor = System.Drawing.Color.White;
+            this.btn_NewsTest.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_NewsTest.BtnForeColor = System.Drawing.Color.White;
+            this.btn_NewsTest.BtnText = "新闻简报测试";
+            this.btn_NewsTest.ConerRadius = 5;
+            this.btn_NewsTest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_NewsTest.EnabledMouseEffect = true;
+            this.btn_NewsTest.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btn_NewsTest.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btn_NewsTest.IsRadius = true;
+            this.btn_NewsTest.IsShowRect = true;
+            this.btn_NewsTest.IsShowTips = false;
+            this.btn_NewsTest.Location = new System.Drawing.Point(209, 254);
+            this.btn_NewsTest.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_NewsTest.Name = "btn_NewsTest";
+            this.btn_NewsTest.RectColor = System.Drawing.Color.White;
+            this.btn_NewsTest.RectWidth = 1;
+            this.btn_NewsTest.Size = new System.Drawing.Size(110, 35);
+            this.btn_NewsTest.TabIndex = 4;
+            this.btn_NewsTest.TabStop = false;
+            this.btn_NewsTest.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.btn_NewsTest.TipsText = "";
+            this.btn_NewsTest.BtnClick += new System.EventHandler(this.btn_NewsTest_BtnClick);
             // 
             // btn_XmlSend
             // 
@@ -238,6 +236,72 @@
             this.tab_GroupTimers.Text = "定时发送任务";
             this.tab_GroupTimers.UseVisualStyleBackColor = true;
             // 
+            // dgv_TimerList
+            // 
+            this.dgv_TimerList.AllowUserToAddRows = false;
+            this.dgv_TimerList.AllowUserToDeleteRows = false;
+            this.dgv_TimerList.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            this.dgv_TimerList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_TimerList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgv_TimerList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dgv_TimerList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgv_TimerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_TimerList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgc_IsOn,
+            this.dgc_Name,
+            this.dgc_Inteval,
+            this.dgc_Content});
+            this.dgv_TimerList.ContextMenuStrip = this.cms_TimerList;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_TimerList.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_TimerList.GridColor = System.Drawing.Color.Gray;
+            this.dgv_TimerList.Location = new System.Drawing.Point(6, 9);
+            this.dgv_TimerList.MultiSelect = false;
+            this.dgv_TimerList.Name = "dgv_TimerList";
+            this.dgv_TimerList.RowHeadersVisible = false;
+            this.dgv_TimerList.RowTemplate.Height = 23;
+            this.dgv_TimerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_TimerList.Size = new System.Drawing.Size(454, 300);
+            this.dgv_TimerList.TabIndex = 6;
+            this.dgv_TimerList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_TimerList_CellContentClick);
+            // 
+            // cms_TimerList
+            // 
+            this.cms_TimerList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsm_Add,
+            this.tsm_Edit,
+            this.tsm_Del});
+            this.cms_TimerList.Name = "cms_TimerList";
+            this.cms_TimerList.Size = new System.Drawing.Size(101, 70);
+            // 
+            // tsm_Add
+            // 
+            this.tsm_Add.Name = "tsm_Add";
+            this.tsm_Add.Size = new System.Drawing.Size(100, 22);
+            this.tsm_Add.Text = "添加";
+            this.tsm_Add.Click += new System.EventHandler(this.tsm_Add_Click);
+            // 
+            // tsm_Edit
+            // 
+            this.tsm_Edit.Name = "tsm_Edit";
+            this.tsm_Edit.Size = new System.Drawing.Size(100, 22);
+            this.tsm_Edit.Text = "编辑";
+            this.tsm_Edit.Click += new System.EventHandler(this.tsm_Edit_Click);
+            // 
+            // tsm_Del
+            // 
+            this.tsm_Del.Name = "tsm_Del";
+            this.tsm_Del.Size = new System.Drawing.Size(100, 22);
+            this.tsm_Del.Text = "删除";
+            this.tsm_Del.Click += new System.EventHandler(this.tsm_Del_Click);
+            // 
             // btn_SaveConfig
             // 
             this.btn_SaveConfig.BackColor = System.Drawing.Color.White;
@@ -286,40 +350,16 @@
             this.list_GroupList.TitleFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_GroupList.ItemClick += new HZH_Controls.Controls.UCListExt.ItemClickEvent(this.list_GroupList_ItemClick);
             // 
-            // dgv_TimerList
+            // dgc_IsOn
             // 
-            this.dgv_TimerList.AllowUserToAddRows = false;
-            this.dgv_TimerList.AllowUserToDeleteRows = false;
-            this.dgv_TimerList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            this.dgv_TimerList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_TimerList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgv_TimerList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
-            this.dgv_TimerList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgv_TimerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_TimerList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgc_Name,
-            this.dgc_Inteval,
-            this.dgc_Content});
-            this.dgv_TimerList.ContextMenuStrip = this.cms_TimerList;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_TimerList.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_TimerList.GridColor = System.Drawing.Color.Gray;
-            this.dgv_TimerList.Location = new System.Drawing.Point(6, 9);
-            this.dgv_TimerList.MultiSelect = false;
-            this.dgv_TimerList.Name = "dgv_TimerList";
-            this.dgv_TimerList.ReadOnly = true;
-            this.dgv_TimerList.RowHeadersVisible = false;
-            this.dgv_TimerList.RowTemplate.Height = 23;
-            this.dgv_TimerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_TimerList.Size = new System.Drawing.Size(454, 300);
-            this.dgv_TimerList.TabIndex = 6;
+            this.dgc_IsOn.DataPropertyName = "isOn";
+            this.dgc_IsOn.FalseValue = "False";
+            this.dgc_IsOn.HeaderText = "启用";
+            this.dgc_IsOn.IndeterminateValue = "False";
+            this.dgc_IsOn.Name = "dgc_IsOn";
+            this.dgc_IsOn.ToolTipText = "是否启用任务";
+            this.dgc_IsOn.TrueValue = "True";
+            this.dgc_IsOn.Width = 40;
             // 
             // dgc_Name
             // 
@@ -347,33 +387,6 @@
             this.dgc_Content.ReadOnly = true;
             this.dgc_Content.Width = 212;
             // 
-            // btn_NewsTest
-            // 
-            this.btn_NewsTest.BackColor = System.Drawing.Color.White;
-            this.btn_NewsTest.BtnBackColor = System.Drawing.Color.White;
-            this.btn_NewsTest.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_NewsTest.BtnForeColor = System.Drawing.Color.White;
-            this.btn_NewsTest.BtnText = "新闻简报测试";
-            this.btn_NewsTest.ConerRadius = 5;
-            this.btn_NewsTest.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_NewsTest.EnabledMouseEffect = true;
-            this.btn_NewsTest.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btn_NewsTest.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.btn_NewsTest.IsRadius = true;
-            this.btn_NewsTest.IsShowRect = true;
-            this.btn_NewsTest.IsShowTips = false;
-            this.btn_NewsTest.Location = new System.Drawing.Point(209, 254);
-            this.btn_NewsTest.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_NewsTest.Name = "btn_NewsTest";
-            this.btn_NewsTest.RectColor = System.Drawing.Color.White;
-            this.btn_NewsTest.RectWidth = 1;
-            this.btn_NewsTest.Size = new System.Drawing.Size(110, 35);
-            this.btn_NewsTest.TabIndex = 4;
-            this.btn_NewsTest.TabStop = false;
-            this.btn_NewsTest.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
-            this.btn_NewsTest.TipsText = "";
-            this.btn_NewsTest.BtnClick += new System.EventHandler(this.btn_NewsTest_BtnClick);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -390,11 +403,11 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.gb_Config.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.cms_TimerList.ResumeLayout(false);
             this.tab_CardTest.ResumeLayout(false);
             this.tab_CardTest.PerformLayout();
             this.tab_GroupTimers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TimerList)).EndInit();
+            this.cms_TimerList.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -417,9 +430,10 @@
         private HZH_Controls.Controls.UCBtnExt btn_XmlSend;
         private HZH_Controls.Controls.UCListExt list_GroupList;
         private System.Windows.Forms.DataGridView dgv_TimerList;
+        private HZH_Controls.Controls.UCBtnExt btn_NewsTest;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgc_IsOn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Inteval;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Content;
-        private HZH_Controls.Controls.UCBtnExt btn_NewsTest;
     }
 }

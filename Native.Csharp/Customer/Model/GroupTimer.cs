@@ -51,6 +51,13 @@ namespace Native.Csharp.Customer.Model
         /// 是否启用
         /// </summary>
         public bool isOn { set; get; } = false;
+        public string isOnStr
+        {
+            get
+            {
+                return isOn ? "启用" : "禁用";
+            }
+        }
 
         /// <summary>
         /// 内容

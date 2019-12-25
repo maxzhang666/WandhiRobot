@@ -186,7 +186,14 @@ namespace Native.Csharp.Customer.Window
             }
             dgv_TimerList.Refresh();
         }
-
+        private void dgv_TimerList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                GroupTimers[e.RowIndex].isOn = (bool)dgv_TimerList.Rows[e.RowIndex].Cells[0].EditedFormattedValue;
+                dgv_TimerList.Refresh();
+            }
+        }
         #endregion
 
         #region 配置保存、更新
@@ -220,9 +227,10 @@ namespace Native.Csharp.Customer.Window
             FrmAnchorTips.ShowTips((Control)sender, "保存成功", AnchorTipsLocation.TOP, autoCloseTime: 2000);
         }
 
+
+
+
         #endregion
-
-
 
 
     }
