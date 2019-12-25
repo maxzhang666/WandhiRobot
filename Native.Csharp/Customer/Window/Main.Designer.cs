@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gb_Config = new System.Windows.Forms.GroupBox();
@@ -51,6 +51,7 @@
             this.dgc_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgc_Inteval = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgc_Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_NewsTest = new HZH_Controls.Controls.UCBtnExt();
             this.gb_Config.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.cms_TimerList.SuspendLayout();
@@ -135,6 +136,7 @@
             // tab_CardTest
             // 
             this.tab_CardTest.Controls.Add(this.btn_XmlClear);
+            this.tab_CardTest.Controls.Add(this.btn_NewsTest);
             this.tab_CardTest.Controls.Add(this.btn_XmlSend);
             this.tab_CardTest.Controls.Add(this.textBox_XmlTest);
             this.tab_CardTest.Location = new System.Drawing.Point(4, 34);
@@ -289,8 +291,8 @@
             this.dgv_TimerList.AllowUserToAddRows = false;
             this.dgv_TimerList.AllowUserToDeleteRows = false;
             this.dgv_TimerList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            this.dgv_TimerList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            this.dgv_TimerList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_TimerList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgv_TimerList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
             this.dgv_TimerList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -300,14 +302,14 @@
             this.dgc_Inteval,
             this.dgc_Content});
             this.dgv_TimerList.ContextMenuStrip = this.cms_TimerList;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_TimerList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_TimerList.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_TimerList.GridColor = System.Drawing.Color.Gray;
             this.dgv_TimerList.Location = new System.Drawing.Point(6, 9);
             this.dgv_TimerList.MultiSelect = false;
@@ -344,6 +346,33 @@
             this.dgc_Content.Name = "dgc_Content";
             this.dgc_Content.ReadOnly = true;
             this.dgc_Content.Width = 212;
+            // 
+            // btn_NewsTest
+            // 
+            this.btn_NewsTest.BackColor = System.Drawing.Color.White;
+            this.btn_NewsTest.BtnBackColor = System.Drawing.Color.White;
+            this.btn_NewsTest.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_NewsTest.BtnForeColor = System.Drawing.Color.White;
+            this.btn_NewsTest.BtnText = "发送";
+            this.btn_NewsTest.ConerRadius = 5;
+            this.btn_NewsTest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_NewsTest.EnabledMouseEffect = true;
+            this.btn_NewsTest.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btn_NewsTest.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btn_NewsTest.IsRadius = true;
+            this.btn_NewsTest.IsShowRect = true;
+            this.btn_NewsTest.IsShowTips = false;
+            this.btn_NewsTest.Location = new System.Drawing.Point(209, 254);
+            this.btn_NewsTest.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_NewsTest.Name = "btn_NewsTest";
+            this.btn_NewsTest.RectColor = System.Drawing.Color.White;
+            this.btn_NewsTest.RectWidth = 1;
+            this.btn_NewsTest.Size = new System.Drawing.Size(91, 35);
+            this.btn_NewsTest.TabIndex = 4;
+            this.btn_NewsTest.TabStop = false;
+            this.btn_NewsTest.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.btn_NewsTest.TipsText = "";
+            this.btn_NewsTest.BtnClick += new System.EventHandler(this.btn_NewsTest_BtnClick);
             // 
             // Main
             // 
@@ -391,5 +420,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Inteval;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Content;
+        private HZH_Controls.Controls.UCBtnExt btn_NewsTest;
     }
 }

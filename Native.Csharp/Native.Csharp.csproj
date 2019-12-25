@@ -145,11 +145,13 @@
     <Compile Include="Customer\Model\BaseConfig.cs" />
     <Compile Include="Customer\Model\GroupConfig.cs" />
     <Compile Include="Customer\Model\GroupTimer.cs" />
+    <Compile Include="Customer\Model\NewsInfo.cs" />
     <Compile Include="Customer\Service\BaseCache.cs" />
     <Compile Include="Customer\Service\ChpService.cs" />
     <Compile Include="Customer\Service\ConfigService.cs" />
     <Compile Include="Customer\Service\Interface\ICache.cs" />
     <Compile Include="Customer\Service\MemoryCacheService.cs" />
+    <Compile Include="Customer\Service\NewsService.cs" />
     <Compile Include="Customer\Window\Main.cs">
       <SubType>Form</SubType>
     </Compile>

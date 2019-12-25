@@ -82,13 +82,21 @@ namespace Native.Csharp.Customer.Window
 
         #endregion
 
-        #region 卡片测试
+        #region 测试
 
         private void btn_XmlSend_Click(object sender, EventArgs e)
         {
             Common.CqApi.SendGroupMessage(CurrentGroup, textBox_XmlTest.Text);
         }
-
+        /// <summary>
+        /// 新闻简报测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_NewsTest_BtnClick(object sender, EventArgs e)
+        {
+            Common.CqApi.SendGroupMessage(CurrentGroup, new NewsService().GetNews());
+        }
         private void btn_XmlClear_Click(object sender, EventArgs e)
         {
             textBox_XmlTest.Text = "";
@@ -212,5 +220,7 @@ namespace Native.Csharp.Customer.Window
         {
             Common.CloseMainSetting();
         }
+
+
     }
 }
