@@ -234,7 +234,7 @@
             this.tab_GroupTimers.Padding = new System.Windows.Forms.Padding(3);
             this.tab_GroupTimers.Size = new System.Drawing.Size(466, 312);
             this.tab_GroupTimers.TabIndex = 2;
-            this.tab_GroupTimers.Text = "定时发送任务";
+            this.tab_GroupTimers.Text = "间隔消息";
             this.tab_GroupTimers.UseVisualStyleBackColor = true;
             // 
             // dgv_TimerList

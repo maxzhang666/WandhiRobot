@@ -32,8 +32,8 @@ namespace Native.Csharp.Customer.Window
             InitializeComponent();
 #if DEBUG
 #else
-            tabPage1.Parent = null;
-            tab_CardTest.Parent = null;      
+            tab_BaseConfig.Parent = null;
+            tab_CardTest.Parent = null;
 #endif
         }
 
