@@ -1,4 +1,5 @@
 ﻿using HZH_Controls.Controls;
+using HZH_Controls.Forms;
 using Native.Csharp.App;
 using Native.Csharp.Customer.Extension;
 using Native.Csharp.Customer.Model;
@@ -189,6 +190,7 @@ namespace Native.Csharp.Customer.Window
 
         private void btn_SaveConfig_Click(object sender, EventArgs e)
         {
+
             if (CurrentGroup != 0)
             {
                 GroupConfig groupConfig;
@@ -212,6 +214,7 @@ namespace Native.Csharp.Customer.Window
             }
 
             Config = Common.SaveConfig(Config);
+            FrmAnchorTips.ShowTips((Control)sender, "保存成功", AnchorTipsLocation.TOP, autoCloseTime: 2000);
         }
 
         #endregion
