@@ -25,7 +25,8 @@ namespace Native.Csharp.Customer.Window
         /// <summary>
         /// 当前群号
         /// </summary>
-        private long CurrentGroup;
+        //private long CurrentGroup;
+        private GroupConfig CurrentGroup;
         private BindingList<GroupTimer> GroupTimers = new BindingList<GroupTimer>();
         public Main()
         {
@@ -74,13 +75,22 @@ namespace Native.Csharp.Customer.Window
         private void list_GroupList_ItemClick(UCListItemExt item)
         {
             var selected = (GroupInfo)item.DataSource.Source;
-            CurrentGroup = selected.Id;
-            gb_Config.Text = $"功能-当前群：{CurrentGroup}";
+            if (Config.groupConfigs.ContainsKey(selected.Id))
+            {
+                CurrentGroup = Config.groupConfigs[selected.Id];
+            }
+            else
+            {
+                CurrentGroup = new GroupConfig(selected.Id);
+                Config.groupConfigs.Add(selected.Id, CurrentGroup);
+            }
+
+            gb_Config.Text = $"功能-当前群：{CurrentGroup.GroupId}";
 
 
             #region 初始化相关配置信息
             //定时任务
-            InitGroupTimers(CurrentGroup);
+            InitGroupTimers();
             #endregion
         }
         #endregion
@@ -89,7 +99,7 @@ namespace Native.Csharp.Customer.Window
 
         private void btn_XmlSend_Click(object sender, EventArgs e)
         {
-            Common.CqApi.SendGroupMessage(CurrentGroup, textBox_XmlTest.Text);
+            Common.CqApi.SendGroupMessage(CurrentGroup.GroupId, textBox_XmlTest.Text);
         }
         /// <summary>
         /// 新闻简报测试
@@ -98,7 +108,7 @@ namespace Native.Csharp.Customer.Window
         /// <param name="e"></param>
         private void btn_NewsTest_BtnClick(object sender, EventArgs e)
         {
-            Common.CqApi.SendGroupMessage(CurrentGroup, new NewsService().GetNews());
+            Common.CqApi.SendGroupMessage(CurrentGroup.GroupId, new NewsService().GetNews());
         }
         private void btn_XmlClear_Click(object sender, EventArgs e)
         {
@@ -112,18 +122,11 @@ namespace Native.Csharp.Customer.Window
         /// 初始化群定时任务列表
         /// </summary>
         /// <param name="GroupId"></param>
-        private void InitGroupTimers(long GroupId)
+        private void InitGroupTimers()
         {
             #region 初始化定时任务列表
-            if (Config.groupConfigs.ContainsKey(GroupId))
-            {
-                GroupTimers.Clear();
-                Config.groupConfigs[GroupId].GroupTimers.Values.ToList().ForEach(a => GroupTimers.Add(a));
-            }
-            else
-            {
-                GroupTimers = new BindingList<GroupTimer>();
-            }
+            GroupTimers.Clear();
+            CurrentGroup.GroupTimers.Values.ToList().ForEach(a => GroupTimers.Add(a));
             var bs = new BindingSource();
             bs.DataSource = GroupTimers;
             dgv_TimerList.DataSource = bs;
@@ -200,23 +203,12 @@ namespace Native.Csharp.Customer.Window
 
         private void btn_SaveConfig_Click(object sender, EventArgs e)
         {
-
-            if (CurrentGroup != 0)
+            if (CurrentGroup != null && CurrentGroup.GroupId != 0)
             {
-                GroupConfig groupConfig;
-                if (Config.groupConfigs.ContainsKey(CurrentGroup))
-                {
-                    groupConfig = Config.groupConfigs[CurrentGroup];
-                }
-                else
-                {
-                    groupConfig = new GroupConfig(CurrentGroup);
-                    Config.groupConfigs.Add(CurrentGroup, groupConfig);
-                }
                 switch (tabControl1.SelectedTab.Name)
                 {
                     case "tab_GroupTimers":
-                        groupConfig.GroupTimers = GroupTimers.ToDictionary(a => a.name, b => b);
+                        CurrentGroup.GroupTimers = GroupTimers.ToDictionary(a => a.name, b => b);
                         break;
                     default:
                         break;
