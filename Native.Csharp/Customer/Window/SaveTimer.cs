@@ -32,7 +32,7 @@ namespace Native.Csharp.Customer.Window
                 FrmDialog.ShowDialog(this, msg, "信息不完整");
                 return;
             }
-            model.name = txt_TimerName.Text;
+            model.name = txt_TimerName.InputText;
             model.Content = txt_Content.Text;
             model.Hour = (int)num_Hour.Num;
             model.Min = (int)num_Min.Num;
@@ -58,7 +58,7 @@ namespace Native.Csharp.Customer.Window
                 msg = "间隔不能都为0";
                 return false;
             }
-            if (string.IsNullOrEmpty(txt_TimerName.Text))
+            if (string.IsNullOrEmpty(txt_TimerName.InputText))
             {
                 msg = "请填写任务名称";
                 return false;
