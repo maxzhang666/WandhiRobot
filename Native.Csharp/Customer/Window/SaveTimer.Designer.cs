@@ -56,13 +56,13 @@
             this.panel3.Controls.Add(this.num_Hour);
             this.panel3.Controls.Add(this.txt_Content);
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Size = new System.Drawing.Size(572, 412);
+            this.panel3.Size = new System.Drawing.Size(552, 397);
             // 
             // txt_Content
             // 
             this.txt_Content.DecLength = 2;
             this.txt_Content.InputType = HZH_Controls.TextInputType.NotControl;
-            this.txt_Content.Location = new System.Drawing.Point(89, 185);
+            this.txt_Content.Location = new System.Drawing.Point(89, 143);
             this.txt_Content.MaxValue = new decimal(new int[] {
             1000000,
             0,
@@ -95,7 +95,7 @@
             this.num_Hour.InputType = HZH_Controls.TextInputType.Number;
             this.num_Hour.IsNumCanInput = true;
             this.num_Hour.KeyBoardType = HZH_Controls.Controls.KeyBoardType.UCKeyBorderNum;
-            this.num_Hour.Location = new System.Drawing.Point(89, 127);
+            this.num_Hour.Location = new System.Drawing.Point(89, 85);
             this.num_Hour.MaxValue = new decimal(new int[] {
             60,
             0,
@@ -126,7 +126,7 @@
             this.num_Min.InputType = HZH_Controls.TextInputType.Number;
             this.num_Min.IsNumCanInput = true;
             this.num_Min.KeyBoardType = HZH_Controls.Controls.KeyBoardType.UCKeyBorderNum;
-            this.num_Min.Location = new System.Drawing.Point(227, 127);
+            this.num_Min.Location = new System.Drawing.Point(227, 85);
             this.num_Min.MaxValue = new decimal(new int[] {
             60,
             0,
@@ -157,7 +157,7 @@
             this.num_Sec.InputType = HZH_Controls.TextInputType.Number;
             this.num_Sec.IsNumCanInput = true;
             this.num_Sec.KeyBoardType = HZH_Controls.Controls.KeyBoardType.UCKeyBorderNum;
-            this.num_Sec.Location = new System.Drawing.Point(365, 127);
+            this.num_Sec.Location = new System.Drawing.Point(365, 85);
             this.num_Sec.MaxValue = new decimal(new int[] {
             60,
             0,
@@ -185,7 +185,7 @@
             this.txt_TimerName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_TimerName.DecLength = 2;
             this.txt_TimerName.FillColor = System.Drawing.Color.Empty;
-            this.txt_TimerName.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
+            this.txt_TimerName.FocusBorderColor = System.Drawing.SystemColors.Highlight;
             this.txt_TimerName.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txt_TimerName.InputText = "";
             this.txt_TimerName.InputType = HZH_Controls.TextInputType.NotControl;
@@ -196,7 +196,7 @@
             this.txt_TimerName.IsShowRect = true;
             this.txt_TimerName.IsShowSearchBtn = false;
             this.txt_TimerName.KeyBoardType = HZH_Controls.Controls.KeyBoardType.UCKeyBorderAll_EN;
-            this.txt_TimerName.Location = new System.Drawing.Point(89, 69);
+            this.txt_TimerName.Location = new System.Drawing.Point(89, 27);
             this.txt_TimerName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_TimerName.MaxValue = new decimal(new int[] {
             1000000,
@@ -217,13 +217,13 @@
             this.txt_TimerName.RectWidth = 1;
             this.txt_TimerName.RegexPattern = "";
             this.txt_TimerName.Size = new System.Drawing.Size(404, 42);
-            this.txt_TimerName.TabIndex = 6;
+            this.txt_TimerName.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(39, 82);
+            this.label1.Location = new System.Drawing.Point(39, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 21);
             this.label1.TabIndex = 7;
@@ -233,7 +233,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(39, 133);
+            this.label2.Location = new System.Drawing.Point(39, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 21);
             this.label2.TabIndex = 7;
@@ -243,7 +243,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(39, 184);
+            this.label3.Location = new System.Drawing.Point(39, 142);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 21);
             this.label3.TabIndex = 7;
@@ -253,7 +253,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(195, 132);
+            this.label4.Location = new System.Drawing.Point(195, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 21);
             this.label4.TabIndex = 7;
@@ -263,7 +263,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(333, 132);
+            this.label5.Location = new System.Drawing.Point(333, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 21);
             this.label5.TabIndex = 7;
@@ -273,7 +273,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(471, 132);
+            this.label6.Location = new System.Drawing.Point(471, 90);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 21);
             this.label6.TabIndex = 7;
@@ -283,7 +283,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(572, 412);
+            this.ClientSize = new System.Drawing.Size(552, 397);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SaveTimer";
