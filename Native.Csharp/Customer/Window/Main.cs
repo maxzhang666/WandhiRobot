@@ -26,7 +26,7 @@ namespace Native.Csharp.Customer.Window
         /// 当前群号
         /// </summary>
         private long CurrentGroup;
-        private List<GroupTimer> GroupTimers = new List<GroupTimer>();
+        private BindingList<GroupTimer> GroupTimers = new BindingList<GroupTimer>();
         public Main()
         {
             InitializeComponent();
@@ -37,12 +37,19 @@ namespace Native.Csharp.Customer.Window
 #endif
         }
 
+        #region 窗体
+
         private void Main_Load(object sender, EventArgs e)
         {
             Config = Common.AppConfig;
             dgv_TimerList.AutoGenerateColumns = false;
             InitGroupList();
         }
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Common.CloseMainSetting();
+        }
+        #endregion
 
         #region 群列表
 
@@ -110,11 +117,12 @@ namespace Native.Csharp.Customer.Window
             #region 初始化定时任务列表
             if (Config.groupConfigs.ContainsKey(GroupId))
             {
-                GroupTimers = Config.groupConfigs[GroupId].GroupTimers.Values.ToList();
+                GroupTimers.Clear();
+                Config.groupConfigs[GroupId].GroupTimers.Values.ToList().ForEach(a => GroupTimers.Add(a));
             }
             else
             {
-                GroupTimers = new List<GroupTimer>();
+                GroupTimers = new BindingList<GroupTimer>();
             }
             var bs = new BindingSource();
             bs.DataSource = GroupTimers;
@@ -125,7 +133,7 @@ namespace Native.Csharp.Customer.Window
         }
         private void tsm_Add_Click(object sender, EventArgs e)
         {
-            var st = new SaveTimer();
+            var st = new SaveTimer(GroupTimers.Select(a => a.name).ToList());
             if (st.ShowDialog() == DialogResult.OK)
             {
                 SaveTimer(st.model);
@@ -137,7 +145,7 @@ namespace Native.Csharp.Customer.Window
             if (dgv_TimerList.HasSelected())
             {
                 var mod = dgv_TimerList.GetFirstSelected<GroupTimer>();
-                var st = new SaveTimer(mod);
+                var st = new SaveTimer(mod, GroupTimers.Select(a => a.name).ToList());
                 if (st.ShowDialog() == DialogResult.OK)
                 {
                     SaveTimer(st.model);
@@ -214,10 +222,7 @@ namespace Native.Csharp.Customer.Window
 
         #endregion
 
-        private void Main_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Common.CloseMainSetting();
-        }
+
 
 
     }

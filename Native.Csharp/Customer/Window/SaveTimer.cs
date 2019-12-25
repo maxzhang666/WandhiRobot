@@ -19,11 +19,19 @@ namespace Native.Csharp.Customer.Window
         {
             InitializeComponent();
         }
-        public SaveTimer(GroupTimer groupTimer)
+        public SaveTimer(IList<string> names)
+        {
+            InitializeComponent();
+            this.names = names;
+        }
+        public SaveTimer(GroupTimer groupTimer, IList<string> names)
         {
             InitializeComponent();
             model = groupTimer;
+            this.names = names;
         }
+
+        public IList<string> names;
 
         protected override void DoEnter()
         {
@@ -68,6 +76,10 @@ namespace Native.Csharp.Customer.Window
                 msg = "内容不能为空";
                 return false;
             }
+            if (names.Contains(txt_TimerName.InputText))
+            {
+                msg = "任务名称重复";
+            }
             return res;
         }
 
@@ -76,31 +88,16 @@ namespace Native.Csharp.Customer.Window
             if (model != null)
             {
                 this.Title = $"编辑-{model.name}";
-                txt_TimerName.Text = model.name;
-
+                txt_TimerName.InputText = model.name;
                 num_Hour.Num = model.Hour;
                 num_Min.Num = model.Min;
                 num_Sec.Num = model.Sec;
-
                 txt_Content.Text = model.Content;
             }
             else
             {
                 model = new GroupTimer();
             }
-        }
-
-
-
-        private void btn_Cancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
-
-        private void num_Min_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
