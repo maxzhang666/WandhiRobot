@@ -24,7 +24,7 @@ namespace Native.Csharp.Customer.Event
                   Common.Debug("报时检测");
 
                   var flag = Common.Cache.Get(key, false);
-                  if (DateTime.Now.Minute == 0 && !flag)
+                  if (DateTime.Now.Minute == 0 && !flag && DateTime.Now.Hour >= 7 && DateTime.Now.Hour <= 23)
                   {
                       var dang = new StringBuilder();
                       for (int i = 0; i < DateTime.Now.Hour; i++)
@@ -35,6 +35,11 @@ namespace Native.Csharp.Customer.Event
                       {
                           long[] groups = { 783627728, 340569308, 655341576, 722457505 };
                           var msg = $"{dang.ToString().TrimEnd('、')}\r\n" + new ChpService().GetChp();
+
+                          if (DateTime.Now.Hour == 23)
+                          {
+                              msg += "\r\n 夜深了，早点休息！";
+                          }
                           foreach (var item in groups)
                           {
                               Common.CqApi.SendGroupMessage(item, msg);
