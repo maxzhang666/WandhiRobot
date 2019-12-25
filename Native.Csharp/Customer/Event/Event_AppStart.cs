@@ -17,6 +17,7 @@ namespace Native.Csharp.Customer.Event
         {
             var config = Common.AppConfig;
 #if DEBUG
+            #region 报时器
             Common.CommonTimer = new Timer((a) =>
               {
                   var key = $"Hour:{DateTime.Now.Hour}";
@@ -49,6 +50,7 @@ namespace Native.Csharp.Customer.Event
                       Common.Cache.Set(key, true, TimeSpan.FromMinutes(60));
                   }
               }, null, 17 * 1000, 17 * 1000);
+            #endregion
 #endif
             Common.RefreshTimers();
         }

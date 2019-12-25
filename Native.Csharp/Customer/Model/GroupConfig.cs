@@ -20,6 +20,9 @@ namespace Native.Csharp.Customer.Model
         /// 群号
         /// </summary>
         public long GroupId { set; get; }
+
+        public bool NewsOn { set; get; } = false;
+        public DateTime? NewsTime { set; get; }
         /// <summary>
         /// 群定时任务配置
         /// </summary>

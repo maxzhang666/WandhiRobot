@@ -15,6 +15,8 @@ namespace Native.Csharp.App
     public static partial class Common
     {
         public static Timer Chp;
+
+        #region 控制中心窗体
         /// <summary>
         /// 控制中心实例
         /// </summary>
@@ -30,11 +32,18 @@ namespace Native.Csharp.App
             }
         }
         private static Main _MainSetting { set; get; }
+        /// <summary>
+        /// 关闭窗体
+        /// </summary>
         public static void CloseMainSetting()
         {
             _MainSetting.Dispose();
             _MainSetting = null;
         }
+        #endregion
+
+        #region 缓存
+
         /// <summary>
         /// 缓存操作
         /// </summary>
@@ -50,6 +59,9 @@ namespace Native.Csharp.App
             }
         }
         private static MemoryCacheService _MemoryCacheService { set; get; }
+        #endregion
+
+        #region 配置
 
         /// <summary>
         /// 配置操作类
@@ -66,6 +78,9 @@ namespace Native.Csharp.App
             }
         }
         private static ConfigService _ConfigService;
+        #endregion
+
+        #region 计时器
 
         /// <summary>
         /// 通用计时器
@@ -73,16 +88,40 @@ namespace Native.Csharp.App
         /// 默认1秒一次  请在传入的方法中自行判断是否执行
         /// </summary>
         public static Timer CommonTimer { set; get; }
-
-        /// <summary>
-        /// 事件列表
-        /// </summary>
-        public static List<Action> Funcs { set; get; }
-
         /// <summary>
         /// 计时器列表
         /// </summary>
         public static Dictionary<string, Timer> Timers { set; get; } = new Dictionary<string, Timer>();
+        #endregion
+
+        #region 任务操作
+        /// <summary>
+        /// 睡眠指定时间后执行任务
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="time"></param>
+        public static void NewTask(Action action, TimeSpan? time)
+        {
+            Task.Run(() =>
+            {
+                if (time.HasValue)
+                {
+                    Thread.Sleep(time.Value);
+                }
+                action.Invoke();
+            });
+        }
+        /// <summary>
+        /// 睡眠1-10随机秒后执行任务
+        /// </summary>
+        /// <param name="action"></param>
+        public static void NewTask(Action action)
+        {
+            var time = TimeSpan.FromSeconds(new Random().NextDouble() * 10);
+            NewTask(action, time);
+        }
+
+        #endregion
 
         #region 计时器初始化
         /// <summary>
