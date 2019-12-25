@@ -16,9 +16,9 @@ namespace Native.Csharp.Customer.Service
             var data = mod.data;
             var msg = $@"嗨简报:{DateTime.Now.ToString("MM月dd日")},农历{data.calendar.monthCn}{data.calendar.dayCn},工作愉快,平安喜乐
 【快讯】
-{data.newsList.Select(a => $"[{a.category}]{a.title}\r\n")}
+{string.Join("\r\n", data.newsList.Select(a => $"[{a.category}]{a.title}"))}
 【历史上的今天】
-{data.historyList.Select(a => $"{a.@event}\r\n")}
+{string.Join("\r\n", data.historyList.Select(a => $"{a.@event}"))}
 【今日成语】
 {data.phrase.pinyin}
 {data.phrase.phrase}

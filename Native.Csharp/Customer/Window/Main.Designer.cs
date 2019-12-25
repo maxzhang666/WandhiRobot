@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gb_Config = new System.Windows.Forms.GroupBox();
@@ -291,8 +291,8 @@
             this.dgv_TimerList.AllowUserToAddRows = false;
             this.dgv_TimerList.AllowUserToDeleteRows = false;
             this.dgv_TimerList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            this.dgv_TimerList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            this.dgv_TimerList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_TimerList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgv_TimerList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
             this.dgv_TimerList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -302,14 +302,14 @@
             this.dgc_Inteval,
             this.dgc_Content});
             this.dgv_TimerList.ContextMenuStrip = this.cms_TimerList;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_TimerList.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_TimerList.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_TimerList.GridColor = System.Drawing.Color.Gray;
             this.dgv_TimerList.Location = new System.Drawing.Point(6, 9);
             this.dgv_TimerList.MultiSelect = false;
@@ -353,7 +353,7 @@
             this.btn_NewsTest.BtnBackColor = System.Drawing.Color.White;
             this.btn_NewsTest.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_NewsTest.BtnForeColor = System.Drawing.Color.White;
-            this.btn_NewsTest.BtnText = "发送";
+            this.btn_NewsTest.BtnText = "新闻简报测试";
             this.btn_NewsTest.ConerRadius = 5;
             this.btn_NewsTest.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_NewsTest.EnabledMouseEffect = true;
@@ -367,7 +367,7 @@
             this.btn_NewsTest.Name = "btn_NewsTest";
             this.btn_NewsTest.RectColor = System.Drawing.Color.White;
             this.btn_NewsTest.RectWidth = 1;
-            this.btn_NewsTest.Size = new System.Drawing.Size(91, 35);
+            this.btn_NewsTest.Size = new System.Drawing.Size(110, 35);
             this.btn_NewsTest.TabIndex = 4;
             this.btn_NewsTest.TabStop = false;
             this.btn_NewsTest.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
@@ -379,7 +379,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(915, 693);
+            this.ClientSize = new System.Drawing.Size(694, 428);
             this.Controls.Add(this.list_GroupList);
             this.Controls.Add(this.gb_Config);
             this.Controls.Add(this.groupBox1);
