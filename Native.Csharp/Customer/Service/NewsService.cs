@@ -70,7 +70,8 @@ namespace Native.Csharp.Customer.Service
                 foreach (var item in Common.AppConfig.groupConfigs.Values.Where(a => a.NewsOn && a.NewsTime.HasValue))
                 {
                     var key = $"{item.GroupId}:{CacheKey}";
-                    if (!Common.Cache.Get(key, false))
+                    //重复、时间验证
+                    if (!Common.Cache.Get(key, false) && (DateTime.Now.Hour == item.NewsTime.Value.Hour && DateTime.Now.Minute == item.NewsTime.Value.Minute))
                     {
                         Common.CqApi.SendGroupMessage(item.GroupId, msg);
                         Common.Cache.Set(key, true);
