@@ -54,8 +54,12 @@
             this.tsm_Del = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_SaveConfig = new HZH_Controls.Controls.UCBtnExt();
             this.list_GroupList = new HZH_Controls.Controls.UCListExt();
+            this.sw_News = new HZH_Controls.Controls.UCSwitch();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dp_News = new HZH_Controls.Controls.UCDatePickerExt();
             this.gb_Config.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tab_BaseConfig.SuspendLayout();
             this.tab_CardTest.SuspendLayout();
             this.tab_GroupTimers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_TimerList)).BeginInit();
@@ -97,6 +101,9 @@
             // 
             // tab_BaseConfig
             // 
+            this.tab_BaseConfig.Controls.Add(this.dp_News);
+            this.tab_BaseConfig.Controls.Add(this.label1);
+            this.tab_BaseConfig.Controls.Add(this.sw_News);
             this.tab_BaseConfig.Location = new System.Drawing.Point(4, 34);
             this.tab_BaseConfig.Name = "tab_BaseConfig";
             this.tab_BaseConfig.Padding = new System.Windows.Forms.Padding(3);
@@ -388,6 +395,53 @@
             this.list_GroupList.TitleFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_GroupList.ItemClick += new HZH_Controls.Controls.UCListExt.ItemClickEvent(this.list_GroupList_ItemClick);
             // 
+            // sw_News
+            // 
+            this.sw_News.BackColor = System.Drawing.Color.Transparent;
+            this.sw_News.Checked = false;
+            this.sw_News.FalseColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.sw_News.FalseTextColr = System.Drawing.Color.White;
+            this.sw_News.Location = new System.Drawing.Point(153, 12);
+            this.sw_News.Name = "sw_News";
+            this.sw_News.Size = new System.Drawing.Size(83, 31);
+            this.sw_News.SwitchType = HZH_Controls.Controls.SwitchType.Ellipse;
+            this.sw_News.TabIndex = 0;
+            this.sw_News.Texts = new string[] {
+        "开启",
+        "关闭"};
+            this.sw_News.TrueColor = System.Drawing.Color.DeepSkyBlue;
+            this.sw_News.TrueTextColr = System.Drawing.Color.White;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(31, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 21);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "每日新闻";
+            // 
+            // dp_News
+            // 
+            this.dp_News.BackColor = System.Drawing.Color.White;
+            this.dp_News.ConerRadius = 5;
+            this.dp_News.CurrentTime = new System.DateTime(2019, 12, 26, 9, 36, 1, 0);
+            this.dp_News.FillColor = System.Drawing.Color.Transparent;
+            this.dp_News.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dp_News.IsRadius = true;
+            this.dp_News.IsShowRect = true;
+            this.dp_News.Location = new System.Drawing.Point(284, 11);
+            this.dp_News.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dp_News.Name = "dp_News";
+            this.dp_News.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.dp_News.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.dp_News.RectWidth = 1;
+            this.dp_News.Size = new System.Drawing.Size(127, 32);
+            this.dp_News.TabIndex = 2;
+            this.dp_News.TimeFontSize = 20;
+            this.dp_News.TimeType = HZH_Controls.Controls.DateTimePickerType.Time;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -405,6 +459,8 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.gb_Config.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tab_BaseConfig.ResumeLayout(false);
+            this.tab_BaseConfig.PerformLayout();
             this.tab_CardTest.ResumeLayout(false);
             this.tab_CardTest.PerformLayout();
             this.tab_GroupTimers.ResumeLayout(false);
@@ -437,5 +493,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Inteval;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgc_Content;
+        private System.Windows.Forms.Label label1;
+        private HZH_Controls.Controls.UCSwitch sw_News;
+        private HZH_Controls.Controls.UCDatePickerExt dp_News;
     }
 }

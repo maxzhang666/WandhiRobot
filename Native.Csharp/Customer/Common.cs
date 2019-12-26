@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Unity;
 
 namespace Native.Csharp.App
 {
@@ -81,6 +82,18 @@ namespace Native.Csharp.App
         #endregion
 
         #region 计时器
+
+        /// <summary>
+        /// 初始化通用计时器
+        /// </summary>
+        public static void InitCommonTimer()
+        {
+            CommonTimer = new Timer((a) =>
+            {
+                var timerHandle = UnityContainer.Resolve<ICommonTimer>("通用计时器");
+                NewTask(timerHandle.Run);
+            }, null, 27 * 1000, 27 * 1000);
+        }
 
         /// <summary>
         /// 通用计时器

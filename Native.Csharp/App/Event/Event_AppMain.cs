@@ -43,8 +43,6 @@ namespace Native.Csharp.App.Event
 
 
             container.RegisterType<ICqAppEnable, Event_AppStart>("应用已被启用");
-            container.RegisterType<IReceiveGroupMessage, Event_GroupMessage>("群消息处理");
-            container.RegisterType<ICallMenu, Event_MainSetting>("控制中心");
         }
 
         /// <summary>

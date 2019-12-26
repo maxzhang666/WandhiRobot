@@ -91,7 +91,20 @@ namespace Native.Csharp.Customer.Window
             #region 初始化相关配置信息
             //定时任务
             InitGroupTimers();
+            //基础配置信息
+            InitBaseConfig();
             #endregion
+        }
+        #endregion
+
+        #region 基础配置
+        private void InitBaseConfig()
+        {
+            sw_News.Checked = CurrentGroup.NewsOn;
+            if (CurrentGroup.NewsTime.HasValue)
+            {
+                dp_News.CurrentTime = CurrentGroup.NewsTime.Value;
+            }
         }
         #endregion
 
@@ -210,6 +223,9 @@ namespace Native.Csharp.Customer.Window
                     case "tab_GroupTimers":
                         CurrentGroup.GroupTimers = GroupTimers.ToDictionary(a => a.name, b => b);
                         break;
+                    case "tab_BaseConfig":
+                        SaveBaseConfig();
+                        break;
                     default:
                         break;
                 }
@@ -218,7 +234,17 @@ namespace Native.Csharp.Customer.Window
             Config = Common.SaveConfig(Config);
             FrmAnchorTips.ShowTips((Control)sender, "保存成功", AnchorTipsLocation.TOP, autoCloseTime: 2000);
         }
+        /// <summary>
+        /// 保存基础配置
+        /// </summary>
+        private void SaveBaseConfig()
+        {
+            CurrentGroup.NewsOn = sw_News.Checked;
+            CurrentGroup.NewsTime = dp_News.CurrentTime;
 
+            //刷新通用计时器
+            Common.InitCommonTimer();
+        }
 
 
 
