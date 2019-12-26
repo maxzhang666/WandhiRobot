@@ -69,7 +69,7 @@ namespace Native.Csharp.Customer.Service
             {
                 foreach (var item in Common.AppConfig.groupConfigs.Values.Where(a => a.NewsOn && a.NewsTime.HasValue))
                 {
-
+                    Common.CqApi.SendGroupMessage(item.GroupId, msg);
                 }
             }
         }

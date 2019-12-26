@@ -88,6 +88,7 @@ namespace Native.Csharp.App
         /// </summary>
         public static void InitCommonTimer()
         {
+            CommonTimer.Dispose();
             CommonTimer = new Timer((a) =>
             {
                 var timerHandle = UnityContainer.Resolve<ICommonTimer>("通用计时器");
