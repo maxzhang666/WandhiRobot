@@ -218,32 +218,37 @@ namespace Native.Csharp.Customer.Window
         {
             if (CurrentGroup != null && CurrentGroup.GroupId != 0)
             {
+                Action action = null;
                 switch (tabControl1.SelectedTab.Name)
                 {
                     case "tab_GroupTimers":
                         CurrentGroup.GroupTimers = GroupTimers.ToDictionary(a => a.name, b => b);
+                        action = Common.RefreshTimers;
                         break;
                     case "tab_BaseConfig":
-                        SaveBaseConfig();
+                        action = SaveBaseConfig();
                         break;
                     default:
                         break;
                 }
+                Config = Common.SaveConfig(Config, action);
+                FrmAnchorTips.ShowTips((Control)sender, "保存成功", AnchorTipsLocation.TOP, autoCloseTime: 2000);
             }
-
-            Config = Common.SaveConfig(Config);
-            FrmAnchorTips.ShowTips((Control)sender, "保存成功", AnchorTipsLocation.TOP, autoCloseTime: 2000);
+            else
+            {
+                FrmAnchorTips.ShowTips((Control)sender, "什么也没保存", AnchorTipsLocation.TOP, autoCloseTime: 2000);
+            }
         }
         /// <summary>
         /// 保存基础配置
         /// </summary>
-        private void SaveBaseConfig()
+        private Action SaveBaseConfig()
         {
             CurrentGroup.NewsOn = sw_News.Checked;
             CurrentGroup.NewsTime = dp_News.CurrentTime;
 
             //刷新通用计时器
-            Common.InitCommonTimer();
+            return Common.InitCommonTimer;
         }
 
 

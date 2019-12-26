@@ -203,8 +203,22 @@ namespace Native.Csharp.App
         public static BaseConfig SaveConfig(BaseConfig baseConfig)
         {
             _AppConfig = ConfigService.SaveConfig(baseConfig);
-            RefreshTimers();
             return _AppConfig;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="baseConfig"></param>
+        /// <param name="CallBack">回调函数</param>
+        /// <returns></returns>
+        public static BaseConfig SaveConfig(BaseConfig baseConfig, Action CallBack)
+        {
+            var config = SaveConfig(baseConfig);
+            if (CallBack != null)
+            {
+                CallBack.BeginInvoke(null, null);
+            }
+            return config;
         }
         #endregion
 
