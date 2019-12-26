@@ -69,7 +69,12 @@ namespace Native.Csharp.Customer.Service
             {
                 foreach (var item in Common.AppConfig.groupConfigs.Values.Where(a => a.NewsOn && a.NewsTime.HasValue))
                 {
-                    Common.CqApi.SendGroupMessage(item.GroupId, msg);
+                    var key = $"{item.GroupId}:{CacheKey}";
+                    if (!Common.Cache.Get(key, false))
+                    {
+                        Common.CqApi.SendGroupMessage(item.GroupId, msg);
+                        Common.Cache.Set(key, true);
+                    }
                 }
             }
         }
