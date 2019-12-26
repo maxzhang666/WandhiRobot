@@ -71,13 +71,23 @@ namespace Native.Csharp.Customer.Service
                 {
                     var key = $"{item.GroupId}:{CacheKey}";
                     //重复、时间验证
-                    if (!Common.Cache.Get(key, false) && (DateTime.Now.Hour == item.NewsTime.Value.Hour && DateTime.Now.Minute == item.NewsTime.Value.Minute))
+                    if (!Common.Cache.Get(key, false) && AllowSend(item.NewsTime.Value))
                     {
                         Common.CqApi.SendGroupMessage(item.GroupId, msg);
                         Common.Cache.Set(key, true);
                     }
                 }
             }
+        }
+
+        public bool AllowSend()
+        {
+            return false;
+        }
+
+        public bool AllowSend(DateTime time)
+        {
+            return DateTime.Now.Hour == time.Hour && DateTime.Now.Minute == time.Minute;
         }
     }
 }
