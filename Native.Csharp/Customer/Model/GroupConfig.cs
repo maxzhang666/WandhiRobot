@@ -32,6 +32,11 @@ namespace Native.Csharp.Customer.Model
         public DateTime? NewsTime { set; get; }
         #endregion
 
+        #region Q资讯
+        public bool InfoQOn { set; get; } = false;
+        public DateTime? InfoQTime { set; get; }
+        #endregion
+
         #region 整点报时           
 
         /// <summary>

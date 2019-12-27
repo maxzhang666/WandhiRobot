@@ -145,15 +145,19 @@
     <Compile Include="Customer\Model\BaseConfig.cs" />
     <Compile Include="Customer\Model\GroupConfig.cs" />
     <Compile Include="Customer\Model\GroupTimer.cs" />
+    <Compile Include="Customer\Model\HttpResult.cs" />
+    <Compile Include="Customer\Model\InfoQ\InfoQItem.cs" />
+    <Compile Include="Customer\Model\InfoQ\InfoQModel.cs" />
     <Compile Include="Customer\Model\NewsInfo.cs" />
     <Compile Include="Customer\Service\BaseCache.cs" />
     <Compile Include="Customer\Service\ChpService.cs" />
+    <Compile Include="Customer\Service\CommonTimerService\InfoQService.cs" />
     <Compile Include="Customer\Service\ConfigService.cs" />
     <Compile Include="Customer\Service\Interface\ICache.cs" />
     <Compile Include="Customer\Service\Interface\ICommonTimer.cs" />
     <Compile Include="Customer\Service\MemoryCacheService.cs" />
-    <Compile Include="Customer\Service\NewsService.cs" />
-    <Compile Include="Customer\Service\TimeTickService.cs" />
+    <Compile Include="Customer\Service\CommonTimerService\NewsService.cs" />
+    <Compile Include="Customer\Service\CommonTimerService\TimeTickService.cs" />
     <Compile Include="Customer\Window\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +215,7 @@
       <DependentUpon>SaveTimer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ImportGroup Label=".NET DllExport" />
   <ImportGroup Label=".NET DllExport" />
