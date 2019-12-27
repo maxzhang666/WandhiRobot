@@ -244,8 +244,11 @@ namespace Native.Csharp.Customer.Window
         /// </summary>
         private Action SaveBaseConfig()
         {
+            //每日新闻
             CurrentGroup.NewsOn = sw_News.Checked;
             CurrentGroup.NewsTime = dp_News.CurrentTime;
+            //整点报时
+            CurrentGroup.TimeTickOn = sw_TimeTick.Checked;
 
             //刷新通用计时器
             return Common.InitCommonTimer;

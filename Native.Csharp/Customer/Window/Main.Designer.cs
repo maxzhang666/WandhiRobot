@@ -57,7 +57,7 @@
             this.tsm_Del = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_SaveConfig = new HZH_Controls.Controls.UCBtnExt();
             this.list_GroupList = new HZH_Controls.Controls.UCListExt();
-            this.uc_TimeTick = new HZH_Controls.Controls.UCSwitch();
+            this.sw_TimeTick = new HZH_Controls.Controls.UCSwitch();
             this.label2 = new System.Windows.Forms.Label();
             this.gb_Config.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -105,7 +105,7 @@
             // 
             this.tab_BaseConfig.Controls.Add(this.dp_News);
             this.tab_BaseConfig.Controls.Add(this.label2);
-            this.tab_BaseConfig.Controls.Add(this.uc_TimeTick);
+            this.tab_BaseConfig.Controls.Add(this.sw_TimeTick);
             this.tab_BaseConfig.Controls.Add(this.label1);
             this.tab_BaseConfig.Controls.Add(this.sw_News);
             this.tab_BaseConfig.Location = new System.Drawing.Point(4, 34);
@@ -446,22 +446,22 @@
             this.list_GroupList.TitleFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.list_GroupList.ItemClick += new HZH_Controls.Controls.UCListExt.ItemClickEvent(this.list_GroupList_ItemClick);
             // 
-            // uc_TimeTick
+            // sw_TimeTick
             // 
-            this.uc_TimeTick.BackColor = System.Drawing.Color.Transparent;
-            this.uc_TimeTick.Checked = false;
-            this.uc_TimeTick.FalseColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
-            this.uc_TimeTick.FalseTextColr = System.Drawing.Color.White;
-            this.uc_TimeTick.Location = new System.Drawing.Point(153, 50);
-            this.uc_TimeTick.Name = "uc_TimeTick";
-            this.uc_TimeTick.Size = new System.Drawing.Size(83, 31);
-            this.uc_TimeTick.SwitchType = HZH_Controls.Controls.SwitchType.Ellipse;
-            this.uc_TimeTick.TabIndex = 0;
-            this.uc_TimeTick.Texts = new string[] {
+            this.sw_TimeTick.BackColor = System.Drawing.Color.Transparent;
+            this.sw_TimeTick.Checked = false;
+            this.sw_TimeTick.FalseColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.sw_TimeTick.FalseTextColr = System.Drawing.Color.White;
+            this.sw_TimeTick.Location = new System.Drawing.Point(153, 50);
+            this.sw_TimeTick.Name = "sw_TimeTick";
+            this.sw_TimeTick.Size = new System.Drawing.Size(83, 31);
+            this.sw_TimeTick.SwitchType = HZH_Controls.Controls.SwitchType.Ellipse;
+            this.sw_TimeTick.TabIndex = 0;
+            this.sw_TimeTick.Texts = new string[] {
         "开启",
         "关闭"};
-            this.uc_TimeTick.TrueColor = System.Drawing.Color.DeepSkyBlue;
-            this.uc_TimeTick.TrueTextColr = System.Drawing.Color.White;
+            this.sw_TimeTick.TrueColor = System.Drawing.Color.DeepSkyBlue;
+            this.sw_TimeTick.TrueTextColr = System.Drawing.Color.White;
             // 
             // label2
             // 
@@ -528,6 +528,6 @@
         private HZH_Controls.Controls.UCSwitch sw_News;
         private HZH_Controls.Controls.UCDatePickerExt dp_News;
         private System.Windows.Forms.Label label2;
-        private HZH_Controls.Controls.UCSwitch uc_TimeTick;
+        private HZH_Controls.Controls.UCSwitch sw_TimeTick;
     }
 }
