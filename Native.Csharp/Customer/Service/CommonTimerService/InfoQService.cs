@@ -94,12 +94,14 @@ namespace Native.Csharp.Customer.Service.CommonTimerService
 
         public bool AllowSend(DateTime time)
         {
+            Common.Debug("infoq","infoq发送判断："+ time.ToString());
             return DateTime.Now.Hour == time.Hour && DateTime.Now.Minute == time.Minute;
         }
 
         public void Run()
         {
             var msg = GetMsg();
+            Common.Debug("infoq", "信息已获取");
             if (!string.IsNullOrEmpty(msg))
             {
                 foreach (var item in Common.AppConfig.groupConfigs.Values.Where(a => a.InfoQOn && a.InfoQTime.HasValue))
