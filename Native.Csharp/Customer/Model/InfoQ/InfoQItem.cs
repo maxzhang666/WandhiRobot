@@ -29,9 +29,27 @@ namespace Native.Csharp.Customer.Model.InfoQ
         /// </summary>
         public string out_id { get; set; }
         /// <summary>
-        /// 
+        /// 发布日期
         /// </summary>
         public string release_time { get; set; }
+
+        /// <summary>
+        /// 发布日期
+        /// </summary>
+        public DateTime publishTime
+        {
+            get
+            {
+                if (long.TryParse(release_time, out var res))
+                {
+                    return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1)).AddSeconds(res);
+                }
+                else
+                {
+                    return DateTime.Now.AddDays(-1);
+                }
+            }
+        }
         /// <summary>
         /// 华为云推出类“钉钉”软件WeLink；YouTube删除加密视频，谷歌害怕区块链了；腾讯、阿里位列《2019区块链...
         /// </summary>

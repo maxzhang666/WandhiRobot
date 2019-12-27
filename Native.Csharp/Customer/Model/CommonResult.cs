@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Native.Csharp.Customer.Model
 {
-    public class HttpResult<T> where T : class
+    public class CommonResult<T> where T : class
     {
         /// <summary>
         /// 状态码

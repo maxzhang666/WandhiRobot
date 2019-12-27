@@ -145,7 +145,7 @@
     <Compile Include="Customer\Model\BaseConfig.cs" />
     <Compile Include="Customer\Model\GroupConfig.cs" />
     <Compile Include="Customer\Model\GroupTimer.cs" />
-    <Compile Include="Customer\Model\HttpResult.cs" />
+    <Compile Include="Customer\Model\CommonResult.cs" />
     <Compile Include="Customer\Model\InfoQ\InfoQItem.cs" />
     <Compile Include="Customer\Model\InfoQ\InfoQModel.cs" />
     <Compile Include="Customer\Model\NewsInfo.cs" />
