@@ -88,12 +88,16 @@ namespace Native.Csharp.App
         /// </summary>
         public static void InitCommonTimer()
         {
-            CommonTimer.Dispose();
+            Debug("重置通用计时器");
+            if (CommonTimer != null)
+            {
+                CommonTimer.Dispose();
+            }
             CommonTimer = new Timer((a) =>
             {
                 var timerHandle = UnityContainer.Resolve<ICommonTimer>("通用计时器");
                 NewTask(timerHandle.Run);
-            }, null, 27 * 1000, 27 * 1000);
+            }, null,  1000, 27 * 1000);
         }
 
         /// <summary>
@@ -143,7 +147,7 @@ namespace Native.Csharp.App
         /// </summary>
         public static void RefreshTimers()
         {
-            Debug("刷新计时器", "刷新计时器");
+            Debug("刷新计时器");
             Task.Run(() =>
             {
                 try
@@ -172,7 +176,7 @@ namespace Native.Csharp.App
                 }
                 catch (Exception e)
                 {
-                    Debug("计时器刷新", e.Message);
+                    Debug(e.Message, "计时器刷新");
                 }
             });
         }

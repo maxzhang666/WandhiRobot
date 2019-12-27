@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Native.Csharp.Customer.Service
+namespace Native.Csharp.Customer.Service.CommonTimerService
 {
     public class TimeTickService : ICommonTimer
     {
