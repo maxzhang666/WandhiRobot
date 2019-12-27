@@ -136,7 +136,7 @@ namespace Native.Csharp.Customer.Window
         /// <param name="e"></param>
         private void btn_InfoQTest_BtnClick(object sender, EventArgs e)
         {
-            new InfoQService().Run();
+            Common.CqApi.SendGroupMessage(CurrentGroup.GroupId, new InfoQService().GetMsg());
         }
         #endregion
 

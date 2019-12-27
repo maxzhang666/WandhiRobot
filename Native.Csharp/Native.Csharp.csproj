@@ -61,8 +61,8 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="GHttpHelper, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GHttpHelper.1.0.5\lib\net45\GHttpHelper.dll</HintPath>
+    <Reference Include="GHttpHelper, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GHttpHelper.1.0.6\lib\net45\GHttpHelper.dll</HintPath>
     </Reference>
     <Reference Include="HZH_Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HZH_Controls.1.0.11\lib\net40\HZH_Controls.dll</HintPath>
@@ -141,11 +141,13 @@
     <Compile Include="Customer\Event\Event_AppStart.cs" />
     <Compile Include="Customer\Event\Event_GroupMessage.cs" />
     <Compile Include="Customer\Event\Event_MainSetting.cs" />
+    <Compile Include="Customer\Extension\CommonExtension.cs" />
     <Compile Include="Customer\Extension\ControlExtension.cs" />
     <Compile Include="Customer\Model\BaseConfig.cs" />
     <Compile Include="Customer\Model\GroupConfig.cs" />
     <Compile Include="Customer\Model\GroupTimer.cs" />
     <Compile Include="Customer\Model\CommonResult.cs" />
+    <Compile Include="Customer\Model\InfoQ\InfoQArticle.cs" />
     <Compile Include="Customer\Model\InfoQ\InfoQItem.cs" />
     <Compile Include="Customer\Model\InfoQ\InfoQModel.cs" />
     <Compile Include="Customer\Model\NewsInfo.cs" />

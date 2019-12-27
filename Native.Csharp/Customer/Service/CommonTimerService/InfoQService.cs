@@ -1,4 +1,6 @@
 ﻿using GHttpHelper;
+using Native.Csharp.App;
+using Native.Csharp.Customer.Extension;
 using Native.Csharp.Customer.Model;
 using Native.Csharp.Customer.Model.InfoQ;
 using Native.Csharp.Customer.Service.Interface;
@@ -15,15 +17,17 @@ namespace Native.Csharp.Customer.Service.CommonTimerService
     public class InfoQService : ICommonTimer
     {
         private string Api = "https://s.geekbang.org/api/gksearch/search";
+        private string ArticleApi = "https://www.infoq.cn/public/v1/article/getDetail";
         private string Referer = "https://s.geekbang.org/search/c=2/k=q%E8%B5%84%E8%AE%AF/t=";
+
+        private string CacheKey = "InfoQ";
         /// <summary>
         /// 获取首篇文章
         /// </summary>
         /// <returns></returns>
         private InfoQItem ArticleFirst()
         {
-            var res = Http.Post<CommonResult<InfoQModel>>(Api, new { q = "q资讯", t = 2, s = 20, p = 1 }, RequestType.Json, Referer);
-            var test = JsonConvert.SerializeObject(new { q = "q资讯", t = 2, s = 20, p = 1 });
+            var res = Http.Post<CommonResult<InfoQModel>>(Api, new { q = "q资讯", t = 2, s = 20, p = 1 }, RequestType.Json, Referer, Encoding.UTF8);
             InfoQItem article = null;
             if (res.code == 0)
             {
@@ -31,21 +35,53 @@ namespace Native.Csharp.Customer.Service.CommonTimerService
             }
             return article;
         }
-
-        private string GetMsg()
+        private string ArticleContent(string Url)
+        {
+            var urls = Url.Split('/');
+            var uuid = urls.LastOrDefault();
+            var res = Http.Post<CommonResult<InfoQArticle>>(ArticleApi, new { uuid = uuid }, RequestType.Json, Url, Encoding: Encoding.UTF8);
+            return res.code == 0 ? res.data.content : "";
+        }
+        /// <summary>
+        /// 获取要发送的消息
+        /// </summary>
+        /// <returns></returns>
+        public string GetMsg()
         {
             var article = ArticleFirst();
             var sb = new StringBuilder();
-            if (article != null && article.publishTime.Day == DateTime.Now.Day)
+            var cache = Common.Cache.Get<string>(CacheKey);
+            if (cache.NotEmpty())
             {
-                var content = Http.Get<string>(article.content_url);
-                if (!string.IsNullOrEmpty(content))
+                sb.Append(cache);
+            }
+            else
+            {
+                if (article != null && article.publishTime.Day == DateTime.Now.Day)
                 {
-                    var rg = new Regex("<strong>(.*)<\\/strong>");
-                    var matches = rg.Matches(content);
-                    foreach (Match item in matches)
+                    var content = ArticleContent(article.content_url);
+                    var list = new List<string>();
+                    if (!string.IsNullOrEmpty(content))
                     {
-                        sb.Append("test");
+                        var rg = new Regex("<strong>(.*)<\\/strong>");
+                        var matches = rg.Matches(content);
+                        foreach (Match item in matches)
+                        {
+                            try
+                            {
+                                list.Add(item.Groups[1].Value);
+                            }
+                            catch (Exception)
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                    if (list.Count > 0)
+                    {
+                        sb.Append("每日IT资讯\r\n");
+                        sb.Append(string.Join("\r\n\r\n", list));
+                        Common.Cache.Set(CacheKey, sb.ToString(), TimeSpan.FromDays(1));
                     }
                 }
             }
@@ -64,6 +100,19 @@ namespace Native.Csharp.Customer.Service.CommonTimerService
         public void Run()
         {
             var msg = GetMsg();
+            if (!string.IsNullOrEmpty(msg))
+            {
+                foreach (var item in Common.AppConfig.groupConfigs.Values.Where(a => a.InfoQOn && a.InfoQTime.HasValue))
+                {
+                    var key = $"{item.GroupId}:{CacheKey}";
+                    //重复、时间验证
+                    if (!Common.Cache.Get(key, false) && AllowSend(item.InfoQTime.Value))
+                    {
+                        Common.CqApi.SendGroupMessage(item.GroupId, msg);
+                        Common.Cache.Set(key, true);
+                    }
+                }
+            }
         }
     }
 }
