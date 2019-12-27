@@ -2,6 +2,7 @@
 using Native.Csharp.Customer.Model;
 using Native.Csharp.Customer.Model.InfoQ;
 using Native.Csharp.Customer.Service.Interface;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,15 @@ namespace Native.Csharp.Customer.Service.CommonTimerService
     public class InfoQService : ICommonTimer
     {
         private string Api = "https://s.geekbang.org/api/gksearch/search";
+        private string Referer = "https://s.geekbang.org/search/c=2/k=q%E8%B5%84%E8%AE%AF/t=";
         /// <summary>
         /// 获取首篇文章
         /// </summary>
         /// <returns></returns>
         private InfoQItem ArticleFirst()
         {
-            var res = Http.Post<CommonResult<InfoQModel>>(Api, new { q = "q资讯", t = 2, s = 20, p = 1 }, RequestType.Json);
+            var res = Http.Post<CommonResult<InfoQModel>>(Api, new { q = "q资讯", t = 2, s = 20, p = 1 }, RequestType.Json, Referer);
+            var test = JsonConvert.SerializeObject(new { q = "q资讯", t = 2, s = 20, p = 1 });
             InfoQItem article = null;
             if (res.code == 0)
             {
