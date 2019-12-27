@@ -101,11 +101,16 @@ namespace Native.Csharp.Customer.Window
         #region 基础配置
         private void InitBaseConfig()
         {
+            //每日新闻
             sw_News.Checked = CurrentGroup.NewsOn;
             if (CurrentGroup.NewsTime.HasValue)
             {
                 dp_News.CurrentTime = CurrentGroup.NewsTime.Value;
             }
+            //infoQ
+            sw_InfoQ.Checked = CurrentGroup.InfoQOn;
+            //整点报时
+            sw_TimeTick.Checked = CurrentGroup.TimeTickOn;
         }
         #endregion
 
@@ -258,6 +263,9 @@ namespace Native.Csharp.Customer.Window
             //每日新闻
             CurrentGroup.NewsOn = sw_News.Checked;
             CurrentGroup.NewsTime = dp_News.CurrentTime;
+            //infoQ
+            CurrentGroup.InfoQOn = sw_InfoQ.Checked;
+            CurrentGroup.InfoQTime = dp_InfoQ.CurrentTime;
             //整点报时
             CurrentGroup.TimeTickOn = sw_TimeTick.Checked;
 
