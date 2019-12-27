@@ -101,7 +101,7 @@ namespace Native.Csharp.Customer.Service.CommonTimerService
         public void Run()
         {
             var msg = GetMsg();
-            Common.Debug("信息已获取", "infoq");
+            Common.Debug($"信息已获取:{msg.NotEmpty().ToString()}", "infoq");
             if (!string.IsNullOrEmpty(msg))
             {
                 foreach (var item in Common.AppConfig.groupConfigs.Values.Where(a => a.InfoQOn && a.InfoQTime.HasValue))
