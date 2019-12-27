@@ -21,8 +21,25 @@ namespace Native.Csharp.Customer.Model
         /// </summary>
         public long GroupId { set; get; }
 
+        #region 每日新闻
+        /// <summary>
+        /// 开关
+        /// </summary>
         public bool NewsOn { set; get; } = false;
+        /// <summary>
+        /// 发送时间
+        /// </summary>
         public DateTime? NewsTime { set; get; }
+        #endregion
+
+        #region 整点报时           
+
+        /// <summary>
+        /// 开关
+        /// </summary>
+        public bool TimeTickOn { set; get; }
+        #endregion
+
         /// <summary>
         /// 群定时任务配置
         /// </summary>

@@ -153,6 +153,7 @@
     <Compile Include="Customer\Service\Interface\ICommonTimer.cs" />
     <Compile Include="Customer\Service\MemoryCacheService.cs" />
     <Compile Include="Customer\Service\NewsService.cs" />
+    <Compile Include="Customer\Service\TimeTickService.cs" />
     <Compile Include="Customer\Window\Main.cs">
       <SubType>Form</SubType>
     </Compile>
