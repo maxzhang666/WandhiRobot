@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Native.Csharp.Customer.Service.CommonTimerService;
 
 namespace Native.Csharp.Customer.Event
 {
@@ -29,6 +30,7 @@ namespace Native.Csharp.Customer.Event
             //通用计时器
             Common.UnityContainer.RegisterType<ICommonTimer, NewsService>("通用计时器");
             Common.UnityContainer.RegisterType<ICommonTimer, TimeTickService>("通用计时器");
+            Common.UnityContainer.RegisterType<ICommonTimer, InfoQService>("通用计时器");
             #endregion
         }
     }
