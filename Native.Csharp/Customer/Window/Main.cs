@@ -109,6 +109,10 @@ namespace Native.Csharp.Customer.Window
             }
             //infoQ
             sw_InfoQ.Checked = CurrentGroup.InfoQOn;
+            if (CurrentGroup.InfoQTime.HasValue)
+            {
+                dp_InfoQ.CurrentTime = CurrentGroup.InfoQTime.Value;
+            }
             //整点报时
             sw_TimeTick.Checked = CurrentGroup.TimeTickOn;
         }

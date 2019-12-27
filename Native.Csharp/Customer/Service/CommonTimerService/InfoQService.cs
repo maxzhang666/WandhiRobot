@@ -94,7 +94,7 @@ namespace Native.Csharp.Customer.Service.CommonTimerService
 
         public bool AllowSend(DateTime time)
         {
-            return true;
+            return DateTime.Now.Hour == time.Hour && DateTime.Now.Minute == time.Minute;
         }
 
         public void Run()
