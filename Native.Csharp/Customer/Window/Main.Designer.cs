@@ -59,6 +59,7 @@
             this.list_GroupList = new HZH_Controls.Controls.UCListExt();
             this.sw_TimeTick = new HZH_Controls.Controls.UCSwitch();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_InfoQTest = new HZH_Controls.Controls.UCBtnExt();
             this.gb_Config.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tab_BaseConfig.SuspendLayout();
@@ -166,6 +167,7 @@
             // tab_CardTest
             // 
             this.tab_CardTest.Controls.Add(this.btn_XmlClear);
+            this.tab_CardTest.Controls.Add(this.btn_InfoQTest);
             this.tab_CardTest.Controls.Add(this.btn_NewsTest);
             this.tab_CardTest.Controls.Add(this.btn_XmlSend);
             this.tab_CardTest.Controls.Add(this.textBox_XmlTest);
@@ -473,6 +475,33 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "整点报时";
             // 
+            // btn_InfoQTest
+            // 
+            this.btn_InfoQTest.BackColor = System.Drawing.Color.White;
+            this.btn_InfoQTest.BtnBackColor = System.Drawing.Color.White;
+            this.btn_InfoQTest.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_InfoQTest.BtnForeColor = System.Drawing.Color.White;
+            this.btn_InfoQTest.BtnText = "InfoQ测试";
+            this.btn_InfoQTest.ConerRadius = 5;
+            this.btn_InfoQTest.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_InfoQTest.EnabledMouseEffect = true;
+            this.btn_InfoQTest.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btn_InfoQTest.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btn_InfoQTest.IsRadius = true;
+            this.btn_InfoQTest.IsShowRect = true;
+            this.btn_InfoQTest.IsShowTips = false;
+            this.btn_InfoQTest.Location = new System.Drawing.Point(328, 254);
+            this.btn_InfoQTest.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_InfoQTest.Name = "btn_InfoQTest";
+            this.btn_InfoQTest.RectColor = System.Drawing.Color.White;
+            this.btn_InfoQTest.RectWidth = 1;
+            this.btn_InfoQTest.Size = new System.Drawing.Size(110, 35);
+            this.btn_InfoQTest.TabIndex = 4;
+            this.btn_InfoQTest.TabStop = false;
+            this.btn_InfoQTest.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.btn_InfoQTest.TipsText = "";
+            this.btn_InfoQTest.BtnClick += new System.EventHandler(this.btn_InfoQTest_BtnClick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -529,5 +558,6 @@
         private HZH_Controls.Controls.UCDatePickerExt dp_News;
         private System.Windows.Forms.Label label2;
         private HZH_Controls.Controls.UCSwitch sw_TimeTick;
+        private HZH_Controls.Controls.UCBtnExt btn_InfoQTest;
     }
 }

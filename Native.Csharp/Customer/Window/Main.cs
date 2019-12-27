@@ -4,6 +4,7 @@ using Native.Csharp.App;
 using Native.Csharp.Customer.Extension;
 using Native.Csharp.Customer.Model;
 using Native.Csharp.Customer.Service;
+using Native.Csharp.Customer.Service.CommonTimerService;
 using Native.Csharp.Sdk.Cqp.EventArgs;
 using Native.Csharp.Sdk.Cqp.Interface;
 using Native.Csharp.Sdk.Cqp.Model;
@@ -123,9 +124,19 @@ namespace Native.Csharp.Customer.Window
         {
             Common.CqApi.SendGroupMessage(CurrentGroup.GroupId, new NewsService().GetNews());
         }
+
         private void btn_XmlClear_Click(object sender, EventArgs e)
         {
             textBox_XmlTest.Text = "";
+        }
+        /// <summary>
+        /// infoQ测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_InfoQTest_BtnClick(object sender, EventArgs e)
+        {
+            new InfoQService().Run();
         }
         #endregion
 
@@ -253,6 +264,7 @@ namespace Native.Csharp.Customer.Window
             //刷新通用计时器
             return Common.InitCommonTimer;
         }
+
 
 
 
