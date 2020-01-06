@@ -88,16 +88,19 @@ namespace Native.Csharp.App
         /// </summary>
         public static void InitCommonTimer()
         {
-            Debug("重置通用计时器");
+            Debug("通用计时器初始化");
             if (CommonTimer != null)
             {
                 CommonTimer.Dispose();
             }
             CommonTimer = new Timer((a) =>
             {
-                var timerHandle = UnityContainer.Resolve<ICommonTimer>("通用计时器");
-                NewTask(timerHandle.Run);
-            }, null,  1000, 27 * 1000);
+                var timerHandles = UnityContainer.ResolveAll<ICommonTimer>();
+                foreach (var item in timerHandles)
+                {
+                    NewTask(item.Run);
+                }
+            }, null, 1000, 27 * 1000);
         }
 
         /// <summary>

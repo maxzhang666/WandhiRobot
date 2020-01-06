@@ -24,6 +24,7 @@ namespace Native.Csharp.Customer.Service.CommonTimerService
         {
             var hour = DateTime.Now.Hour;
             var key = $"TimeTick:{hour}";
+            Common.Debug("报时器报时检测");
             if (AllowSend() && hour >= 7 && hour <= 23 && Common.Cache.Get(key, true))
             {
                 var msg = Common.Cache.Get($"{hour}:chp", new ChpService().GetChp);

@@ -18,9 +18,9 @@ namespace Native.Csharp.Customer.Event
             //注册菜单控制中心
             Common.UnityContainer.RegisterType<ICallMenu, Event_MainSetting>("控制中心");
             //通用计时器
-            Common.UnityContainer.RegisterType<ICommonTimer, NewsService>("通用计时器");
-            Common.UnityContainer.RegisterType<ICommonTimer, TimeTickService>("通用计时器");
-            Common.UnityContainer.RegisterType<ICommonTimer, InfoQService>("通用计时器");
+            Common.UnityContainer.RegisterType<ICommonTimer, NewsService>("通用计时器-新闻");
+            Common.UnityContainer.RegisterType<ICommonTimer, TimeTickService>("通用计时器-闹钟");
+            Common.UnityContainer.RegisterType<ICommonTimer, InfoQService>("通用计时器-InfoQ");
 
 
             #endregion
