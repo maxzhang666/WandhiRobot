@@ -108,7 +108,7 @@ namespace Native.Csharp.Customer.Service
 
         private void writeConfig(BaseConfig config)
         {
-            var jsonStr = JsonConvert.SerializeObject(config);
+            var jsonStr = JsonConvert.SerializeObject(config, Formatting.Indented);
             File.WriteAllText(abPath, jsonStr);
         }
         private string readConfig()

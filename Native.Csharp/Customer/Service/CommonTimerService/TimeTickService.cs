@@ -24,9 +24,9 @@ namespace Native.Csharp.Customer.Service.CommonTimerService
         {
             var hour = DateTime.Now.Hour;
             var key = $"TimeTick:{hour}";
-            Common.Debug("报时器报时检测");
             if (AllowSend() && hour >= 7 && hour <= 23 && Common.Cache.Get(key, true))
             {
+                Common.Debug($"准备报时:当前时间{hour}");
                 var msg = Common.Cache.Get($"{hour}:chp", new ChpService().GetChp);
                 var dang = GenerateDang(hour);
                 if (hour == 23)
@@ -40,7 +40,7 @@ namespace Native.Csharp.Customer.Service.CommonTimerService
                         Common.CqApi.SendGroupMessage(item.GroupId, msg);
                     }, TimeSpan.FromSeconds(100));
                 }
-                Common.Cache.Set(key, true, TimeSpan.FromMinutes(60));
+                Common.Cache.Set(key, false, TimeSpan.FromMinutes(60));
             }
         }
 
